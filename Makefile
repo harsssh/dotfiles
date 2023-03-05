@@ -8,7 +8,7 @@ link:
 
 .PHONY: install-brew
 install-brew:
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 .PHONY: setup-brew
 setup-brew:
@@ -16,7 +16,7 @@ setup-brew:
 
 .PHONY: install-dein
 install-dein:
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh)"
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh)"
 
 .PHONY: setup-asdf
 setup-asdf:
