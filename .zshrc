@@ -26,6 +26,7 @@ alias we='explorer.exe'
 alias tm='time ( zsh -i -c exit )'
 alias cl="richpager -s native"
 alias dc="docker compose"
+alias norm="norminette"
 
 # export
 export PATH=$PATH:/usr/local/texlive/2022/bin/universal-darwin

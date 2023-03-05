@@ -1,4 +1,4 @@
-all: link install-brew setup-brew setup-asdf install-dein keygen
+all: link install-brew setup-brew setup-asdf install-dein install-norm keygen
 
 .PHONY: link
 link:
@@ -26,3 +26,7 @@ setup-asdf:
 .PHONY: keygen
 keygen:
 	ssh-keygen -t rsa -b 4096 -C "" -f ~/.ssh/id_rsa -N "" -q
+
+.PHONY: install-norm
+install-norm:
+	pip install norminette
