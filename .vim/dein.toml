@@ -1,9 +1,13 @@
 [[plugins]]
+repo = '42Paris/42header'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
+
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
