@@ -9,7 +9,7 @@ augroup END
 
 syntax on
 
-"42
+" 42
 let g:user42 = 'kemizuki'
 let g:mail42 = 'kemizuki@student.42tokyo.jp'
 
