@@ -3,7 +3,7 @@ all: link install-brew setup-brew setup-asdf install-dein keygen
 .PHONY: link
 link:
 	find `pwd` -maxdepth 1 -name ".*" -or -name "Brewfile" | \
-	grep -v -e ".git" -e ".idea" -e ".gitignore" -e ".DS_Store" | \
+	grep -v -w -e ".git" -e ".idea" -e ".gitignore" -e ".DS_Store" | \
 	xargs -I{} ln -sf {} ~
 
 .PHONY: install-brew
