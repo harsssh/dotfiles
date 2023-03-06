@@ -287,12 +287,6 @@ hook_add = '''
     let g:rustfmt_autosave = 1
 '''
 
-# Haskell
-[[plugins]]
-repo = 'eagletmt/ghcmod-vim'
-[[plugins]]
-repo = 'kana/vim-filetype-haskell'
-
 # TypeScript
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
@@ -305,10 +299,6 @@ hook_add = '''
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 '''
-
-# SPIR-V
-[[plugins]]
-repo = 'kbenzie/vim-spirv'
 
 ##############
 # 拡張画面   #
