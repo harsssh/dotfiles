@@ -35,7 +35,7 @@ export PATH=/usr/local/opt/python/libexec/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:/Library/TeX/texbin
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+# export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
