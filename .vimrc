@@ -35,8 +35,6 @@ autocmd FileType python setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType xml setl expandtab tabstop=1 shiftwidth=1 softtabstop=1
 "autocmd FileType cpp setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
-let g:clang_format#detect_style_file=1
-
 autocmd FileType qf setlocal wrap
 
 
