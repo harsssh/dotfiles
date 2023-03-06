@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'cacharle/c_formatter_42.vim'
+
+[[plugins]]
 repo = 'rhysd/vim-clang-format'
 
 [[plugins]]

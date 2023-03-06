@@ -27,6 +27,7 @@ alias tm='time ( zsh -i -c exit )'
 alias cl="richpager -s native"
 alias dc="docker compose"
 alias norm="norminette -R CheckForbiddenSourceHeader"
+alias format="c_formatter_42"
 
 # export
 export PATH=$PATH:/usr/local/texlive/2022/bin/universal-darwin

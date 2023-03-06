@@ -19,6 +19,12 @@ let g:mapleader="-"
 au BufRead,BufNewFile *.ui set filetype=xml
 autocmd BufRead,BufNewFile *.sage setfiletype python
 
+" c-formatter-42 settings
+" default formatter (gg=G)
+let g:c_formatter_42_set_equalprg=1
+" enable format on save
+let g:c_formatter_42_format_on_save=1
+
 autocmd FileType javascript setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType typescript setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setl expandtab tabstop=2 shiftwidth=2 softtabstop=2

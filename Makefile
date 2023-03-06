@@ -1,4 +1,4 @@
-all: link install-brew setup-brew setup-asdf install-dein install-norm keygen
+all: link install-brew setup-brew setup-asdf install-dein install-norm install-formatter keygen
 
 .PHONY: link
 link:
@@ -30,3 +30,7 @@ keygen:
 .PHONY: install-norm
 install-norm:
 	pip install norminette
+
+.PHONY: install-formatter
+install-formatter:
+	pip install c-formatter-42
