@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'rhysd/vim-clang-format'
+
+[[plugins]]
 repo = '42Paris/42header'
 
 [[plugins]]
