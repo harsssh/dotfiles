@@ -260,20 +260,23 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'vim-lsp': {
 	\   'mark': 'LSP',
 	\   'matchers': ['matcher_head'],
-	\   'forceCompletionPattern': '\.|:|->|"\w+/*'
+	\   'forceCompletionPattern': '\.|:|->|"\w+/*',
+	\   'ignoreCase': v:true,
 	\ },
-	\ 'around': {'mark': 'Around'},
-	\ 'buffer': {'mark': 'Buffer'},
-	\ 'ale': {'cleanResultsWhitespace': v:false},
+	\ 'around': {'mark': 'Around', 'ignoreCase': v:true},
+	\ 'buffer': {'mark': 'Buffer', 'ignoreCase': v:true},
+	\ 'ale': {'cleanResultsWhitespace': v:false, 'ignoreCase': v:true},
 	\ 'file': {
 	\   'mark': 'File',
 	\   'isVolatile': v:true,
-	\   'forceCompletionPattern': '\S/\S*'
+	\   'forceCompletionPattern': '\S/\S*',
+	\   'ignoreCase': v:true,
 	\ },
 	\ 'omni': {
 	\   'mark': 'Omni',
 	\   'forceCompletionPattern': '\.\w*|:\w*|->\w*',
 	\   'minAutoCompleteLength': 1,
+	\   'ignoreCase': v:true,
 	\ },
 	\ })
 call ddc#custom#patch_global('sourceParams', {
