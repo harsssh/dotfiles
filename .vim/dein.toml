@@ -302,7 +302,7 @@ hook_add = '''
     " トグル設定
     map <C-e> <plug>NERDTreeTabsToggle<CR>
     " 起動時有効
-    let g:nerdtree_tabs_open_on_console_startup=0
+    let g:nerdtree_tabs_open_on_console_startup=1
     " 自動でタブを開く
     let g:nerdtree_tabs_autofind=1
     " 起動時にファイルにカーソルを合わせる
