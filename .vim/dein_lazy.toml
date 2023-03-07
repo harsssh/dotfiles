@@ -383,14 +383,16 @@ repo = 'rafamadriz/friendly-snippets'
 on_source = 'vim-vsnip'
 
 # Install others
+# TODO: <TAB>で補完が選択されない
+#inoremap <silent><expr> <TAB>
+#\ pumvisible() ? '<C-n>' :
+#\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+#\ '<TAB>' : ddc#map#manual_complete()
 [[plugins]]
 repo = 'Shougo/pum.vim'
 on_source = 'ddc.vim'
 hook_add = '''
-inoremap <silent><expr> <TAB>
-	\ pumvisible() ? '<C-n>' :
-	\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-	\ '<TAB>' : ddc#map#manual_complete()
+inoremap <silent><expr> <TAB> pumvisible() ? '<C-n>' : '<TAB>'
 inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
 inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
