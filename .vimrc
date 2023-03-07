@@ -13,17 +13,29 @@ syntax on
 let g:user42 = 'kemizuki'
 let g:mail42 = 'kemizuki@student.42tokyo.jp'
 
-let mapleader="-"
-let g:mapleader="-"
-
-au BufRead,BufNewFile *.ui set filetype=xml
-autocmd BufRead,BufNewFile *.sage setfiletype python
-
 " c-formatter-42 settings
 " default formatter (gg=G)
 let g:c_formatter_42_set_equalprg=1
 " enable format on save
 let g:c_formatter_42_format_on_save=1
+
+" 補完設定
+" 補完表示時のEnterで改行をしない
+"inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+"inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+"inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+
+" 正規表現
+set re=2
+
+" クリップボード共有
+set clipboard+=unnamed
+
+let mapleader="-"
+let g:mapleader="-"
+
+au BufRead,BufNewFile *.ui set filetype=xml
+autocmd BufRead,BufNewFile *.sage setfiletype python
 
 autocmd FileType javascript setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType typescript setl expandtab tabstop=2 shiftwidth=2 softtabstop=2
@@ -34,6 +46,7 @@ autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,exc
 autocmd FileType python setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType xml setl expandtab tabstop=1 shiftwidth=1 softtabstop=1
 "autocmd FileType cpp setl expandtab tabstop=4 shiftwidth=4 softtabstop=4
+
 
 autocmd FileType qf setlocal wrap
 
@@ -142,14 +155,8 @@ set matchpairs& matchpairs+=<:> " < >のペアを追加する
 " コマンド
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
-set tags=./tags;
+set tags=./tags;,tags;
 set rtp+=~/.fzf
-
-" 正規表現
-set re=2
-
-" クリップボード共有
-set clipboard+=unnamed
 
 hi Pmenu ctermbg=8
 hi PmenuSel ctermbg=1
