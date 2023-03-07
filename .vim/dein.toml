@@ -287,31 +287,31 @@ hook_add = '''
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
-# [[plugins]]
-# repo = 'scrooloose/nerdtree'
-# hook_add = '''
-# 	" 隠しファイルを設定する
-# 	let NERDTreeShowHidden = 1
-# 	" オブジェクトファイルなどを除外する
-# 	let NERDTreeIgnore = ['.[oa]$', '.(so)$', '.(tgz|gz|zip)$' ]
-# '''
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    " 隠しファイルを設定する
+    let NERDTreeShowHidden = 1
+    " オブジェクトファイルなどを除外する
+    let NERDTreeIgnore = ['.[oa]$', '.(so)$', '.(tgz|gz|zip)$' ]
+'''
 
-# [[plugins]]
-# repo = 'jistr/vim-nerdtree-tabs'
-# hook_add = '''
-#     " トグル設定
-#     map <C-e> <plug>NERDTreeTabsToggle<CR>
-#     " 起動時有効
-#     let g:nerdtree_tabs_open_on_console_startup=1
-#     " 自動でタブを開く
-#     let g:nerdtree_tabs_autofind=1
-#     " 起動時にファイルにカーソルを合わせる
-#     function! s:MoveCursorAtStart()
-#         call feedkeys("\<C-w>l")
-#     endfunction
-#     autocmd VimEnter * NERDTree | call s:MoveCursorAtStart()
-# '''
-# depends = ['nerdtree']
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+hook_add = '''
+    " トグル設定
+    map <C-e> <plug>NERDTreeTabsToggle<CR>
+    " 起動時有効
+    let g:nerdtree_tabs_open_on_console_startup=1
+    " 自動でタブを開く
+    let g:nerdtree_tabs_autofind=1
+    " 起動時にファイルにカーソルを合わせる
+    function! s:MoveCursorAtStart()
+     call feedkeys("\<C-w>l")
+    endfunction
+    autocmd VimEnter * NERDTree | call s:MoveCursorAtStart()
+'''
+depends = ['nerdtree']
 
 [[plugins]]
 repo = 'Xuyuanp/nerdtree-git-plugin'
