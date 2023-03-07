@@ -9,6 +9,9 @@ augroup END
 
 syntax on
 
+let mapleader="-"
+let g:mapleader="-"
+
 " 42
 let g:user42 = 'kemizuki'
 let g:mail42 = 'kemizuki@student.42tokyo.jp'
@@ -30,9 +33,6 @@ set re=2
 
 " クリップボード共有
 set clipboard+=unnamed
-
-let mapleader="-"
-let g:mapleader="-"
 
 au BufRead,BufNewFile *.ui set filetype=xml
 autocmd BufRead,BufNewFile *.sage setfiletype python
