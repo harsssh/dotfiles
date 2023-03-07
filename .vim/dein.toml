@@ -32,8 +32,8 @@ hook_add = '''
  \}
 '''
 
-[[plugins]]
-repo = 'mattn/vim-sonictemplate'
+#[[plugins]]
+#repo = 'mattn/vim-sonictemplate'
 
 [[plugins]]
 repo = 'preservim/tagbar'

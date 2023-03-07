@@ -33,6 +33,9 @@ set vb t_vb=
 set completeopt=noinsert
 set textwidth=100
 
+nnoremap x "_x
+nnoremap s "_s
+
 nnoremap j gj
 nnoremap k gk
 vnoremap j gj
