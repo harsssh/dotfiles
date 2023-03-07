@@ -22,12 +22,6 @@ let g:c_formatter_42_set_equalprg=1
 " enable format on save
 let g:c_formatter_42_format_on_save=1
 
-" 補完設定
-" 補完表示時のEnterで改行をしない
-"inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
-"inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
-"inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
-
 " 正規表現
 set re=2
 
