@@ -383,21 +383,20 @@ repo = 'rafamadriz/friendly-snippets'
 on_source = 'vim-vsnip'
 
 # Install others
-# TODO: <TAB>で補完が選択されない
-#inoremap <silent><expr> <TAB>
-#\ pumvisible() ? '<C-n>' :
-#\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-#\ '<TAB>' : ddc#map#manual_complete()
 [[plugins]]
 repo = 'Shougo/pum.vim'
 on_source = 'ddc.vim'
 hook_add = '''
-inoremap <silent><expr> <TAB> '<Cmd>call pum#map#confirm()<CR><TAB>'
-inoremap <C-n>   <Cmd>call pum#map#insert_relative(+1)<CR>
-inoremap <C-p>   <Cmd>call pum#map#insert_relative(-1)<CR>
-inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
-inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
+inoremap <silent><expr> <TAB>
+      \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+      \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+      \ '<TAB>' : ddc#manual_complete()
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
+inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
+inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>
+inoremap <silent><expr> <CR> pum#visible() ? '<Cmd>call pum#map#confirm()<CR>' : '<CR>'
+inoremap <C-e>   <Cmd>call pum#map#cancel()<CR>
 '''
 [[plugins]]
 repo = 'matsui54/denops-signature_help'
