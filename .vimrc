@@ -19,8 +19,8 @@ let g:mail42 = 'kemizuki@student.42tokyo.jp'
 " c-formatter-42 settings
 " default formatter (gg=G)
 let g:c_formatter_42_set_equalprg=1
-" enable format on save
-let g:c_formatter_42_format_on_save=1
+" disable format on save
+let g:c_formatter_42_format_on_save=0
 
 " 正規表現
 set re=2
