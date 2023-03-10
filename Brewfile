@@ -1,6 +1,7 @@
 tap "homebrew/core"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/services"
 brew "coreutils"
 brew "glib"
 brew "gcc"
