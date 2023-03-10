@@ -1,3 +1,5 @@
 # measure time
 # zmodload zsh/zprof && zprof
-. "$HOME/.cargo/env"
+if [ -f ~/.cargo/env ]; then
+  source ~/.cargo/env
+fi

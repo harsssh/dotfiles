@@ -8,11 +8,11 @@ link:
 
 .PHONY: install-brew
 install-brew:
-	bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew --version || bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 .PHONY: setup-brew
 setup-brew:
-	brew bundle --global --force
+	brew bundle --file ~/Brewfile --force
 
 .PHONY: install-dein
 install-dein:

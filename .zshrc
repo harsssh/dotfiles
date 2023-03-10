@@ -167,12 +167,12 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 
 zinit wait lucid for \
-    sbin b4b4r07/enhancd \
-    sbin supercrabtree/k \
-    sbin zsh-users/zsh-syntax-highlighting \
+    b4b4r07/enhancd \
+    supercrabtree/k \
+    zsh-users/zsh-syntax-highlighting \
 
 zinit lucid for \
-    sbin danihodovic/steeef \
+    danihodovic/steeef \
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
