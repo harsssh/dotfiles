@@ -186,3 +186,6 @@ if has('persistent_undo')
 	set undodir=~/.vim/undo
 	set undofile
 endif
+
+source ~/.vim/kami.vim
+
