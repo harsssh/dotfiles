@@ -182,10 +182,5 @@ retab!
 
 filetype plugin on
 
-if has('persistent_undo')
-	set undodir=~/.vim/undo
-	set undofile
-endif
-
 source ~/.vim/lsp.vim
 source ~/.vim/kami.vim
