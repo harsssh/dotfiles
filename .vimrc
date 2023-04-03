@@ -187,5 +187,5 @@ if has('persistent_undo')
 	set undofile
 endif
 
+source ~/.vim/lsp.vim
 source ~/.vim/kami.vim
-

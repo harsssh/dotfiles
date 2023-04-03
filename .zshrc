@@ -41,6 +41,7 @@ export PATH=$PATH:/Library/TeX/texbin
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
 
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 export GPG_TTY=$(tty)
@@ -49,6 +50,9 @@ export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+export LDFLAGS="-L/opt/homebrew/opt/ncurses/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ncurses/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ncurses/lib/pkgconfig"
 
 export CLICOLOR=1
 

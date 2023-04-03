@@ -1,5 +1,6 @@
 [[plugins]]
 repo = 'vim-denops/denops.vim'
+rev = 'v3.4.2'
 on_func = 'denops#server#start'
 hook_source = 'call denops#server#start()'
 
@@ -243,8 +244,6 @@ depends = ['denops.vim']
 hook_source = '''
 call ddc#custom#patch_global('ui', 'pum')
 call ddc#custom#patch_global('sources', ['vim-lsp', 'vsnip', 'omni', 'ale', 'buffer', 'file', 'around'])
-" call ddc#custom#patch_filetype(['typescript', 'go', 'rust'], 'sources', ['vim-lsp', 'vsnip'])
-" call ddc#custom#patch_filetype(['ruby', 'vim'], 'sources', ['vsnip'])
 
 " Use matcher, sorter, converter.
 call ddc#custom#patch_global('sourceOptions', {
@@ -260,12 +259,12 @@ call ddc#custom#patch_global('sourceOptions', {
 	\ 'vim-lsp': {
 	\   'mark': 'LSP',
 	\   'matchers': ['matcher_head'],
-	\   'forceCompletionPattern': '\.|:|->|"\w+/*',
+	\   'forceCompletionPattern': '\.|:|->|"\w+/',
 	\   'ignoreCase': v:true,
 	\ },
 	\ 'around': {'mark': 'Around', 'ignoreCase': v:true},
 	\ 'buffer': {'mark': 'Buffer', 'ignoreCase': v:true},
-	\ 'ale': {'ignoreCase': v:true},
+	\ 'ale': {'mark': 'ALE', 'ignoreCase': v:true},
 	\ 'file': {
 	\   'mark': 'File',
 	\   'isVolatile': v:true,
@@ -303,12 +302,12 @@ call ddc#enable()
 '''
 
 # Install UIs
-[[plugins]]
-repo = 'Shougo/ddc-ui-native'
-on_source = 'ddc.vim'
-[[plugins]]
-repo = 'Shougo/ddc-ui-inline'
-on_source = 'ddc.vim'
+#[[plugins]]
+#repo = 'Shougo/ddc-ui-native'
+#on_source = 'ddc.vim'
+#[[plugins]]
+#repo = 'Shougo/ddc-ui-inline'
+#on_source = 'ddc.vim'
 [[plugins]]
 repo = 'Shougo/ddc-ui-pum'
 on_source = 'ddc.vim'
@@ -353,7 +352,6 @@ augroup lsp_install
   autocmd!
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
-
 let g:lsp_diagnostics_echo_cursor = 1
 '''
 [[plugins]]
@@ -397,10 +395,10 @@ repo = 'Shougo/pum.vim'
 on_source = 'ddc.vim'
 hook_add = '''
 inoremap <silent><expr> <TAB>
-      \ pum#visible() ? '<Cmd>call pum#map#insert_relative(+1)<CR>' :
+      \ pum#visible() ? '<Cmd>call pum#map#select_relative(+1)<CR>' :
       \ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
       \ '<TAB>' : ddc#map#manual_complete()
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#select_relative(-1)<CR>
 inoremap <C-n>   <Cmd>call pum#map#select_relative(+1)<CR>
 inoremap <C-p>   <Cmd>call pum#map#select_relative(-1)<CR>
 inoremap <C-y>   <Cmd>call pum#map#confirm()<CR>

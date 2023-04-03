@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'rhysd/vim-healthcheck'
+
+[[plugins]]
 repo = 'cacharle/c_formatter_42.vim'
 
 [[plugins]]
@@ -9,7 +12,7 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
  " キャッシュを用いて高速化
  let g:ale_cache_executable_check_failures = 1
@@ -107,21 +110,14 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 '''
 
-# [[plugins]]
-# repo = 'rking/ag.vim'
-# [[plugins]]
-# repo = 'critiqjo/lldb.nvim'
+#[[plugins]]
+#repo = 'rking/ag.vim'
+#[[plugins]]
+#repo = 'critiqjo/lldb.nvim'
 
 ################
 # Git          #
 ################
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-" command Gst :Gstatus
-" command Gdf :Gdiff
-" command Gbl :Gblame
-'''
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
@@ -245,21 +241,6 @@ repo = 'itchyny/lightline.vim'
 # let g:prettier#autoformat_require_pragma = 0
 # '''
 
-# # SPIR-V
-# [[plugins]]
-# repo = 'kbenzie/vim-spirv'
-
-# # SATySFi
-# [[plugins]]
-# repo = 'qnighy/satysfi.vim'
-
-# ctags
-[[plugins]]
-repo = 'szw/vim-tags'
-
-[[plugins]]
-repo = 'vim-scripts/taglist.vim'
-
 ##############
 # 拡張画面   #
 ##############
@@ -352,44 +333,6 @@ repo = 'junegunn/goyo.vim'
 
 # [[plugins]]
 # repo = 'itchyny/calendar.vim'
-
-[[plugins]]
-repo = 'basyura/TweetVim'
-depends = ['open-browser.vim', 'twibill.vim']
-hook_source = '''
-let g:tweetvim_display_time   = 1
-'''
-# hook_add = '''
-# nmap <silent> <buffer> <CR> <Plug>(tweetvim_action_enter)
-# nmap <silent> <buffer> r  <Plug>(tweetvim_action_reply)
-# nmap <silent> <buffer> i  <Plug>(tweetvim_action_in_reply_to)
-# nmap <silent> <buffer> u  <Plug>(tweetvim_action_user_timeline)
-# nmap <silent> <buffer> o  <Plug>(tweetvim_action_open_links)
-# nmap <silent> <buffer> q  <Plug>(tweetvim_action_search)
-# nmap <silent> <buffer> <leader>f  <Plug>(tweetvim_action_favorite)
-# nmap <silent> <buffer> <leader>uf <Plug>(tweetvim_action_remove_favorite)
-# nmap <silent> <buffer> <leader>r  <Plug>(tweetvim_action_retweet)
-# nmap <silent> <buffer> <leader>q  <Plug>(tweetvim_action_qt)
-# nmap <silent> <buffer> <leader>e  <Plug>(tweetvim_action_expand_url)
-# nmap <silent> <buffer> <leader>F  <Plug>(tweetvim_action_favstar)
-# nmap <silent> <buffer> <Leader><Leader>  <Plug>(tweetvim_action_reload)
-
-# nmap <silent> <buffer> ff  <Plug>(tweetvim_action_page_next)
-# nmap <silent> <buffer> bb  <Plug>(tweetvim_action_page_previous)
-
-# nmap <silent> <buffer> H  <Plug>(tweetvim_buffer_previous)
-# nmap <silent> <buffer> L  <Plug>(tweetvim_buffer_next)
-
-# nmap <silent> <buffer> j <Plug>(tweetvim_action_cursor_down)
-# nmap <silent> <buffer> k <Plug>(tweetvim_action_cursor_up)
-
-# nnoremap <silent> <buffer> a :call unite#sources#tweetvim_action#start()<CR>
-# nnoremap <silent> <buffer> t :call unite#sources#tweetvim_timeline#start()<CR>
-# '''
-[[plugins]]
-repo = 'basyura/twibill.vim'
-depends = ['open-browser.vim']
-
 
 [[plugins]]
 repo = 'christoomey/vim-tmux-navigator'
