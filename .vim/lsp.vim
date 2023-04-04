@@ -18,7 +18,12 @@ command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 100
 let g:lsp_text_edit_enabled = 1
+
+let g:lsp_diagnostics_signs_enabled = 1
+let g:lsp_diagnostics_signs_error = {'text': '⨉'}
+let g:lsp_diagnostics_signs_warning = {'text': '⚠'}
+let g:lsp_diagnostics_signs_information = {'text': 'ℹ'}
+let g:lsp_diagnostics_signs_hint = {'text': '➤'}

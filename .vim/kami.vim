@@ -46,8 +46,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+"nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+"nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 
 nnoremap gv <C-v>
 
