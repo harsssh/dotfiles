@@ -1,10 +1,9 @@
-all: link install-brew setup-brew setup-asdf install-dein install-norm install-formatter keygen
-
 .PHONY: link
 link:
 	find `pwd` -maxdepth 1 -name ".*" -or -name "Brewfile" | \
-	grep -v -w -e ".git" -e ".idea" -e ".gitignore" -e ".DS_Store" | \
+	grep -v -w -e ".config" -e ".git" -e ".gitignore" -e ".DS_Store" | \
 	xargs -I{} ln -sf {} ~
+	find `pwd`/.config -mindepth 1 -maxdepth 1 -exec ln -sf {} ~/.config \;
 
 .PHONY: install-brew
 install-brew:
