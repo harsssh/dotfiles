@@ -37,11 +37,13 @@ vim.opt.breakindent = true
 vim.opt.smarttab = true
 vim.opt.list = true
 vim.opt.listchars = {
-    tab='>-',
-    trail='-',
-    extends='>',
-    precedes='<',
-    nbsp='%',
+	--tab='▸-',
+	tab='  ',
+	trail='-',
+	space='⋅',
+	extends='›',
+	precedes='‹',
+	nbsp='%',
 } -- 不可視文字の表示
 
 -- 文字列検索
