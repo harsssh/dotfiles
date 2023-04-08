@@ -7,8 +7,12 @@ telescope.setup({
   defaults = {
     sorting_strategy = "ascending",
     winblend = 4,
-    layout_strategy = 'vertical',
-    layout_config = { height = 0.9 },
+    layout_strategy = 'horizontal',
+    layout_config = {
+		height = 0.9,
+		width = 0.8,
+		preview_width = 0.6,
+	},
     file_ignore_patterns = {
       "^.git/",
       "^node_modules/",
@@ -33,8 +37,8 @@ vim.keymap.set('n', '<leader>f',
     })
   end)
 
--- -- Grep
-vim.keymap.set('n', '<leader>r',
+-- Grep
+vim.keymap.set('n', '<leader>g',
   function()
     builtin.live_grep({
       no_ignore = false,
