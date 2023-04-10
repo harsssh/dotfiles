@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local opts = { noremap = true }
 
 -- ハイライトを解除
-map('n', '<silent> <ESC><ESC>', ':nohlsearch<CR>', opts)
+map('n', '<silent><ESC><ESC>', ':nohlsearch<CR>', opts)
 
 map('n', 'x', '"_x', opts)
 map('n', 's', '"_s', opts)
