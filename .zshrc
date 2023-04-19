@@ -41,11 +41,15 @@ export PATH=$PATH:/Library/TeX/texbin
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+export PATH="~/.asdf/shims:$PATH"
+
+# asdf
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 export CPLUS_INCLUDE_PATH=/opt/homebrew/include:$CPLUS_INCLUDE_PATH:/usr/local/include
 export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
-export GOPATH=$HOME/go
+export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
@@ -130,7 +134,6 @@ RPROMPT="[$BLUE%~%f$DEFAULT%1(v|%F{green}%1v%f|)]"
 add-zsh-hook precmd _update_vcs_info_msg
 
 # asdf
-. "$(brew --prefix asdf)/libexec/asdf.sh"
 . "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
 
 # history
