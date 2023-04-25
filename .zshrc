@@ -28,7 +28,7 @@ alias cl="richpager -s native"
 alias dc="docker compose"
 alias norm='norminette -R CheckForbiddenSourceHeader'
 alias format='c_formatter_42'
-alias cc='cc -Wall -Wextra -Werror'
+alias ccw='cc -Wall -Wextra -Werror'
 alias normh='norminette -R CheckDefine'
 
 # export

@@ -130,11 +130,6 @@ _G.packer_plugins = {
     path = "/Users/harsh/.local/share/nvim/site/pack/packer/start/glyph-palette.vim",
     url = "https://github.com/lambdalisue/glyph-palette.vim"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/Users/harsh/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
   ["lsp-colors.nvim"] = {
     loaded = true,
     path = "/Users/harsh/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim",

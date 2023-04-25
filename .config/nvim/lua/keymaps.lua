@@ -33,4 +33,9 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 
+-- ターミナルモードの設定
+map('n', 'tt', '<cmd>belowright 14split<CR><cmd>terminal zsh --no-rcs<CR>', { noremap = true, silent = true })
+map('n', 'tn', '<cmd>terminal zsh --no-rcs<CR>', { noremap = true, silent = true })
+map('t', '<ESC>', '<C-\\><C-n>', opts)
+
 map('i','jj','<Esc>', opts)
