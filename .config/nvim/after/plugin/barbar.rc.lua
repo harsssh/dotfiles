@@ -101,7 +101,7 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
-map('n', '<C-S-j>', '<Cmd>BufferPrevious<CR>', opts)
-map('n', '<C-S-k>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<C-,>', '<Cmd>BufferPrevious<CR>', opts)
+map('n', '<C-.>', '<Cmd>BufferNext<CR>', opts)
 -- Close buffer
 map('n', '<leader>e', '<Cmd>BufferClose<CR>', opts)
