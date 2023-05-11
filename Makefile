@@ -3,7 +3,7 @@ link:
 	find `pwd` -maxdepth 1 -name ".*" -or -name "Brewfile" | \
 	grep -v -w -e ".config" -e ".git" -e ".gitignore" -e ".DS_Store" | \
 	xargs -I{} ln -sf {} ~
-	find `pwd`/.config -mindepth 1 -maxdepth 1 -exec ln -sf {} ~/.config \;
+	#find `pwd`/.config -mindepth 1 -maxdepth 1 -exec ln -sf {} ~/.config \;
 
 .PHONY: install-brew
 install-brew:
