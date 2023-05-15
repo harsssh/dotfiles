@@ -52,6 +52,8 @@ export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 
 export CLICOLOR=1
 
