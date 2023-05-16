@@ -17,7 +17,7 @@
   email = 66548698+harsssh@users.noreply.github.com
   name = harsssh
 [core]
-  editor = vim
+  editor = nvim
 [push]
 	default = current
 	autoSetupRemote = true
