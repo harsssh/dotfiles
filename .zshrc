@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # 起動速度を測定
-# zmodload zsh/zprof && zprof
+#zmodload zsh/zprof && zprof
 
 # alias
 alias lst='ls -ltr --color=auto'
@@ -27,11 +27,16 @@ alias tm='time ( zsh -i -c exit )'
 alias cl="richpager -s native"
 alias dc="docker compose"
 alias norm='norminette -R CheckForbiddenSourceHeader'
+alias normh='norminette -R CheckDefine'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
 alias normh='norminette -R CheckDefine'
 
 # export
+export PATH=~/nvim/bin:$PATH
+export PATH=~/vim/src:$PATH
+export PATH=~/homebrew/bin:$PATH
+export PATH="~/homebrew/sbin:$PATH"
 export PATH=$PATH:/usr/local/texlive/2022/bin/universal-darwin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
@@ -47,6 +52,7 @@ export PATH=$PATH:~/.local/bin
 # asdf
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 
+#export VIMRUNTIME=~/vim/runtime
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 export CPLUS_INCLUDE_PATH=/opt/homebrew/include:$CPLUS_INCLUDE_PATH:/usr/local/include
 export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
@@ -55,8 +61,8 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
-export USER='kemizuki'
-export MAIL='kemizuki@student.42tokyo.jp'
+export USER="kemizuki"
+export MAIL="kemizuki@student.42tokyo.jp"
 
 export CLICOLOR=1
 

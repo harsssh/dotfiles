@@ -192,10 +192,10 @@ repo = 'ayu-theme/ayu-vim'
 [[plugins]]
 repo = 'kien/rainbow_parentheses.vim'
 hook_source = '''
-autocmd VimEnter * RainbowParenthesesToggle
-autocmd Syntax * RainbowParenthesesLoadRound
-autocmd Syntax * RainbowParenthesesLoadSquare
-autocmd Syntax * RainbowParenthesesLoadBraces
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0

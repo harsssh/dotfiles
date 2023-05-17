@@ -95,6 +95,6 @@ packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'cacharle/c_formatter_42.vim'
   use '42Paris/42header'
+  use 'cacharle/c_formatter_42.vim'
 end)
