@@ -42,6 +42,7 @@ export PATH=$PATH:/Library/TeX/texbin
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="~/.asdf/shims:$PATH"
+export PATH=$PATH:~/.local/bin
 
 # asdf
 . "$(brew --prefix asdf)/libexec/asdf.sh"
@@ -54,6 +55,8 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export USER='kemizuki'
+export MAIL='kemizuki@student.42tokyo.jp'
 
 export CLICOLOR=1
 
