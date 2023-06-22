@@ -48,7 +48,7 @@ require'bufferline'.setup {
     inactive = {seperator = {left = '▎'}},
     --button = '',
     modified = {button = '●'},
-    pinned = {button = '車'},
+    pinned = {button = '󰐃'},
   },
 
   -- Excludes buffers from the tabline
