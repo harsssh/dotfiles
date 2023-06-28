@@ -15,7 +15,7 @@
   re = restore
 [user]
   email = 66548698+harsssh@users.noreply.github.com
-  name = harsssh
+	name = harsh
 [core]
   editor = nvim
 [push]

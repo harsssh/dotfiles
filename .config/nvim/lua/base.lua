@@ -27,7 +27,26 @@ vim.opt.winblend = 5 -- float-transparent
 --vim.opt.ambiwidth = 'double'
 
 -- インデント
-vim.opt.expandtab = false
+-- ファイルタイプごとのインデント設定を行う関数
+local function set_indent_settings(filetype, use_tabs, indent_width)
+    if use_tabs then
+        vim.cmd(string.format("autocmd FileType %s setlocal noexpandtab", filetype))
+        vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
+        vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
+        vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
+    else
+        vim.cmd(string.format("autocmd FileType %s setlocal expandtab", filetype))
+        vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
+        vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
+        vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
+    end
+end
+
+
+set_indent_settings('c', true, 4)
+set_indent_settings('typescriptreact', false, 2)
+
+vim.opt.expandtab = true
 vim.opt.shiftwidth = 4 -- smartindentの幅
 vim.opt.tabstop = 4 -- タブ文字の幅
 vim.opt.softtabstop = 4
