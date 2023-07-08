@@ -93,3 +93,5 @@ vim.opt.wildmenu = true -- コマンドの補完
 -- Timings
 vim.opt.updatetime = 300
 
+vim.o.runtimepath = vim.o.runtimepath .. ',' .. '~/.brew/opt/fzf'
+

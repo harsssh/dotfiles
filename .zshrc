@@ -30,24 +30,24 @@ alias norm='norminette -R CheckForbiddenSourceHeader'
 alias normh='norminette -R CheckDefine'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
-alias normh='norminette -R CheckDefine'
 
 # export
 export PATH=~/nvim/bin:$PATH
 export PATH=~/vim/src:$PATH
-export PATH=~/homebrew/bin:$PATH
-export PATH="~/homebrew/sbin:$PATH"
+export PATH=~/.brew/bin:$PATH
+export PATH=~/.brew/sbin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:/usr/local/texlive/2022/bin/universal-darwin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
-export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:/Library/TeX/texbin
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="~/.asdf/shims:$PATH"
 export PATH=$PATH:~/.local/bin
+export PATH=~/clangd/bin:$PATH
 
 # asdf
 . "$(brew --prefix asdf)/libexec/asdf.sh"
@@ -59,8 +59,6 @@ export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
 
@@ -198,3 +196,6 @@ zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
