@@ -7,10 +7,12 @@ fi
 
 ### Environment
 source ~/.zsh_aliases
+source $HOME/.brewconfig.zsh
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 export GOPATH=$(go env GOPATH)
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
+export PATH=$PATH:~/clangd/bin
 
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
