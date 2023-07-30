@@ -13,6 +13,7 @@ export GOPATH=$(go env GOPATH)
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 export PATH=$PATH:~/clangd/bin
+export LIBSQLITE=~/.brew/Cellar/sqlite/3.42.0/lib/libsqlite3.dylib
 
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
