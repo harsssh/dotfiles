@@ -30,6 +30,8 @@ alias norm='norminette -R CheckForbiddenSourceHeader'
 alias normh='norminette -R CheckDefine'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
+alias vi='nvim'
+alias vim='nvim'
 
 # export
 export PATH=~/nvim/bin:$PATH
@@ -61,6 +63,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
+export LIBSQLITE=~/.brew/Cellar/sqlite/3.42.0/lib/libsqlite3.dylib
 
 export CLICOLOR=1
 
