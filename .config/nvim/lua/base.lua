@@ -31,22 +31,15 @@ vim.opt.winblend = 5 -- float-transparent
 local function set_indent_settings(filetype, use_tabs, indent_width)
     if use_tabs then
         vim.cmd(string.format("autocmd FileType %s setlocal noexpandtab", filetype))
-        vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
-        vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
-        vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
     else
         vim.cmd(string.format("autocmd FileType %s setlocal expandtab", filetype))
-        vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
-        vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
-        vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
     end
+    vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
+    vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
+    vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
 end
 
-
-set_indent_settings('c', true, 4)
-set_indent_settings('typescriptreact', false, 2)
-
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.shiftwidth = 4 -- smartindentの幅
 vim.opt.tabstop = 4 -- タブ文字の幅
 vim.opt.softtabstop = 4
@@ -54,10 +47,14 @@ vim.opt.autoindent = true -- 改行時のインデント継続
 vim.opt.smartindent = true -- 改行時のインデントをいい感じに
 vim.opt.breakindent = true
 vim.opt.smarttab = true
+
+set_indent_settings('c', true, 4)
+set_indent_settings('typescriptreact', false, 2)
+
 vim.opt.list = true
 vim.opt.listchars = {
-	--tab='▸-',
-	tab='  ',
+	tab='▸-',
+	-- tab='  ',
 	trail='-',
 	space='⋅',
 	extends='›',
