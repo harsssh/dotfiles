@@ -28,6 +28,7 @@ alias cl="richpager -s native"
 alias dc="docker compose"
 alias norm='norminette -R CheckForbiddenSourceHeader'
 alias normh='norminette -R CheckDefine'
+alias gnorm='norm | grep -v OK'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
 alias vi='nvim'
@@ -50,6 +51,7 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="~/.asdf/shims:$PATH"
 export PATH=$PATH:~/.local/bin
 export PATH=~/clangd/bin:$PATH
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # asdf
 . "$(brew --prefix asdf)/libexec/asdf.sh"
