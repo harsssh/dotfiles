@@ -31,6 +31,7 @@ alias normh='norminette -R CheckDefine'
 alias gnorm='norm | grep -v OK'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
+alias normh='norminette -R CheckDefine'
 alias vi='nvim'
 alias vim='nvim'
 
@@ -44,7 +45,8 @@ export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:/usr/local/texlive/2022/bin/universal-darwin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=/usr/local/opt/python/libexec/bin:$PATH
-export PATH=$PATH:/Library/TeX/texbin
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
