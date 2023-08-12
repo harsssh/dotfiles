@@ -4,6 +4,8 @@ local opts = { noremap = true }
 -- ハイライトを解除
 map('n', '<ESC><ESC>', ':nohlsearch<CR>', { noremap = true, silent = true })
 
+map('n', '<CR>', 'o')
+
 map('n', 'x', '"_x', opts)
 map('n', 's', '"_s', opts)
 
