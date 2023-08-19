@@ -43,7 +43,8 @@ export PATH=/opt/homebrew/sbin:$PATH
 # export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-export PATH="~/.asdf/shims:$PATH"
+export PATH="$HOME/.asdf/shims:$PATH"
+export PATH="$HOME/.asdf/installs/python/3.11.2/bin:$PATH"
 export PATH=$PATH:~/.local/bin
 
 # asdf
