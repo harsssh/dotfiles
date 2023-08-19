@@ -70,7 +70,7 @@ export PATH=$PATH:$GOBIN
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
 export LIBSQLITE=/usr/lib/libsqlite3.dylib
-export CDPATH=~/Documents:~/Documents/42
+export CDPATH=~:~/Documents:~/Documents/42
 
 export CLICOLOR=1
 
