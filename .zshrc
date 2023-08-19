@@ -61,6 +61,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
+export CDPATH=~:~/Documents:~/Documents/42
 
 export CLICOLOR=1
 
@@ -85,6 +86,8 @@ setopt extended_glob         # 拡張グロブで補完(~とか^とか。例え�
 setopt globdots              # 明確なドットの指定なしで.から始まるファイルをマッチ
 
 setopt list_packed           # リストを詰めて表示
+
+setopt AUTO_CD
 
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
