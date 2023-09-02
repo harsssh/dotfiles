@@ -208,13 +208,3 @@ zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Load Homebrew config script
-source $HOME/.brewconfig.zsh
-
-# bun completions
-[ -s "/Users/kemizuki/.bun/_bun" ] && source "/Users/kemizuki/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
