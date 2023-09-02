@@ -16,11 +16,7 @@ packer.startup(function(use)
   use 'vim-jp/vimdoc-ja'
 
   -- colorscheme
-  use { "catppuccin/nvim", as = "catppuccin" }
-  use 'ishan9299/nvim-solarized-lua'
-  use 'rose-pine/neovim'
   use 'sainnhe/everforest'
-  use 'folke/lsp-colors.nvim'
 
   -- dashboard
   use {
