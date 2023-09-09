@@ -31,7 +31,6 @@ alias gnorm='norm | grep -v OK'
 alias normh='norminette -R CheckDefine'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
-alias normh='norminette -R CheckDefine'
 alias vi='nvim'
 alias vim='nvim'
 
@@ -184,10 +183,10 @@ zinit light-mode for \
 zinit wait lucid for \
     b4b4r07/enhancd \
     supercrabtree/k \
-    zsh-users/zsh-syntax-highlighting \
+    zsh-users/zsh-syntax-highlighting
 
 zinit lucid for \
-    danihodovic/steeef \
+    danihodovic/steeef
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
@@ -201,3 +200,9 @@ zinit light romkatv/powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f "/Users/kmizuki/.ghcup/env" ] && source "/Users/kmizuki/.ghcup/env" # ghcup-env
+# bun completions
+[ -s "/Users/kmizuki/.bun/_bun" ] && source "/Users/kmizuki/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
