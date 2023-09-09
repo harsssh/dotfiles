@@ -1,4 +1,4 @@
--- 文字コード
+-- 文字
 vim.opt.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
@@ -15,7 +15,7 @@ vim.opt.hidden = true -- バッファが編集中でも他のファイルを開�
 vim.opt.showcmd = true -- 入力中のコマンドを表示
 vim.opt.number = true
 vim.wo.number = true
-vim.wo.relativenumber = true
+vim.wo.relativenumber = false
 vim.opt.wrap = true
 vim.opt.title = true
 vim.opt.showtabline = 2
