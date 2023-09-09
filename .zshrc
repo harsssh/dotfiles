@@ -32,7 +32,6 @@ alias normh='norminette -R CheckDefine'
 alias gnorm='norm | grep -v OK'
 alias format='c_formatter_42'
 alias ccw='cc -Wall -Wextra -Werror'
-alias normh='norminette -R CheckDefine'
 alias vi='nvim'
 alias vim='nvim'
 
@@ -193,10 +192,10 @@ zinit light-mode for \
 zinit wait lucid for \
     b4b4r07/enhancd \
     supercrabtree/k \
-    zsh-users/zsh-syntax-highlighting \
+    zsh-users/zsh-syntax-highlighting
 
 zinit lucid for \
-    danihodovic/steeef \
+    danihodovic/steeef
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
