@@ -207,3 +207,10 @@ zinit light romkatv/powerlevel10k
 
 # Load Homebrew config script
 source $HOME/.brewconfig.zsh
+
+# bun completions
+[ -s "/Users/kemizuki/.bun/_bun" ] && source "/Users/kemizuki/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
