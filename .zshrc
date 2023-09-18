@@ -65,7 +65,7 @@ export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
-export LIBSQLITE=~/.brew/Cellar/sqlite/3.42.0/lib/libsqlite3.dylib
+export LIBSQLITE=/usr/lib/libsqlite3.dylib
 export CDPATH=~/Documents:~/Documents/42
 
 export CLICOLOR=1
