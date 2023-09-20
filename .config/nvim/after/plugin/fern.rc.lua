@@ -18,4 +18,4 @@ augroup fern-settings
 augroup END
 ]])
 
-vim.keymap.set('n','<leader>t',':Fern . -reveal=%<CR>',{silent = true,noremap = true})
+vim.keymap.set('n','<C-t>',':Fern . -reveal=% -drawer -toggle<CR>',{silent = true,noremap = true})
