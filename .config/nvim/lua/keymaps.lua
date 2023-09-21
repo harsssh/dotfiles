@@ -39,3 +39,4 @@ map('n', 'tn', '<cmd>terminal zsh --no-rcs<CR>', { noremap = true, silent = true
 map('t', '<ESC>', '<C-\\><C-n>', opts)
 
 map('i','jj','<Esc>', opts)
+map('n', '<CR>', 'o', opts)
