@@ -9,7 +9,11 @@ augroup my-glyph-palette
 augroup END
 
 function! s:fern_settings() abort
+  setlocal nonumber
   nmap <silent> <buffer> dd <Plug>(fern-action-remove)
+  nmap <buffer> q :<C-u>quit<CR>
+  nmap <buffer> i <Plug>(fern-action-open:split)
+  nmap <buffer> s <Plug>(fern-action-open:vsplit)
 endfunction
 
 augroup fern-settings
@@ -18,4 +22,16 @@ augroup fern-settings
 augroup END
 ]])
 
-vim.keymap.set('n','<leader>t',':Fern . -reveal=%<CR>',{silent = true,noremap = true})
+local keymap = vim.api.nvim_set_keymap
+
+keymap("n", "<C-t>", "", {
+  callback = function()
+    if vim.bo.filetype == "fern" then
+      vim.cmd.wincmd "p"
+    else
+      vim.cmd.Fern(".", "-reveal=%", "-drawer")
+    end
+  end,
+  noremap = true,
+  silent = true,
+})

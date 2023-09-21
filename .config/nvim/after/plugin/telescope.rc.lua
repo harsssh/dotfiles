@@ -2,6 +2,15 @@ local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
 local builtin = require('telescope.builtin')
+local actions = require('telescope.actions')
+
+local default_maps = {
+  n = {
+  },
+  i = {
+    ['<Esc>'] = actions.close,
+  },
+}
 
 telescope.setup({
   defaults = {
@@ -17,6 +26,7 @@ telescope.setup({
       "^.git/",
       "^node_modules/",
     },
+    mappings = default_maps
   },
   extensions = {
     coc = {
