@@ -52,7 +52,6 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use 'digitaltoad/vim-pug'
-  use {'folke/todo-comments.nvim', requires = 'nvim-lua/plenary.nvim'}
 
   -- Telescope (Search files)
   use 'nvim-telescope/telescope.nvim'
