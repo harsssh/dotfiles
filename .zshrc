@@ -45,6 +45,7 @@ export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 export PATH="$HOME/.asdf/shims:$PATH"
 export PATH="$HOME/.asdf/installs/python/3.11.2/bin:$PATH"
 export PATH=$PATH:~/.local/bin
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 
 # asdf
 . "$(brew --prefix asdf)/libexec/asdf.sh"
@@ -56,8 +57,8 @@ export C_INCLUDE_PATH=/opt/homebrew/include:$C_INCLUDE_PATH
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
 export CDPATH=~:~/Documents:~/Documents/42
