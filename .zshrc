@@ -7,14 +7,10 @@ fi
 
 ### Environment
 source ~/.zsh_aliases
-source $HOME/.brewconfig.zsh
 . "$(brew --prefix asdf)/libexec/asdf.sh"
 export GOPATH=$(go env GOPATH)
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
-export PATH=$PATH:~/clangd/bin
-export LIBSQLITE=~/.brew/Cellar/sqlite/3.42.0/lib/libsqlite3.dylib
-export PATH=$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
 
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
