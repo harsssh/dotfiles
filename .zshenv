@@ -8,6 +8,8 @@ export PATH=~/.asdf/shims:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=~/.bun/bin:$PATH
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH=$PATH:~/clangd/bin
 
 # Others
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
@@ -21,6 +23,7 @@ export HISTFILE=${HOME}/.zhistory
 export HISTSIZE=10000
 export SAVEHIST=10000
 export LS_COLORS='di=94:ln=35:so=32:pi=33:ex=31:bd=46;94:cd=43;94:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export LIBSQLITE=/usr/lib/libsqlite3.dylib
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -30,3 +33,4 @@ export LS_COLORS='di=94:ln=35:so=32:pi=33:ex=31:bd=46;94:cd=43;94:su=41;30:sg=46
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
+[ -f ~/.brewconfig.zsh ] && source ~/.brewconfig.zsh
