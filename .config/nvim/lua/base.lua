@@ -1,92 +1,44 @@
--- 文字コード
-vim.opt.encoding = 'utf-8'
-vim.scriptencoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
-
--- 変数
-vim.g.mapleader = '-'
-
--- バックアップ
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.hidden = true -- バッファが編集中でも他のファイルを開けるように
-
--- 表示
-vim.opt.showcmd = true -- 入力中のコマンドを表示
-vim.opt.number = true
-vim.wo.number = true
-vim.wo.relativenumber = false
-vim.opt.wrap = true
-vim.opt.title = true
-vim.opt.showtabline = 2
+-- Basic Settings
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
-vim.opt.signcolumn = 'yes' -- 行数表示の横に余白
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.winblend = 5 -- float-transparent
---vim.opt.ambiwidth = 'double'
+vim.g.mapleader = ' '
+vim.wo.number = true
+vim.opt.virtualedit = 'all'
+vim.opt.showtabline = 2
+vim.opt.signcolumn = 'yes'
 
--- インデント
--- ファイルタイプごとのインデント設定を行う関数
-local function set_indent_settings(filetype, use_tabs, indent_width)
-    if use_tabs then
-        vim.cmd(string.format("autocmd FileType %s setlocal noexpandtab", filetype))
-    else
-        vim.cmd(string.format("autocmd FileType %s setlocal expandtab", filetype))
-    end
-    vim.cmd(string.format("autocmd FileType %s setlocal tabstop=%d", filetype, indent_width))
-    vim.cmd(string.format("autocmd FileType %s setlocal shiftwidth=%d", filetype, indent_width))
-    vim.cmd(string.format("autocmd FileType %s setlocal softtabstop=%d", filetype, indent_width))
-end
+-- Spaces
+vim.opt.tabstop = 4         -- Tab character display width
+vim.opt.shiftwidth = 4      -- Indent width inserted automatically
+vim.opt.softtabstop = 0     -- Indent width inserted by tab
+vim.opt.expandtab = true    -- Use spaces instead of tabs
+vim.opt.list = true
+vim.opt.listchars = {
+    tab='▸-',
+    -- tab='  ',
+    trail='-', eol='↲', extends='›', precedes='‹', nbsp='%'
+}
 
-vim.opt.expandtab = false
-vim.opt.shiftwidth = 4 -- smartindentの幅
-vim.opt.tabstop = 4 -- タブ文字の幅
-vim.opt.softtabstop = 4
-vim.opt.autoindent = true -- 改行時のインデント継続
-vim.opt.smartindent = true -- 改行時のインデントをいい感じに
+-- Indent
+vim.opt.smartindent = true
 vim.opt.breakindent = true
 vim.opt.smarttab = true
 
-set_indent_settings('c', true, 4)
-set_indent_settings('typescriptreact', false, 2)
+-- Enable Syntax Highlighting
+vim.cmd [[syntax enable]]
 
-vim.opt.list = true
-vim.opt.listchars = {
-	tab='▸-',
-	-- tab='  ',
-	trail='-',
-	space='⋅',
-	extends='›',
-	precedes='‹',
-	nbsp='%',
-} -- 不可視文字の表示
+-- Search Settings
+vim.opt.incsearch = true          -- Enable incremental search
+vim.opt.hlsearch = true           -- Highlight search results
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
--- 文字列検索
-vim.opt.incsearch = true -- 文字入力毎に検索
-vim.opt.ignorecase = true -- 大文字小文字を区別しない
-vim.opt.smartcase = true -- 大文字を含んでいる場合は区別する
-vim.opt.hlsearch = true -- 検索結果をハイライト
-vim.opt.scrolloff = 10
+-- Disable Backup and Swap
+vim.opt.backup = false            -- Disable backup
+vim.opt.swapfile = false          -- Disable swap file
 
--- ベル
-vim.opt.visualbell = false
-vim.opt.belloff = 'all'
-
--- キー入力
-vim.opt.virtualedit = 'all'
-vim.opt.backspace = 'indent,eol,start'
-vim.opt.showmatch = true
-
--- マウス操作
-vim.opt.mouse = 'a'
-
--- util
-vim.opt.inccommand = 'split'
-vim.opt.autoread = true
-vim.opt.clipboard = 'unnamed' -- クリップボードとレジスタを共有
-vim.opt.wildmenu = true -- コマンドの補完
-
--- Timings
-vim.opt.updatetime = 300
-
+-- LSP
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+)
