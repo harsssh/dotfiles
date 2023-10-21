@@ -1,0 +1,18 @@
+alias lst='ls -ltr --color=auto'
+alias l='ls -ltr --color=auto'
+alias la='ls -la --color=auto'
+alias ll='ls -l --color=auto'
+alias vz='vim ~/.zshrc'
+alias reload='source ~/.zshrc'
+alias h='fc -lt '%F %T' 1' # history with date
+alias cp='cp -i'
+alias rm='rm -i'
+alias mkdir='mkdir -p'
+alias tgz='tar -xzvf'
+alias g='git'
+alias dc="docker compose"
+alias norm='norminette'
+alias gnorm='norm | grep -v OK'
+alias ccw='cc -Wall -Wextra -Werror'
+alias vi='nvim'
+alias vim='nvim'
