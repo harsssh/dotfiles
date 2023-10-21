@@ -7,6 +7,7 @@ vim.wo.number = true
 vim.opt.virtualedit = 'all'
 vim.opt.showtabline = 2
 vim.opt.signcolumn = 'yes'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Spaces
 vim.opt.tabstop = 4         -- Tab character display width
