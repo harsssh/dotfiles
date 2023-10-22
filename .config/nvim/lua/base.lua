@@ -12,8 +12,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- Spaces
 vim.opt.tabstop = 4         -- Tab character display width
 vim.opt.shiftwidth = 4      -- Indent width inserted automatically
-vim.opt.softtabstop = 0     -- Indent width inserted by tab
-vim.opt.expandtab = true    -- Use spaces instead of tabs
+--vim.opt.expandtab = true    -- Use spaces instead of tabs
 vim.opt.list = true
 vim.opt.listchars = {
     --tab='▸-',
