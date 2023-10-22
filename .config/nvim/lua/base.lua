@@ -16,8 +16,8 @@ vim.opt.softtabstop = 0     -- Indent width inserted by tab
 vim.opt.expandtab = true    -- Use spaces instead of tabs
 vim.opt.list = true
 vim.opt.listchars = {
-    tab='▸-',
-    -- tab='  ',
+    --tab='▸-',
+    tab='  ',
     trail='-', eol='↲', extends='›', precedes='‹', nbsp='%'
 }
 

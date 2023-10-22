@@ -1,4 +1,4 @@
-DOTFILES := .gitconfig .ideavimrc .p10k.zsh .tool-versions .zsh_aliases .zshenv .zshrc
+DOTFILES := .gitconfig .ideavimrc .p10k.zsh .tool-versions .zsh_aliases .zshenv .zshrc .editorconfig
 DOTFILES += .config/nvim
 
 .PHONY: all
