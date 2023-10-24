@@ -24,8 +24,8 @@ map('n', 'sH', '<C-w>H')
 map('n', 'sJ', '<C-w>J')
 map('n', 'sK', '<C-w>K')
 map('n', 'sL', '<C-w>L')
-map('n', 'ss', 'split<CR><C-w>w')
-map('n', 'sv', 'vsplit<CR><C-w>w')
+map('n', 'ss', ':split<CR><C-w>w')
+map('n', 'sv', ':vsplit<CR><C-w>w')
 
 -- Edit
 map('n', '+', '<C-a>')
