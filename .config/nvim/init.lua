@@ -1,5 +1,6 @@
 require('base')
 require('autocmds')
+require('lsp')
 require('keymap')
 
 -- Plugin Manager
