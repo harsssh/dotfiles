@@ -14,3 +14,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
     end
 })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+	local line = vim.fn.line("'\"")
+	local last_line = vim.fn.line("$")
+	if line > 1 and line <= last_line then
+	  vim.api.nvim_win_set_cursor(0, {line, 0})
+	end
+  end
+})
