@@ -23,4 +23,12 @@ return {
 		event = { 'BufReadPre', 'BufNewFile' },
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
+	{
+		'42Paris/42header',
+		event = { 'BufReadPre', 'BufNewFile' },
+	},
+	{
+		'cacharle/c_formatter_42.vim',
+		event = { 'BufReadPre', 'BufNewFile' },
+	},
 }
