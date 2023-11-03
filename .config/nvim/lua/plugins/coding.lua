@@ -1,5 +1,5 @@
 return {
-	{ 'echasnovski/mini.surround', event = 'ModeChanged', opts = {} },
+	{ 'echasnovski/mini.surround', event = 'ModeChanged' },
 	{ 'numToStr/Comment.nvim', event = 'InsertEnter', opts = {} },
 	{ 'echasnovski/mini.pairs', event = 'VeryLazy', opts = {} },
 	{ 'hrsh7th/vim-vsnip', event = 'InsertEnter' },
