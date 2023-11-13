@@ -7,10 +7,7 @@ fi
 
 ### Environment
 source ~/.zsh_aliases
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-export GOPATH=$(go env GOPATH)
-export GOBIN="$GOPATH/bin"
-export PATH="$PATH:$GOBIN"
+source ~/.zsh_path
 
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
