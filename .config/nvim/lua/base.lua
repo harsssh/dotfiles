@@ -44,6 +44,7 @@ vim.opt.listchars   = {
 vim.opt.smartindent	= true
 vim.opt.breakindent	= true
 vim.opt.smarttab	= true
+vim.opt.autoindent	= true
 
 -- Enable Syntax Highlighting
 vim.cmd('syntax enable')
