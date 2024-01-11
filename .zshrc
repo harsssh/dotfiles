@@ -7,25 +7,7 @@ fi
 
 ### Environment
 source ~/.zsh_aliases
-
-# PATH
-export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/usr/local/opt/python/libexec/bin
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-export PATH=/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
-export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
-export PATH=~/.asdf/shims:$PATH
-export PATH=$PATH:~/.local/bin
-export PATH=/opt/homebrew/opt/llvm/bin:$PATH
-export PATH=~/.bun/bin:$PATH
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH=$PATH:~/clangd/bin
-export PATH=~/nvim/bin:$PATH
-
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-export GOPATH=$(go env GOPATH)
-export GOBIN="$GOPATH/bin"
-export PATH="$PATH:$GOBIN"
+source ~/.zsh_path
 
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
