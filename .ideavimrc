@@ -1,11 +1,9 @@
 inoremap jj <ESC>
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
-nnoremap <C-W> gt
-nnoremap <C-Q> gT
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
 nnoremap ss :split<CR>
 nnoremap sv :vsp<CR>
 

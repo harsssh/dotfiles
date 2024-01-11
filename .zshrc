@@ -102,3 +102,6 @@ zinit light romkatv/powerlevel10k
 
 ### Epilogue
 typeset -U path PATH
+
+# bun completions
+[ -s "/Users/kmizuki/.bun/_bun" ] && source "/Users/kmizuki/.bun/_bun"
