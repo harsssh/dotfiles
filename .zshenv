@@ -1,7 +1,7 @@
 # Others
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-#export CPLUS_INCLUDE_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1"
+export CPLUS_INCLUDE_PATH="/opt/homebrew/opt/llvm/include/c++/v1"
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
 export CDPATH=~:~/Documents:~/Documents/42
