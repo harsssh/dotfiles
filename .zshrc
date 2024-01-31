@@ -9,11 +9,27 @@ fi
 source ~/.zsh_aliases
 source ~/.zsh_path
 
+### Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+
+source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
 setopt mark_dirs  # Mark directory names with a trailing slash during listing
 setopt list_types  # Indicate file types in directory listings
-setopt AUTO_CD  # Auto-cd into a directory by typing its name
+setopt auto_cd  # Auto-cd into a directory by typing its name
 
 ### Shell Interactivity
 setopt auto_menu  # Auto-list choices on ambiguous tab completion
@@ -76,32 +92,5 @@ add-zsh-hook precmd _update_vcs_info_msg
 setopt hist_ignore_dups
 setopt EXTENDED_HISTORY
 
-### Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-
-source "${ZINIT_HOME}/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-
-zinit wait lucid for \
-    b4b4r07/enhancd \
-    supercrabtree/k \
-    zsh-users/zsh-syntax-highlighting
-
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
-
 ### Epilogue
 typeset -U path PATH
-
-# bun completions
-[ -s "/Users/kmizuki/.bun/_bun" ] && source "/Users/kmizuki/.bun/_bun"
