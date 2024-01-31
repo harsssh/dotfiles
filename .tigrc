@@ -20,3 +20,6 @@ bind generic S !git stash -u
 # Create a new branch
 bind main B ?git switch -c "$(prompt Enter new branch name: )"
 bind refs B ?git switch -c "$(prompt Enter new branch name: ) $(branch)"
+
+# Discard all unstaged changes to tracked files
+bind status D !git restore :/
