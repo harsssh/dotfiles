@@ -11,6 +11,9 @@ bind status A @git add -A
 # Rebase current branch on top of the selected branch
 bind refs R !git rebase %(branch)
 
+# Interactive Rebase
+bind main R !git rebase -i %(commit)
+
 # Stash all files
 bind generic S !git stash -u
 
