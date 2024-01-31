@@ -12,7 +12,7 @@ bind status A @git add -A
 bind refs R !git rebase %(branch)
 
 # Stash all files
-bind generic S @git stash -u
+bind generic S !git stash -u
 
 # Create a new branch
 bind main B ?git switch -c "$(prompt Enter new branch name: )"
