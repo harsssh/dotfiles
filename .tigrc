@@ -23,3 +23,6 @@ bind refs B ?git switch -c "$(prompt Enter new branch name: ) $(branch)"
 
 # Discard all unstaged changes to tracked files
 bind status D !git restore :/
+
+# Undo commit
+bind main U !git reset --soft HEAD^
