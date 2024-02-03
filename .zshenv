@@ -15,8 +15,6 @@ export LIBSQLITE=/usr/lib/libsqlite3.dylib
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 # ghcup-env
 [ -f ~/.ghcup/env ] && source ~/.ghcup/env
 # bun completions
