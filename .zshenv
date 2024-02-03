@@ -1,7 +1,8 @@
 # Others
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
-export LDFLAGS="-L/Users/kemizuki/.brew/opt/llvm/lib/c++ -Wl,-rpath,/Users/kemizuki/.brew/opt/llvm/lib/c++"
-export CPLUS_INCLUDE_PATH=~/.brew/opt/llvm/include/c++/v1
+export LDFLAGS="-L/Users/kemizuki/.brew/opt/llvm/lib"
+export CPPFLAGS="-I/Users/kemizuki/.brew/opt/llvm/include"
+export CPLUS_INCLUDE_PATH="/Users/kemizuki/.brew/opt/llvm/include"
 export USER="kemizuki"
 export MAIL="kemizuki@student.42tokyo.jp"
 export CDPATH=~:~/Documents:~/Documents/42
