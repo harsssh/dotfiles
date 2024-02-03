@@ -1,0 +1,31 @@
+# Amend commit
+bind main + !git commit --amend
+bind status + !git commit --amend
+
+# Copy commit hash
+bind generic Y @sh -c "printf %(commit) | pbcopy"
+
+# Add all files
+bind status A @git add -A
+
+# Rebase current branch on top of the selected branch
+bind refs R !git rebase %(branch)
+
+# Interactive Rebase
+bind main R !git rebase -i %(commit)
+
+# Stash all files
+bind generic S !git stash -u
+
+# Create new branch
+bind main B ?@git switch -c "%(prompt Enter new branch name: )"
+bind refs B ?@git switch -c "%(prompt Enter new branch name: )" %(branch)
+
+# Delete branch
+bind refs D !git branch -d %(branch)
+
+# Discard all unstaged changes to tracked files
+bind status D @git restore :/
+
+# Undo commit
+bind main U !git reset --soft HEAD^
