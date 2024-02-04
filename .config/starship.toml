@@ -1,9 +1,6 @@
-[battery]
-full_symbol = "• "
-charging_symbol = "⇡ "
-discharging_symbol = "⇣ "
-unknown_symbol = "❓ "
-empty_symbol = "❗ "
+"$schema" = 'https://starship.rs/config-schema.json'
+
+right_format = '$time'
 
 [aws]
 disabled = true
@@ -11,5 +8,11 @@ disabled = true
 [gcloud]
 disabled = true
 
+[package]
+disabled = true
+
 [username]
 disabled = true
+
+[time]
+disabled = false

@@ -52,34 +52,6 @@ zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
 zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-setopt correct
-SPROMPT="correct: $RED%R$DEFAULT -> $GREEN%r$DEFAULT ? [No/Yes/Abort/Edit]"
-. "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
-
-### Prompt and VSC
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-autoload -Uz is-at-least
-zstyle ":vcs_info:*" enable git svn hg bzr
-zstyle ":vcs_info:*" formats "(%s)-[%b]"
-zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
-zstyle ":vcs_info:(svn|bzr):*" branchformat "%b:r%r"
-zstyle ":vcs_info:bzr:*" use-simple true
-zstyle ":vcs_info:*" max-exports 6
-if is-at-least 4.3.10; then
-  zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
-  zstyle ":vcs_info:git:*" stagedstr "<S>"
-  zstyle ":vcs_info:git:*" unstagedstr "<U>"
-  zstyle ":vcs_info:git:*" formats "(%b) %c%u"
-  zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
-fi
-function _update_vcs_info_msg() {
-  psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="[$BLUE%~%f$DEFAULT%1(v|%F{green}%1v%f|)]"
-add-zsh-hook precmd _update_vcs_info_msg
 
 ### History
 setopt hist_ignore_dups
