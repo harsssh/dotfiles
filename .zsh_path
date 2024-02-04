@@ -10,7 +10,7 @@ export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=~/.bun/bin:$PATH
 
 # asdf
-. "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
 # add GOBIN
 export GOPATH=$(go env GOPATH)

@@ -1,9 +1,9 @@
 ### Environment
 source ~/.zsh_aliases
-source ~/.zsh_path
 
 ### starship
 eval "$(starship init zsh)"
+source ~/.zsh_path
 
 ### Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
