@@ -44,42 +44,11 @@ setopt print_eight_bit  # Print 8th bit set characters as is, no metafication
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 zstyle ':completion:*:default' menu select=2 # select by arrow keys
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
-zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
-zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
-zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
-zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-setopt correct
-SPROMPT="correct: $RED%R$DEFAULT -> $GREEN%r$DEFAULT ? [No/Yes/Abort/Edit]"
-. "$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash"
-
-### Prompt and VSC
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-autoload -Uz is-at-least
-zstyle ":vcs_info:*" enable git svn hg bzr
-zstyle ":vcs_info:*" formats "(%s)-[%b]"
-zstyle ":vcs_info:*" actionformats "(%s)-[%b|%a]"
-zstyle ":vcs_info:(svn|bzr):*" branchformat "%b:r%r"
-zstyle ":vcs_info:bzr:*" use-simple true
-zstyle ":vcs_info:*" max-exports 6
-if is-at-least 4.3.10; then
-  zstyle ":vcs_info:git:*" check-for-changes true # commitしていないのをチェック
-  zstyle ":vcs_info:git:*" stagedstr "<S>"
-  zstyle ":vcs_info:git:*" unstagedstr "<U>"
-  zstyle ":vcs_info:git:*" formats "(%b) %c%u"
-  zstyle ":vcs_info:git:*" actionformats "(%s)-[%b|%a] %c%u"
-fi
-function _update_vcs_info_msg() {
-  psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-RPROMPT="[$BLUE%~%f$DEFAULT%1(v|%F{green}%1v%f|)]"
-add-zsh-hook precmd _update_vcs_info_msg
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
+zstyle ':completion:*:options' description 'yes'
 
 ### History
 setopt hist_ignore_dups
