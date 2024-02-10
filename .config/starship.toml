@@ -16,3 +16,6 @@ disabled = true
 
 [time]
 disabled = false
+
+[jobs]
+disabled = true

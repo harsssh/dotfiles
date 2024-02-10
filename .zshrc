@@ -44,14 +44,11 @@ setopt print_eight_bit  # Print 8th bit set characters as is, no metafication
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
 zstyle ':completion:*:default' menu select=2 # select by arrow keys
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
-zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
-zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
-zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
-zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
+zstyle ':completion:*:options' description 'yes'
 
 ### History
 setopt hist_ignore_dups

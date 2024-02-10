@@ -27,6 +27,7 @@ vim.opt.signcolumn      = 'yes'
 vim.opt.clipboard       = 'unnamedplus'
 
 -- Spaces
+vim.opt.expandtab	= true -- Use space
 vim.opt.tabstop		= 4 -- Tab character display width
 vim.opt.shiftwidth	= 4 -- Indent width inserted automatically
 vim.opt.list        = true
