@@ -16,7 +16,5 @@ export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# ghcup-env
-[ -f ~/.ghcup/env ] && source ~/.ghcup/env
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
