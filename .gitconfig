@@ -17,7 +17,7 @@
 [user]
     email = 66548698+harsssh@users.noreply.github.com
     name = harsh
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+
 [core]
     editor = nvim
 [push]
@@ -26,9 +26,7 @@
 [pull]
     rebase = true
 [commit]
-	gpgsign = true
-[credential]
-    helper = osxkeychain
+    gpgsign = true
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
@@ -41,4 +39,4 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign

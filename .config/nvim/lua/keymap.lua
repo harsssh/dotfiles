@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local silent = { silent = true }
 
 -- General
-map('i', 'jk', '<ESC>')
+map('i', 'jj', '<ESC>')
 map('n', '<leader>n', ':noh<CR>')
 
 -- Move
