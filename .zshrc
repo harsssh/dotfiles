@@ -38,7 +38,18 @@ zstyle ':completion:*:options' description 'yes'
 
 ### History
 setopt hist_ignore_dups
-setopt EXTENDED_HISTORY
+setopt hist_ignore_all_dups
+setopt extended_history
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt share_history
+function select-history() {
+    BUFFER=$(history -nr 1 | fzf -q "$LBUFFER" --prompt="History> " --reverse)
+    CURSOR=${#BUFFER}
+}
+zle -N select-history
+bindkey '^r' select-history
 
 ### Epilogue
 typeset -U path PATH

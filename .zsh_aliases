@@ -4,7 +4,7 @@ alias la='gls -la --color=auto'
 alias ll='gls -l --color=auto'
 alias zrc='vim ~/.zshrc'
 alias zenv='vim ~/.zshenv'
-alias reload="exec $SHELL"
+alias reload="source ~/.zshrc"
 alias h='fc -lt '%F %T' 1' # history with date
 alias rm='rm -i'
 alias mkdir='mkdir -p'
