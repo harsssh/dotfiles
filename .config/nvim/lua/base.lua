@@ -4,6 +4,7 @@ vim.opt.syntax = "on"
 vim.wo.number = true
 vim.opt.showtabline = 2
 vim.opt.signcolumn = 'yes'
+vim.opt.termguicolors = true
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
