@@ -1,7 +1,6 @@
 ### Initialization
 source ~/.zsh_path
 source ~/.zsh_aliases
-source ~/.zsh_init
 source ~/.zsh_zinit
 
 ### File and Directory Operations
@@ -51,5 +50,9 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+# bun completions
+[ -s "/Users/kmizuki/.bun/_bun" ] && source "/Users/kmizuki/.bun/_bun"
+
 ### Epilogue
 typeset -U path PATH
+source ~/.zsh_finalize

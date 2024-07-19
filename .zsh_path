@@ -9,7 +9,6 @@ export PATH=~/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
 export PATH=~/.bun/bin:$PATH
 export PATH=~/.ghcup/bin:$PATH
-export PATH=$PATH:~/go/bin
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/kmizuki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kmizuki/google-cloud-sdk/path.zsh.inc'; fi

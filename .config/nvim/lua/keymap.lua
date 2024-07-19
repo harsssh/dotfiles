@@ -1,19 +1,19 @@
 local map = vim.keymap.set
-local silent = { silent = true }
+local opts = { noremap = true, silent = true }
 
 -- General
 map('i', 'jj', '<ESC>')
 map('n', '<leader>n', ':noh<CR>')
 
 -- Move
-map('n', 'j', 'gj', silent)
-map('v', 'j', 'gj', silent)
-map('n', 'k', 'gk', silent)
-map('v', 'k', 'gk', silent)
-map('n', 'H', '0', silent)
-map('v', 'H', '0', silent)
-map('n', 'L', '$', silent)
-map('v', 'L', '$', silent)
+map('n', 'j', 'gj', opts)
+map('v', 'j', 'gj', opts)
+map('n', 'k', 'gk', opts)
+map('v', 'k', 'gk', opts)
+map('n', 'H', '0', opts)
+map('v', 'H', '0', opts)
+map('n', 'L', '$', opts)
+map('v', 'L', '$', opts)
 
 -- Window
 map('n', 'sh', '<C-w>h')
@@ -37,3 +37,4 @@ map('n', 'Y', 'y$')
 -- Paste
 map('n', 'p', ']p')
 map('n', 'P', ']P')
+

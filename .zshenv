@@ -27,3 +27,4 @@ export LESS_TERMCAP_us=$'\e[1;36m'    # Underline - 明るいシアン
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
+. "$HOME/.cargo/env"

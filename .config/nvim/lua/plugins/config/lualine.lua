@@ -1,8 +1,3 @@
--- Eviline config for lualine
--- Author: shadmansaleh
--- Credit: glepnir
-local lualine = require('lualine')
-
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
@@ -37,9 +32,6 @@ local conditions = {
 local config = {
   options = {
     -- Disable sections and component separators
-	disabled_filetypes = {
-		statusline = { 'NvimTree' },
-	},
     component_separators = '',
     section_separators = '',
     theme = {
@@ -100,12 +92,13 @@ ins_left {
       n = colors.red,
       i = colors.green,
       v = colors.blue,
-      [''] = colors.blue,
+      [''] = colors.blue,
       V = colors.blue,
       c = colors.magenta,
       no = colors.red,
       s = colors.orange,
       S = colors.orange,
+      [''] = colors.orange,
       ic = colors.yellow,
       R = colors.violet,
       Rv = colors.violet,
@@ -143,9 +136,9 @@ ins_left {
   sources = { 'nvim_diagnostic' },
   symbols = { error = ' ', warn = ' ', info = ' ' },
   diagnostics_color = {
-    color_error = { fg = colors.red },
-    color_warn = { fg = colors.yellow },
-    color_info = { fg = colors.cyan },
+    error = { fg = colors.red },
+    warn = { fg = colors.yellow },
+    info = { fg = colors.cyan },
   },
 }
 
@@ -219,5 +212,8 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
-lualine.setup(config)
+local M = {}
+M.setup = function()
+  require('lualine').setup(config)
+end
+return M

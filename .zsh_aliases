@@ -5,7 +5,6 @@ alias ll='gls -l --color=auto'
 alias zrc='vim ~/.zshrc'
 alias zenv='vim ~/.zshenv'
 alias reload="source ~/.zshrc"
-alias h='fc -lt '%F %T' 1' # history with date
 alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias tgz='tar -xzvf'
@@ -14,3 +13,4 @@ alias dc="docker compose"
 alias vi='nvim'
 alias vim='nvim'
 alias ..='cd ..'
+alias pless='fc -s | less'

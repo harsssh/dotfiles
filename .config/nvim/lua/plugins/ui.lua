@@ -1,48 +1,30 @@
 return {
-    {
-        'rebelot/kanagawa.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function() vim.cmd('colorscheme kanagawa-dragon') end,
-    },
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	config = function() vim.cmd('colorscheme tokyonight-night') end,
-	-- },
-    -- {
-    --     'projekt0n/github-nvim-theme',
-    --     lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    --     priority = 1000, -- make sure to load this before all the other start plugins
-    --     config = function()
-    --         require('github-theme').setup({})
-    --
-    --         vim.cmd('colorscheme github_dark_dimmed')
-    --     end,
-    -- },
-    {
-		'nvim-lualine/lualine.nvim',
-		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = 'nvim-tree/nvim-web-devicons',
-	},
-    {
-	    'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
-	},
-	{ 'mhinz/vim-startify', event = 'VimEnter' },
-    { 'lukas-reineke/indent-blankline.nvim', main = 'ibl' },
-    { 'j-hui/fidget.nvim', tag = 'legacy', event = 'LspAttach', opts = {} },
-    { 'kevinhwang91/nvim-hlslens', opts = {} },
-    {
-		'lewis6991/gitsigns.nvim',
-		event = { 'BufReadPre', 'BufNewFile' },
-		opts = {}
-	},
-    {
-		'akinsho/bufferline.nvim',
-		event = { 'BufReadPre', 'BufNewFile' },
-		version = '*',
-		dependencies = 'nvim-tree/nvim-web-devicons'
-	},
+  {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function() vim.cmd.colorscheme("kanagawa-dragon") end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require("plugins/config/lualine").setup() end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = { signcolumn = false }
+  },
+  { "petertriho/nvim-scrollbar", config = function() require("plugins/config/scrollbar").setup() end },
+  {
+    "kevinhwang91/nvim-hlslens",
+    config = function()
+      require("scrollbar.handlers.search").setup()
+    end,
+  },
+  { "j-hui/fidget.nvim",         opts = {} },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false }
+  },
 }
