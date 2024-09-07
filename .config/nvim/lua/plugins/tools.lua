@@ -108,5 +108,6 @@ return {
         callback = init_fern,
       })
     end,
-  }
+  },
+  { "lambdalisue/fern-git-status.vim" }
 }
