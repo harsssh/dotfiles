@@ -27,5 +27,10 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false }
   },
-  { "mhinz/vim-startify" }
+  { "mhinz/vim-startify" },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
