@@ -6,7 +6,12 @@ return {
       require("mini.bracketed").setup()
       require("mini.comment").setup()
       require("mini.pairs").setup()
-      require("mini.surround").setup()
+      require("mini.surround").setup({
+        mappings = {
+          -- sh が被るので無効化
+          highlight = '',
+        },
+      })
       require("mini.cursorword").setup()
       require("mini.tabline").setup({ tabpage_section = 'none' })
       require("mini.trailspace").setup()
@@ -29,7 +34,14 @@ return {
     tag = '0.1.8',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function() require("plugins/config/treesitter").setup() end },
+      {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+          require("plugins/config/treesitter")
+              .setup()
+        end
+      },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
@@ -73,5 +85,28 @@ return {
         desc = "Quickfix List (Trouble)",
       },
     },
+  },
+  {
+    "lambdalisue/fern.vim",
+    config = function()
+      local init_fern = function()
+        vim.opt_local.number = false
+        vim.opt_local.signcolumn = "no"
+        vim.g['fern#disable_drawer_smart_quit'] = 1
+
+        local map = vim.api.nvim_buf_set_keymap
+        local opts = { noremap = true, silent = true }
+
+        -- window 移動と衝突するので無効化
+        map(0, 'n', 's', '<Nop>', opts)
+        -- ファイルの場合は何もしない
+        map(0, 'n', 'l', '<Plug>(fern-action-expand-tree)', opts)
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "fern",
+        callback = init_fern,
+      })
+    end,
   }
 }
