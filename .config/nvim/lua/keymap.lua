@@ -56,3 +56,9 @@ for _, cmd in ipairs({ 'q', 'w', 'qa', 'wq', 'wqa' }) do
     vim.api.nvim_create_user_command(cmd:sub(1, 1):upper() .. cmd:sub(2), cmd, {})
   end
 end
+
+-- Terminal
+map('n', 'tt', "<cmd>terminal<CR>", opts)
+map('n', 'ts', "<cmd>belowright 15 new<CR><cmd>terminal<CR>", opts)
+map('n', 'tv', "<cmd>vertical belowright new<CR><cmd>terminal<CR>", opts)
+map('t', '<ESC>', [[<C-\><C-n>]], opts)

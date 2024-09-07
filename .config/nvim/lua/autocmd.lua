@@ -10,3 +10,18 @@
 --     })
 --   end
 -- })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  command = "startinsert",
+})
+
+-- command, callback は一度に設定できないので分ける
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.laststatus = 0
+  end
+})
