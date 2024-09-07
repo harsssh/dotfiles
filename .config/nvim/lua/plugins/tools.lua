@@ -109,5 +109,6 @@ return {
       })
     end,
   },
-  { "lambdalisue/fern-git-status.vim" }
+  { "lambdalisue/fern-git-status.vim" },
+  { "lambdalisue/fern-hijack.vim" },
 }
