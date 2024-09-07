@@ -15,13 +15,15 @@
     dlog = "!f() { git log -p --ext-diff $@; }; f"
 [user]
     email = 66548698+harsssh@users.noreply.github.com
-    name = harsh
+    name = Kentaro Mizuki
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+
 [core]
     editor = nvim
 [push]
     default = current
     autoSetupRemote = true
+[rerere]
+    enabled = true
 [pull]
     rebase = true
 [commit]

@@ -12,7 +12,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    opts = { signcolumn = false }
+    opts = { signcolumn = true }
   },
   { "petertriho/nvim-scrollbar", config = function() require("plugins/config/scrollbar").setup() end },
   {

@@ -13,4 +13,3 @@ alias dc="docker compose"
 alias vi='nvim'
 alias vim='nvim'
 alias ..='cd ..'
-alias pless='fc -s | less'
