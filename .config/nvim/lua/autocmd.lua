@@ -22,6 +22,5 @@ vim.api.nvim_create_autocmd("TermOpen", {
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.signcolumn = "no"
-    vim.opt_local.laststatus = 0
   end
 })
