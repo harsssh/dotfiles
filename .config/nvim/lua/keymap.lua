@@ -38,3 +38,10 @@ map('n', 'Y', 'y$')
 map('n', 'p', ']p')
 map('n', 'P', ']P')
 
+-- Command
+for _, cmd in ipairs({ 'q', 'w', 'qa', 'wq', 'wqa' }) do
+  vim.api.nvim_create_user_command(cmd:upper(), cmd, {})
+  if #cmd > 2 then
+    vim.api.nvim_create_user_command(cmd:sub(1, 1):upper() .. cmd:sub(2), cmd, {})
+  end
+end
