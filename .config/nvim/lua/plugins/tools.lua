@@ -91,6 +91,7 @@ return {
     config = function()
       local init_fern = function()
         vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
         vim.opt_local.signcolumn = "no"
         vim.b.miniindentscope_disable = true
         vim.b.minicursorword_disable = true
