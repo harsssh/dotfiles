@@ -28,4 +28,7 @@ vim.opt.smartcase = true
 vim.opt.backup = false
 vim.opt.swapfile = false
 
+vim.opt.undodir = vim.fn.expand('~/.config/nvim/undo')
+vim.opt.undofile = true
+
 vim.opt.clipboard:append({ 'unnamedplus' })
