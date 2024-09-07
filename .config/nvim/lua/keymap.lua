@@ -1,8 +1,13 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
 -- General
 map('i', 'jj', '<ESC>')
+map('n', '<ESC><ESC>', ':noh<CR>')
 map('n', '<leader>n', ':noh<CR>')
+
+-- UI
+map('n', 'rn', function() vim.wo.relativenumber = not vim.wo.relativenumber end, opts)
 
 -- Move
 map('n', 'j', 'gj', opts)
