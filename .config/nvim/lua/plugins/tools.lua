@@ -92,7 +92,10 @@ return {
       local init_fern = function()
         vim.opt_local.number = false
         vim.opt_local.signcolumn = "no"
-        vim.g['fern#disable_drawer_smart_quit'] = 1
+        vim.b.miniindentscope_disable = true
+        vim.b.minicursorword_disable = true
+
+        vim.g["fern#disable_drawer_smart_quit"] = 1
 
         local map = vim.api.nvim_buf_set_keymap
         local opts = { noremap = true, silent = true }

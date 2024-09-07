@@ -3,6 +3,8 @@ local M = {}
 M.setup = function()
   local colors = require("kanagawa.colors").setup().palette
   require("scrollbar").setup({
+    excluded_buftypes = { "terminal" },
+    excluded_filetypes = { "fern", "startify" },
     handle = { color = colors.fujiGray },
     marks = {
       Cursor = { text = '▬' },
