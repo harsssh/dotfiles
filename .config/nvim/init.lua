@@ -8,5 +8,9 @@ else
     require("autocmd")
     require("diagnostic")
 
-    require("lazy").setup("plugins")
+    require("lazy").setup("plugins", {
+      defaults = {
+        lazy = true,
+      },
+    })
 end

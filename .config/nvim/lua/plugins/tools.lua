@@ -2,6 +2,7 @@ return {
   {
     'echasnovski/mini.nvim',
     version = '*',
+    event = "VeryLazy",
     config = function()
       require("mini.bracketed").setup()
       require("mini.comment").setup()
@@ -31,11 +32,14 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
+    cmd = "Telescope",
+    event = { "BufReadPre", "BufNewFile" },
     tag = '0.1.8',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
         "nvim-treesitter/nvim-treesitter",
+        event = { "BufReadPost", "BufNewFile" },
         build = ":TSUpdate",
         config = function()
           require("plugins/config/treesitter")
@@ -88,6 +92,10 @@ return {
   },
   {
     "lambdalisue/fern.vim",
+    lazy = false,
+    keys = {
+      { "<C-n>", ":Fern . -reveal=% -width=30 -drawer -right<CR>", noremap = true, silent = true },
+    },
     config = function()
       local init_fern = function()
         vim.opt_local.number = false
@@ -97,6 +105,19 @@ return {
         vim.b.minicursorword_disable = true
 
         vim.g["fern#disable_drawer_smart_quit"] = 1
+
+        vim.keymap.set('n', '<C-n>', '', {
+          callback = function()
+            if vim.bo.filetype == 'fern' then
+              vim.cmd.wincmd 'p'
+            else
+              vim.cmd.Fern('.', '-reveal=%', '-width=30', '-drawer', '-right')
+            end
+          end,
+          noremap = true,
+          silent = true,
+        })
+
 
         local map = vim.api.nvim_buf_set_keymap
         local opts = { noremap = true, silent = true }
@@ -120,8 +141,8 @@ return {
           vim.g['fern#renderer'] = "nerdfont"
         end
       },
+      { "lambdalisue/fern-git-status.vim" },
+      { "lambdalisue/fern-hijack.vim" },
     },
   },
-  { "lambdalisue/fern-git-status.vim" },
-  { "lambdalisue/fern-hijack.vim" },
 }

@@ -40,20 +40,6 @@ map('n', 'Y', 'y$')
 map('n', 'p', ']p')
 map('n', 'P', ']P')
 
--- Fern
-map('n', '<C-n>', ':Fern . -reveal=% -width=30 -drawer -toggle -right<CR>', opts)
-map('n', '<C-n>', '', {
-  callback = function()
-    if vim.bo.filetype == 'fern' then
-      vim.cmd.wincmd 'p'
-    else
-      vim.cmd.Fern('.', '-reveal=%', '-width=30', '-drawer', '-right')
-    end
-  end,
-  noremap = true,
-  silent = true,
-})
-
 -- Command
 for _, cmd in ipairs({ 'q', 'w', 'qa', 'wq', 'wqa' }) do
   vim.api.nvim_create_user_command(cmd:upper(), cmd, {})

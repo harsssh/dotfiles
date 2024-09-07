@@ -6,6 +6,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
@@ -14,15 +15,15 @@ return {
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-vsnip",
       "onsails/lspkind.nvim",
+      "hrsh7th/vim-vsnip",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end
+      },
     },
     config = function() require("plugins/config/cmp").setup() end,
-  },
-  { "hrsh7th/vim-vsnip" },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function ()
-      require("copilot_cmp").setup()
-    end
   },
   {
     "zbirenbaum/copilot.lua",
