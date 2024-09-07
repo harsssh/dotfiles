@@ -41,8 +41,8 @@ map('n', 'p', ']p')
 map('n', 'P', ']P')
 
 -- Fern
-map('n', '<leader>e', '<Cmd>Fern . -reveal=% -width=30 -drawer -toggle -right<CR>', opts)
-map('n', '<leader>e', '', {
+map('n', '<C-n>', ':Fern . -reveal=% -width=30 -drawer -toggle -right<CR>', opts)
+map('n', '<C-n>', '', {
   callback = function()
     if vim.bo.filetype == 'fern' then
       vim.cmd.wincmd 'p'
