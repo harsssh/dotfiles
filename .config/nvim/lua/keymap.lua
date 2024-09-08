@@ -29,6 +29,14 @@ map('n', 'sL', '<C-w>L')
 map('n', 'ss', ':split<CR><C-w>w')
 map('n', 'sv', ':vsplit<CR><C-w>w')
 
+-- Resize
+-- シフトを押したくない
+map('n', 's,', '5<C-w><', opts)
+map('n', 's.', '5<C-w>>', opts)
+map('n', 's-', '5<C-w>-', opts)
+map('n', 's=', '5<C-w>+', opts)
+map('n', 's0', '<C-w>=', opts)
+
 -- Edit
 map('n', '+', '<C-a>')
 map('n', '-', '<C-x>')
