@@ -94,7 +94,7 @@ return {
     "lambdalisue/fern.vim",
     lazy = false,
     keys = {
-      { "<C-n>", ":Fern . -reveal=% -width=30 -drawer -right<CR>", noremap = true, silent = true },
+      { "<leader>e", ":Fern . -reveal=% -width=30 -drawer -right<CR>", noremap = true, silent = true },
     },
     config = function()
       local init_fern = function()
@@ -106,7 +106,7 @@ return {
 
         vim.g["fern#disable_drawer_smart_quit"] = 1
 
-        vim.keymap.set('n', '<C-n>', '', {
+        vim.keymap.set('n', '<leader>e', '', {
           callback = function()
             if vim.bo.filetype == 'fern' then
               vim.cmd.wincmd 'p'
