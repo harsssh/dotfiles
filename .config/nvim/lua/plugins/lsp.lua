@@ -1,19 +1,14 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = true,
+    cmd = "Mason",
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    opts = true,
-    dependencies = { "williamboman/mason.nvim" },
-  },
-  {
-    "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim"
+      "neovim/nvim-lspconfig",
     },
     config = function() require("plugins/config/lspconfig").setup() end,
   },

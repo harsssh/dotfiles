@@ -1,13 +1,16 @@
 local M = {}
 
 M.setup = function()
+  local mason_lspconfig = require("mason-lspconfig")
 	local lspconfig = require("lspconfig")
 
-	require("mason-lspconfig").setup_handlers {
+  require("mason").setup()
+  mason_lspconfig.setup()
+
+	mason_lspconfig.setup_handlers {
 		function(server_name)
 			require("lspconfig")[server_name].setup {}
 		end,
-
 		["rust_analyzer"] = function()
 			lspconfig.rust_analyzer.setup({
 				settings = {
@@ -19,7 +22,6 @@ M.setup = function()
 				},
 			})
 		end,
-
 		["gopls"] = function()
 			lspconfig.gopls.setup({
 				settings = {
