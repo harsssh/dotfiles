@@ -1,5 +1,9 @@
 vim.diagnostic.config({
-  virtual_text = true,
+  virtual_text = {
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+    }
+  },
   signs = false,
   underline = true,
 })
