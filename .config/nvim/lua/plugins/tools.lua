@@ -14,7 +14,7 @@ return {
         },
       })
       require("mini.cursorword").setup()
-      require("mini.tabline").setup({ tabpage_section = 'none' })
+      require("mini.tabline").setup({ tabpage_section = 'right' })
       require("mini.trailspace").setup()
       require("mini.indentscope").setup({
         draw = { animation = require("mini.indentscope").gen_animation.none() },
