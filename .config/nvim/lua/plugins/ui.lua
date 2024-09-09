@@ -19,6 +19,7 @@ return {
   {
     "kevinhwang91/nvim-hlslens",
     event = "BufReadPre",
+    opts = {},
   },
   { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
   {
