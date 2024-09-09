@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local silent = { silent = true }
 
 -- General
 map('i', 'jj', '<ESC>')
@@ -7,17 +7,17 @@ map('n', '<ESC><ESC>', ':noh<CR>')
 map('n', '<leader>n', ':noh<CR>')
 
 -- UI
-map('n', 'rn', function() vim.wo.relativenumber = not vim.wo.relativenumber end, opts)
+map('n', 'rn', function() vim.wo.relativenumber = not vim.wo.relativenumber end, silent)
 
 -- Move
-map('n', 'j', 'gj', opts)
-map('v', 'j', 'gj', opts)
-map('n', 'k', 'gk', opts)
-map('v', 'k', 'gk', opts)
-map('n', 'H', '0', opts)
-map('v', 'H', '0', opts)
-map('n', 'L', '$', opts)
-map('v', 'L', '$', opts) -- Window
+map('n', 'j', 'gj', silent)
+map('v', 'j', 'gj', silent)
+map('n', 'k', 'gk', silent)
+map('v', 'k', 'gk', silent)
+map('n', 'H', '0', silent)
+map('v', 'H', '0', silent)
+map('n', 'L', '$', silent)
+map('v', 'L', '$', silent) -- Window
 map('n', 'sh', '<C-w>h')
 map('n', 'sj', '<C-w>j')
 map('n', 'sk', '<C-w>k')
@@ -31,11 +31,18 @@ map('n', 'sv', ':vsplit<CR><C-w>w')
 
 -- Resize
 -- シフトを押したくない
-map('n', 's,', '5<C-w><', opts)
-map('n', 's.', '5<C-w>>', opts)
-map('n', 's-', '5<C-w>-', opts)
-map('n', 's=', '5<C-w>+', opts)
-map('n', 's0', '<C-w>=', opts)
+-- vim-repeat で繰り返し可能にする
+local function repeatable_resize(resize_cmd, key)
+  return function()
+    vim.cmd(resize_cmd)
+    pcall(vim.fn['repeat#set'], key, vim.v.count)
+  end
+end
+map('n', 's,', repeatable_resize('vertical resize -3', 's,'), silent)
+map('n', 's.', repeatable_resize('vertical resize +3', 's.'), silent)
+map('n', 's-', repeatable_resize('resize -3', 's-'), silent)
+map('n', 's=', repeatable_resize('resize +3', 's='), silent)
+map('n', 's0', '<C-w>=', silent)
 
 -- Edit
 map('n', '+', '<C-a>')
@@ -57,7 +64,7 @@ for _, cmd in ipairs({ 'q', 'w', 'qa', 'wq', 'wqa' }) do
 end
 
 -- Terminal
-map('n', 'tt', "<cmd>terminal<CR>", opts)
-map('n', 'ts', "<cmd>belowright 15 new<CR><cmd>terminal<CR>", opts)
-map('n', 'tv', "<cmd>vertical belowright new<CR><cmd>terminal<CR>", opts)
-map('t', '<ESC>', [[<C-\><C-n>]], opts)
+map('n', 'tt', "<cmd>terminal<CR>", silent)
+map('n', 'ts', "<cmd>belowright 15 new<CR><cmd>terminal<CR>", silent)
+map('n', 'tv', "<cmd>vertical belowright new<CR><cmd>terminal<CR>", silent)
+map('t', '<ESC>', [[<C-\><C-n>]], silent)

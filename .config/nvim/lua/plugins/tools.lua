@@ -145,4 +145,5 @@ return {
       { "lambdalisue/fern-hijack.vim" },
     },
   },
+  { "tpope/vim-repeat", event = { "BufReadPost", "BufNewFile" } },
 }
