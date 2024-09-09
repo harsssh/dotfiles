@@ -37,4 +37,12 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      vim.cmd([[ hi TreesitterContextBottom gui=underline guisp=Grey ]])
+      vim.cmd([[ hi TreesitterContextLineNumberBottom gui=underline guisp=Grey ]])
+    end,
+  },
 }
