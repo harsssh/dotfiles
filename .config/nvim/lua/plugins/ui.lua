@@ -16,13 +16,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = { signcolumn = true }
   },
-  { "petertriho/nvim-scrollbar", event = "BufReadPost", config = function() require("plugins/config/scrollbar").setup() end },
   {
     "kevinhwang91/nvim-hlslens",
     event = "BufReadPre",
-    config = function()
-      require("scrollbar.handlers.search").setup()
-    end,
   },
   { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
   {
