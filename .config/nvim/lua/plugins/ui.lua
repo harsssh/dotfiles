@@ -21,14 +21,21 @@ return {
     event = "BufReadPre",
     opts = {},
   },
-  { "j-hui/fidget.nvim",  event = "LspAttach", opts = {} },
+  { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false }
   },
-  { "mhinz/vim-startify", event = 'VimEnter' },
+  {
+    "mhinz/vim-startify",
+    event = 'VimEnter',
+    config = function()
+      vim.g.startify_session_dir = vim.fn.stdpath("state") .. "/sessions/"
+      vim.g.startify_files_number = 5
+    end
+  },
   {
     "chentoast/marks.nvim",
     event = "VeryLazy",
