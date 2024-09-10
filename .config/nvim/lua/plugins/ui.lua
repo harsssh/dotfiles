@@ -3,7 +3,7 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function() vim.cmd.colorscheme("kanagawa-dragon") end,
+    config = function() vim.cmd.colorscheme("kanagawa-wave") end,
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -21,7 +21,7 @@ return {
     event = "BufReadPre",
     opts = {},
   },
-  { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
+  { "j-hui/fidget.nvim",  event = "LspAttach", opts = {} },
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile" },
@@ -42,4 +42,15 @@ return {
       vim.cmd([[ hi TreesitterContextLineNumberBottom gui=underline guisp=Grey ]])
     end,
   },
+  {
+    'rcarriga/nvim-notify',
+    event = "VeryLazy",
+    config = function()
+      local notify = require("notify")
+      notify.setup({
+        max_width = 45,
+      })
+      vim.notify = notify
+    end,
+  }
 }
