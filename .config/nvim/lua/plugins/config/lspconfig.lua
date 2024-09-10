@@ -9,6 +9,10 @@ M.setup = function()
 
   mason_lspconfig.setup_handlers {
     function(server_name)
+      -- Handle "tsserver is deprecated"
+      if server_name == "tsserver" then
+        server_name = "ts_ls"
+      end
       require("lspconfig")[server_name].setup {
         capabilities = require('cmp_nvim_lsp').default_capabilities()
       }
