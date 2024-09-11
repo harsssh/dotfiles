@@ -17,6 +17,7 @@ return {
       "hrsh7th/vim-vsnip",
       {
         "zbirenbaum/copilot-cmp",
+        event = { "InsertEnter", "LspAttach" },
         config = function()
           require("copilot_cmp").setup()
         end
@@ -27,7 +28,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
+    event = { "InsertEnter", "LspAttach" },
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },

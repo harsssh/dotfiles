@@ -15,33 +15,21 @@ M.setup = function()
     },
     window = {
       completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered({ max_width = 40 }),
     },
     formatting = {
       expandable_indicator = true,
       fields = { "kind", "abbr", "menu" },
       format = lspkind.cmp_format({
         mode = 'symbol', -- show only symbol annotations
-        maxwidth = 50,
+        maxwidth = 20,
         ellipsis_char = '…',
         before = function(entry, vim_item)
-          local ELLIPSIS_CHAR = '…'
-          local MAX_ABBR_LEN = 20
-          local MAX_MENU_LEN = 20
-
           vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
-
-          local truncated_abbr = vim.fn.strcharpart(vim_item.abbr, 0, MAX_ABBR_LEN)
-          local truncated_menu = vim.fn.strcharpart(vim_item.abbr, 0, MAX_MENU_LEN)
-          if truncated_abbr ~= vim_item.abbr then
-            vim_item.abbr = truncated_abbr .. ELLIPSIS_CHAR
-          end
-          if truncated_menu ~= vim_item.abbr then
-            vim_item.menu = truncated_menu .. ELLIPSIS_CHAR
-          end
-
+          vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 20) .. "…"
           return vim_item
-        end
+        end,
+        symbol_map = { Copilot = "" },
       }),
     },
     mapping = cmp.mapping.preset.insert({
@@ -83,7 +71,6 @@ M.setup = function()
       disallow_symbol_nonprefix_matching = false,
     },
   })
-
 end
 
 return M
