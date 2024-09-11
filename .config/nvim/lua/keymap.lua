@@ -43,7 +43,6 @@ map('n', 's.', repeatable_resize('vertical resize +3', 's.'), silent)
 map('n', 's-', repeatable_resize('resize -3', 's-'), silent)
 map('n', 's=', repeatable_resize('resize +3', 's='), silent)
 map('n', 's0', '<C-w>=', silent)
-map('t', '.', '<nop>', silent)
 
 -- Edit
 map('n', '+', '<C-a>')
