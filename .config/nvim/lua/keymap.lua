@@ -43,6 +43,7 @@ map('n', 's.', repeatable_resize('vertical resize +3', 's.'), silent)
 map('n', 's-', repeatable_resize('resize -3', 's-'), silent)
 map('n', 's=', repeatable_resize('resize +3', 's='), silent)
 map('n', 's0', '<C-w>=', silent)
+map('t', '.', '<nop>', silent)
 
 -- Edit
 map('n', '+', '<C-a>')
@@ -68,3 +69,7 @@ map('n', 'tt', "<cmd>terminal<CR>", silent)
 map('n', 'ts', "<cmd>belowright 15 new<CR><cmd>terminal<CR>", silent)
 map('n', 'tv', "<cmd>vertical belowright new<CR><cmd>terminal<CR>", silent)
 map('t', '<ESC>', [[<C-\><C-n>]], silent)
+
+-- Others
+-- format の gf が邪魔
+vim.g.no_ruby_maps = 1
