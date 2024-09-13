@@ -125,7 +125,7 @@ return {
         -- window 移動と衝突するので無効化
         map(0, 'n', 's', '<Nop>', opts)
         -- ファイルの場合は何もしない
-        map(0, 'n', 'l', '<Plug>(fern-action-expand-tree)', opts)
+        map(0, 'n', 'l', '<Plug>(fern-action-expand)', opts)
       end
 
       vim.api.nvim_create_autocmd("FileType", {
