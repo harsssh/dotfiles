@@ -28,7 +28,8 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = { "InsertEnter", "LspAttach" },
+    -- 手動で有効化する必要がある
+    -- event = { "InsertEnter", "LspAttach" },
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },

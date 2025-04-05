@@ -14,6 +14,7 @@ export LS_COLORS='di=94:ln=35:so=32:pi=33:ex=31:bd=46;94:cd=43;94:su=41;30:sg=46
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export LANG="en_US.UTF-8"
+export MAKEFLAGS="SHELL=/bin/bash"
 
 export LESS='-R'
 export LESS_TERMCAP_mb=$'\e[1;31m'    # Blink - 赤色 (必要なら変更)
@@ -28,4 +29,4 @@ export LESS_TERMCAP_us=$'\e[1;36m'    # Underline - 明るいシアン
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # bun completions
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
-. "$HOME/.cargo/env"
+[ -f ~/.ghcup/env ] && source ~/.ghcup/env

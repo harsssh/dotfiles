@@ -1,10 +1,10 @@
 alias ls='gls --color=auto'
-alias l='gls -ltr --color=auto'
-alias la='gls -la --color=auto'
-alias ll='gls -l --color=auto'
+alias l='gls -CF --color=auto'
+alias la='gls -A --color=auto'
+alias ll='gls -alF --color=auto'
 alias zrc='vim ~/.zshrc'
 alias zenv='vim ~/.zshenv'
-alias reload="source ~/.zshrc"
+alias reload="source ~/.zshenv && source ~/.zshrc"
 alias rm='rm -i'
 alias mkdir='mkdir -p'
 alias tgz='tar -xzvf'

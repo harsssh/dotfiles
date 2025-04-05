@@ -16,7 +16,7 @@
 [user]
     email = 66548698+harsssh@users.noreply.github.com
     name = Kentaro Mizuki
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+
+    signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+ kemizuki@MBP
 [core]
     editor = nvim
 [push]

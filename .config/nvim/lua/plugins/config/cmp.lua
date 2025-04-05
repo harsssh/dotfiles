@@ -26,7 +26,9 @@ M.setup = function()
         ellipsis_char = '…',
         before = function(entry, vim_item)
           vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
-          vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 20) .. "…"
+          if vim_item.menu then
+            vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 20) .. "…"
+          end
           return vim_item
         end,
         symbol_map = { Copilot = "" },

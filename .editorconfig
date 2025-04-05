@@ -19,3 +19,15 @@ tab_width = 2
 
 [*.go]
 indent_style = tab
+
+[*.rb]
+indent_size = 2
+tab_width = 2
+
+[*.hs]
+indent_size = 2
+tab_width = 2
+
+[*.ts]
+indent_size = 2
+tab_width = 2

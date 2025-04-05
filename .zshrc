@@ -50,9 +50,9 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-# bun completions
-[ -s "/Users/kmizuki/.bun/_bun" ] && source "/Users/kmizuki/.bun/_bun"
-
 ### Epilogue
 typeset -U path PATH
 source ~/.zsh_finalize
+
+# bun completions
+[ -s "/Users/kemizuki/.bun/_bun" ] && source "/Users/kemizuki/.bun/_bun"
