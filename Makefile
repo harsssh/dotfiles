@@ -1,5 +1,5 @@
-DOTFILES := .editorconfig .gitconfig .ideavimrc .tigrc .tool-versions .zsh_aliases .zsh_finalize .zsh_path .zsh_zinit .zshenv .zshrc Brewfile
-DOTFILES += .config/nvim
+DOTFILES := .editorconfig .gitconfig .ideavimrc .tigrc .tool-versions .zsh_aliases .zsh_finalize .zsh_path .zsh_zinit .zshenv .zshrc
+DOTFILES += .config/nvim .config/nvim-minimal
 
 .PHONY: all
 all: $(addprefix $(HOME)/,$(DOTFILES))
