@@ -3,7 +3,7 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    config = function() vim.cmd.colorscheme("kanagawa-wave") end,
+    config = function() vim.cmd.colorscheme("kanagawa-dragon") end,
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -29,14 +29,6 @@ return {
     opts = { signs = false }
   },
   {
-    "mhinz/vim-startify",
-    event = 'VimEnter',
-    config = function()
-      vim.g.startify_session_dir = vim.fn.stdpath("state") .. "/sessions/"
-      vim.g.startify_files_number = 5
-    end
-  },
-  {
     "chentoast/marks.nvim",
     event = "VeryLazy",
     opts = {},
@@ -47,17 +39,6 @@ return {
     config = function()
       vim.cmd([[ hi TreesitterContextBottom gui=underline guisp=Grey ]])
       vim.cmd([[ hi TreesitterContextLineNumberBottom gui=underline guisp=Grey ]])
-    end,
-  },
-  {
-    'rcarriga/nvim-notify',
-    event = "VeryLazy",
-    config = function()
-      local notify = require("notify")
-      notify.setup({
-        max_width = 45,
-      })
-      vim.notify = notify
     end,
   }
 }
