@@ -8,11 +8,6 @@ M.setup = function()
     completion = {
       completeopt = "menu,menuone,noinsert",
     },
-    snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-      end,
-    },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered({ max_width = 40 }),
@@ -43,7 +38,6 @@ M.setup = function()
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' },
       { name = "lazydev" },
       { name = "copilot" },
     }, {

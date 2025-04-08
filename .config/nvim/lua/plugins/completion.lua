@@ -12,9 +12,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-vsnip",
       "onsails/lspkind.nvim",
-      "hrsh7th/vim-vsnip",
       {
         "zbirenbaum/copilot-cmp",
         event = { "InsertEnter", "LspAttach" },
