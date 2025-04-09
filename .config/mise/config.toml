@@ -1,0 +1,6 @@
+[tools]
+python = "3.13.2"
+flutter = "3.29.2"
+"gem:cocoapods" = "1.16.2"
+ruby = "3.4.2"
+
