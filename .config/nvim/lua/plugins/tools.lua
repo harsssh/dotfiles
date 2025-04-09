@@ -3,6 +3,11 @@ return {
     'echasnovski/mini.nvim',
     version = '*',
     event = "VeryLazy",
+    keys = {
+      -- mini.bracketed
+      { '<leader>l', '<Cmd>lua MiniBracketed.buffer("forward")<CR>' },
+      { '<leader>h', '<Cmd>lua MiniBracketed.buffer("backward")<CR>' }
+    },
     config = function()
       require("mini.bracketed").setup()
       require("mini.comment").setup()
@@ -24,10 +29,6 @@ return {
       -- mini.cursorword
       vim.api.nvim_set_hl(0, "MiniCursorword", { link = "Visual" })
       vim.api.nvim_set_hl(0, "MiniCursorwordCurrent", { link = "Visual" })
-
-      -- mini.bracketed
-      vim.keymap.set('n', '<leader>l', '<Cmd>lua MiniBracketed.buffer("forward")<CR>', { silent = true, noremap = true })
-      vim.keymap.set('n', '<leader>h', '<Cmd>lua MiniBracketed.buffer("backward")<CR>', { silent = true, noremap = true })
     end,
   },
   {
