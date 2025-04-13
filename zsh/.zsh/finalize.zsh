@@ -10,14 +10,6 @@ fi
 if command -v zoxide >/dev/null 2>&1; then
   eval "$(zoxide init zsh)"
 fi
-# asdf
-if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
-  . "$(brew --prefix asdf)/libexec/asdf.sh"
-fi
-# go の PATH 設定
-if command -v go >/dev/null 2>&1; then
-  export PATH="$(go env GOPATH)/bin:$PATH"
-fi
 # mise
 if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate zsh)"

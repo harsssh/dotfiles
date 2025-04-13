@@ -1,10 +1,5 @@
-# PATH
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export PATH=/opt/homebrew/opt/coreutils/bin:$PATH
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
-export PATH=~/.asdf/shims:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=/opt/homebrew/opt/llvm/bin:$PATH
-export PATH=~/.asdf/installs/ruby/3.3.0/bin:$PATH
-export PATH=~/.bun/bin:$PATH
-export PATH=~/.ghcup/bin:$PATH
+
