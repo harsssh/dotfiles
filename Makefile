@@ -1,15 +1,18 @@
-DOTFILES := .editorconfig .gitconfig .ideavimrc .tigrc .tool-versions .zsh_aliases .zsh_finalize .zsh_path .zsh_zinit .zshenv .zshrc .zprofile
-DOTFILES += .config/nvim .config/nvim-minimal .config/mise/config.toml
+STOW_DIRS := config git mise nvim nvim-minimal starship zsh
+TARGET := $(HOME)
 
 .PHONY: all
-all: $(addprefix $(HOME)/,$(DOTFILES))
+all: dry-run
 
-$(HOME)/.%: .%
-	-ln -si $(PWD)/$< $@
+.PHONY: dry-run
+dry-run:
+	stow -n -t $(TARGET) $(STOW_DIRS)
 
-$(HOME)/.config/nvim: .config/nvim
-	-ln -si $(PWD)/$< $(dir $@)
+.PHONY: apply
+apply:
+	stow -t $(TARGET) $(STOW_DIRS)
 
 .PHONY: clean
 clean:
-	-unlink -i $(addprefix $(HOME)/,$(DOTFILES))
+	stow -D -t $(TARGET) $(STOW_DIRS)
+

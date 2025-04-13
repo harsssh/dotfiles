@@ -1,8 +1,3 @@
-### Initialization
-source ~/.zsh_path
-source ~/.zsh_aliases
-source ~/.zsh_zinit
-
 ### File and Directory Operations
 setopt auto_param_slash  # Auto-append slash to directory names during tab completion
 setopt mark_dirs  # Mark directory names with a trailing slash during listing
@@ -25,6 +20,15 @@ setopt magic_equal_subst  # Allow filename expansion after equals sign in parame
 setopt complete_in_word  # Allow tab completion in middle of word
 setopt print_eight_bit  # Print 8th bit set characters as is, no metafication
 
+### History
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt extended_history
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt share_history
+
 ### Completion
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
@@ -35,24 +39,3 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
 zstyle ':completion:*:options' description 'yes'
 
-### History
-setopt hist_ignore_dups
-setopt hist_ignore_all_dups
-setopt extended_history
-setopt hist_no_store
-setopt hist_reduce_blanks
-setopt hist_save_no_dups
-setopt share_history
-function select-history() {
-    BUFFER=$(history -nr 1 | fzf -q "$LBUFFER" --prompt="History> " --reverse)
-    CURSOR=${#BUFFER}
-}
-zle -N select-history
-bindkey '^r' select-history
-
-### Epilogue
-typeset -U path PATH
-source ~/.zsh_finalize
-
-# bun completions
-[ -s "/Users/kemizuki/.bun/_bun" ] && source "/Users/kemizuki/.bun/_bun"
