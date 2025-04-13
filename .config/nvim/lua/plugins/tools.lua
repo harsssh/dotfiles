@@ -95,43 +95,41 @@ return {
     "lambdalisue/fern.vim",
     lazy = false,
     keys = {
-      { "<leader>e", ":Fern . -reveal=% -width=30 -drawer -right<CR>", noremap = true, silent = true },
+      {
+        "<leader>e",
+        "",
+        callback = function()
+          if vim.bo.filetype == 'fern' then
+            vim.cmd.wincmd 'p'
+          else
+            vim.cmd.Fern('.', '-reveal=%', '-width=30', '-drawer', '-right')
+          end
+        end,
+
+        noremap = true,
+        silent = true
+      },
     },
+    init = function()
+      vim.g["fern#disable_drawer_smart_quit"] = 1
+      vim.g["fern#default_hidden"] = 1
+    end,
     config = function()
-      local init_fern = function()
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
-        vim.opt_local.signcolumn = "no"
-        vim.b.miniindentscope_disable = true
-        vim.b.minicursorword_disable = true
-
-        vim.g["fern#disable_drawer_smart_quit"] = 1
-
-        vim.keymap.set('n', '<leader>e', '', {
-          callback = function()
-            if vim.bo.filetype == 'fern' then
-              vim.cmd.wincmd 'p'
-            else
-              vim.cmd.Fern('.', '-reveal=%', '-width=30', '-drawer', '-right')
-            end
-          end,
-          noremap = true,
-          silent = true,
-        })
-
-
-        local map = vim.api.nvim_buf_set_keymap
-        local opts = { noremap = true, silent = true }
-
-        -- window 移動と衝突するので無効化
-        map(0, 'n', 's', '<Nop>', opts)
-        -- ファイルの場合は何もしない
-        map(0, 'n', 'l', '<Plug>(fern-action-expand)', opts)
-      end
-
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "fern",
-        callback = init_fern,
+        callback = function()
+          vim.opt_local.number = false
+          vim.opt_local.relativenumber = false
+          vim.opt_local.signcolumn = "no"
+          vim.b.miniindentscope_disable = true
+          vim.b.minicursorword_disable = true
+
+          -- window 移動と衝突するので無効化
+          vim.keymap.set('n', 's', '<Nop>', { buffer = true, noremap = true, silent = true })
+          -- ファイルの場合は何もしない
+          vim.keymap.set('n', 'l', '<Plug>(fern-action-expand)', { buffer = true, noremap = true, silent = true })
+        end
+        ,
       })
     end,
     dependencies = {
