@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "bufbuild/buf"
 tap "go-task/tap"
 
