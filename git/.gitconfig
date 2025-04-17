@@ -23,8 +23,8 @@
 [push]
     default = current
     autoSetupRemote = true
-[rerere]
-    enabled = true
+[merge]
+    conflictStyle = diff3
 [pull]
     rebase = true
 [commit]
