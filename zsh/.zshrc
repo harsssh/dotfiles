@@ -7,3 +7,4 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/zinit.zsh
 
 source ~/.zsh/finalize.zsh
+
