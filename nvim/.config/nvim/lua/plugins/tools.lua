@@ -112,7 +112,7 @@ return {
     },
     init = function()
       vim.g["fern#disable_drawer_smart_quit"] = 1
-      vim.g["fern#default_hidden"] = 1
+      vim.g["fern#default_hidden"] = 0
     end,
     config = function()
       vim.api.nvim_create_autocmd("FileType", {

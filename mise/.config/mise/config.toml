@@ -9,6 +9,8 @@ go = "1.23.4"
 rust = "stable"
 java = "liberica-8u442+7"
 scala = "3.6.4"
+kotlin = "latest"
+gradle = "latest"
 
 [settings]
 experimental = true
