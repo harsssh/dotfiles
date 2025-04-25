@@ -3,8 +3,8 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.font = wezterm.font 'Monaspace Argon'
-config.font_size = 14
+config.font = wezterm.font('Monaspace Argon', { weight = 'Medium' })
+config.font_size = 15
 config.color_scheme = 'GitHub Dark'
 
 config.window_decorations = "RESIZE"
