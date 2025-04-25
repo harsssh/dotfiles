@@ -17,7 +17,7 @@ return {
       local mason_lspconfig = require('mason-lspconfig')
       mason_lspconfig.setup {
         automatic_installation = true,
-        ensure_installed = {'ts_ls', 'lua_ls', 'hls', 'gopls'},
+        ensure_installed = {'ts_ls', 'lua_ls', 'gopls'},
       }
 
       vim.lsp.config('*', {
