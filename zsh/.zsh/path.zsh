@@ -5,6 +5,7 @@ PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=/opt/homebrew/opt/llvm/bin:$PATH
 PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+PATH=$PATH:~/.ghcup/bin
 
 export BUN_INSTALL="$HOME/.bun"
 PATH="$BUN_INSTALL/bin:$PATH"
@@ -29,5 +30,4 @@ fi
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
-[ -f ~/.ghcup/env ] && source ~/.ghcup/env
 
