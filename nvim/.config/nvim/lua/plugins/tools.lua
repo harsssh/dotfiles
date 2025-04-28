@@ -73,7 +73,24 @@ return {
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
       }
     },
-    config = function() require("plugins/config/telescope").setup() end,
+    opts = {
+      defaults = {
+        layout_strategy = 'vertical',
+        layout_config = {
+          prompt_position = "top",
+          mirror = true,
+        },
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        }
+      }
+
+    }
   },
   {
     "folke/trouble.nvim",
