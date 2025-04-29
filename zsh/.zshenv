@@ -1,5 +1,8 @@
 export LANG="en_US.UTF-8"
-export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+
+if command -v xcrun >/dev/null 2>&1; then
+  export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+fi
 
 if [ -d "/opt/homebrew/opt/llvm" ]; then
   export CC="/opt/homebrew/opt/llvm/bin/clang"

@@ -8,4 +8,7 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 export PATH="$PATH:/Users/kemizuki/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if command -v brew >/dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
