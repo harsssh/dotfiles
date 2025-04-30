@@ -11,7 +11,6 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-set virtualedit
 set clipboard+=unnamed
 set showcmd
 set virtualedit=all
