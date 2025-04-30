@@ -230,5 +230,10 @@ return {
     opts = {
       keys = 'etovxqpdygfblzhckisuran'
     },
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    event = { "InsertEnter" },
+    opts = {}
   }
 }
