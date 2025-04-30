@@ -14,4 +14,3 @@ set hlsearch
 set clipboard+=unnamed
 set showcmd
 set virtualedit=all
-set surround
