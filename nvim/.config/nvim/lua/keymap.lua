@@ -3,7 +3,6 @@ local silent = { silent = true }
 
 -- General
 map('i', 'jj', '<ESC>')
-map('n', '<ESC><ESC>', ':noh<CR>')
 map('n', '<leader>n', ':noh<CR>')
 
 -- UI
