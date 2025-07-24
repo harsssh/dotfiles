@@ -8,7 +8,7 @@ config.font_size = 15
 config.color_scheme = 'GitHub Dark'
 
 config.window_decorations = "RESIZE"
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.use_ime = true
 
 config.keys = {

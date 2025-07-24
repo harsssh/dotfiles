@@ -1,3 +1,6 @@
+let mapleader = " "
+
+nnoremap <leader>n :nohlsearch<CR>
 inoremap jj <ESC>
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap sh <C-w>h

@@ -1,0 +1,3 @@
+syntax_style = vim
+key_bindings = vi
+wider_completion_menu = True

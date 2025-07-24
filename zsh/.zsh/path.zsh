@@ -26,8 +26,17 @@ fi
 if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate zsh)"
 fi
+# direnv
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -s ~/.bun/_bun ] && source ~/.bun/_bun
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/kentaro.mizuki/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
