@@ -1,7 +1,12 @@
 export LANG="en_US.UTF-8"
 
-if command -v xcrun >/dev/null 2>&1; then
-  export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+if [[ -z "$SDKROOT" ]]; then
+  local cache_file="$HOME/.cache/zsh_sdkroot"
+  if [[ ! -f "$cache_file" || "$cache_file" -ot /usr/bin/xcrun ]]; then
+    [[ ! -d "$HOME/.cache" ]] && mkdir -p "$HOME/.cache"
+    command -v xcrun >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path > "$cache_file" 2>/dev/null
+  fi
+  [[ -f "$cache_file" ]] && export SDKROOT=$(<"$cache_file")
 fi
 
 if [ -d "/opt/homebrew/opt/llvm" ]; then
