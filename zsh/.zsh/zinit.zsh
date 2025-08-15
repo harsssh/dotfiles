@@ -6,6 +6,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
+zinit wait lucid for \
+    zsh-users/zsh-completions \
+    zsh-users/zsh-syntax-highlighting \
+    zsh-users/zsh-autosuggestions

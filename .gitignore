@@ -3,3 +3,4 @@
 lazy-lock.json
 nvim/.config/nvim/undo/*
 !nvim/.config/nvim/undo/.gitkeep
+.envrc

@@ -1,42 +1,83 @@
+# ============================================================================
+# PATH Setup
+# ============================================================================
+
+# Ensure PATH uniqueness
 typeset -U path PATH
 
-PATH=/opt/homebrew/opt/coreutils/bin:$PATH
-PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
-PATH=~/.local/bin:$PATH
-PATH=/opt/homebrew/opt/llvm/bin:$PATH
-PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
-PATH=$PATH:~/.ghcup/bin
+# Core PATH configuration
+path=(
+  /opt/homebrew/opt/coreutils/bin
+  /opt/homebrew/opt/openssl@3/bin
+  ~/.local/bin
+  /opt/homebrew/opt/llvm/bin
+  $path
+  /Applications/WezTerm.app/Contents/MacOS
+  ~/.ghcup/bin
+)
 
+# Additional PATH entries
 export BUN_INSTALL="$HOME/.bun"
-PATH="$BUN_INSTALL/bin:$PATH"
+path=("$BUN_INSTALL/bin" $path)
 
-# fzf
-if command -v fzf >/dev/null 2>&1; then
-  eval "$(fzf --zsh)"
-fi
-# starship
-if command -v starship >/dev/null 2>&1; then
+# ============================================================================
+# Lazy Loading Functions
+# ============================================================================
+
+_lazy_load_mise() {
+  eval "$(mise activate zsh)"
+  precmd_functions=(${precmd_functions[@]/_lazy_load_mise/})
+}
+
+_lazy_load_direnv() {
+  eval "$(direnv hook zsh)"
+  precmd_functions=(${precmd_functions[@]/_lazy_load_direnv/})
+}
+
+_lazy_load_bun() {
+  source ~/.bun/_bun
+  precmd_functions=(${precmd_functions[@]/_lazy_load_bun/})
+}
+
+# ============================================================================
+# Immediate Tool Initialization
+# ============================================================================
+
+# Critical tools loaded immediately for functionality
+if [[ -n "${commands[starship]}" ]]; then
   eval "$(starship init zsh)"
 fi
-# zoxide
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
+
+if [[ -n "${commands[fzf]}" ]]; then
+  eval "$(fzf --zsh)"
 fi
-# mise
-if command -v mise >/dev/null 2>&1; then
-    eval "$(mise activate zsh)"
+
+# ============================================================================
+# Lazy-Loaded Tool Registration
+# ============================================================================
+
+# Register tools for lazy loading on first prompt
+if [[ -n "${commands[mise]}" ]]; then
+  precmd_functions+=(_lazy_load_mise)
 fi
-# direnv
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
+
+if [[ -n "${commands[direnv]}" ]]; then
+  precmd_functions+=(_lazy_load_direnv)
 fi
+
+if [ -s ~/.bun/_bun ]; then
+  precmd_functions+=(_lazy_load_bun)
+fi
+
+# ============================================================================
+# Environment Sources
+# ============================================================================
 
 [ -f ~/.cargo/env ] && source ~/.cargo/env
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -s ~/.bun/_bun ] && source ~/.bun/_bun
 
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+# ============================================================================
+# Completion Paths
+# ============================================================================
+
+# Docker CLI completions
 fpath=(/Users/kentaro.mizuki/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
