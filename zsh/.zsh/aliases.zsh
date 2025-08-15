@@ -21,6 +21,7 @@ alias x="mise x --"
 # git 系
 alias gs='git status'
 alias gr='git reset'
+alias grs='git reset --soft HEAD~'
 alias grh='git reset --hard'
 alias grh~='git reset --hard HEAD~'
 alias ga='git add'
