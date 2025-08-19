@@ -6,6 +6,10 @@ local config = wezterm.config_builder()
 config.font = wezterm.font('Monaspace Argon', { weight = 'Medium' })
 config.font_size = 15
 config.color_scheme = 'GitHub Dark'
+config.inactive_pane_hsb = {
+  saturation = 0.5,
+  brightness = 0.5
+}
 
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = false
@@ -25,8 +29,8 @@ config.keys = {
   -- ⌘ + w でペインを閉じる
   { key = 'w', mods = 'CMD',       action = act.CloseCurrentPane { confirm = true } },
   -- ⌘ + [ / ] でペイン間の移動
-  { key = '[', mods = 'CMD',       action = act.ActivatePaneDirection 'Left' },
-  { key = ']', mods = 'CMD',       action = act.ActivatePaneDirection 'Right' },
+  { key = '[', mods = 'CMD',       action = act.ActivatePaneDirection 'Prev' },
+  { key = ']', mods = 'CMD',       action = act.ActivatePaneDirection 'Next' },
   -- ⌘ + Shift + [ / ] でタブ間の移動
   { key = '[', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(-1) },
   { key = ']', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(1) },

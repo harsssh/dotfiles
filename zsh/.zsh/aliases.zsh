@@ -17,10 +17,12 @@ alias vi='nvim'
 alias vim='nvim'
 alias ..='cd ..'
 alias x="mise x --"
-alias gff='git ls-files | fzf'
 alias doc="cat << 'EOF'"
+alias ff='fzf'
+alias ffb='git branch --format="%(refname:short)" | fzf'
 
 # git 系
+alias gps='git push'
 alias gs='git status'
 alias gr='git reset'
 alias grh='git reset --hard'
@@ -46,3 +48,5 @@ alias gresp='git restore -p'
 alias gd='git diff'
 alias gdh='git diff HEAD~..HEAD'
 alias gds='git diff --staged'
+alias gmt='git mergetool'
+alias glc='git log @{u}..HEAD --oneline' # 名前微妙 git log check?

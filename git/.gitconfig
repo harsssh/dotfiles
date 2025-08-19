@@ -25,6 +25,12 @@
     autoSetupRemote = true
 [merge]
     conflictStyle = diff3
+    # 表示はシンプルな方がいいので、あえて nvimdiff を使わない
+    tool = vimdiff
+[mergetool]
+    keepBackup = false
+[rerere]
+    enabled = true
 [pull]
     rebase = true
 [commit]

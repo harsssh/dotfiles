@@ -1,3 +1,7 @@
+syntax on
+
+colorscheme habamax
+
 inoremap jj <ESC>
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap sh <C-w>h
@@ -14,3 +18,6 @@ set hlsearch
 set clipboard+=unnamed
 set showcmd
 set virtualedit=all
+
+" vimdiff で役に立つ
+set diffopt+=algorithm:patience,indent-heuristic
