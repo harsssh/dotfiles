@@ -5,8 +5,21 @@ return {
     event = "VeryLazy",
     keys = {
       -- mini.bracketed
-      { '<leader>l', '<Cmd>lua MiniBracketed.buffer("forward")<CR>' },
-      { '<leader>h', '<Cmd>lua MiniBracketed.buffer("backward")<CR>' }
+      { '<leader>l',  '<Cmd>lua MiniBracketed.buffer("forward")<CR>' },
+      { '<leader>h',  '<Cmd>lua MiniBracketed.buffer("backward")<CR>' },
+      -- mini.bufremove
+      { '<leader>bd', '<Cmd>lua MiniBufremove.delete()<CR>' },
+      {
+        '<leader>bo',
+        function()
+          local cur = vim.api.nvim_get_current_buf()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if buf ~= cur then
+              require("mini.bufremove").delete(buf, false)
+            end
+          end
+        end
+      }
     },
     config = function()
       require("mini.bracketed").setup()
@@ -20,6 +33,7 @@ return {
       })
       require("mini.cursorword").setup()
       require("mini.tabline").setup({ tabpage_section = 'right' })
+      require("mini.bufremove").setup()
       require("mini.trailspace").setup()
       require("mini.indentscope").setup({
         draw = { animation = require("mini.indentscope").gen_animation.none() },
@@ -47,14 +61,9 @@ return {
       },
       {
         '<leader>fb',
-        function() require('telescope.builtin').buffers() end,
-        desc = 'Telescope: Buffers'
-      },
-      {
-        '<leader>fh',
-        function() require('telescope.builtin').help_tags() end,
-        desc = 'Telescope: Help Tags'
-      },
+        function() require('telescope.builtin').current_buffer_fuzzy_find() end,
+        desc = 'Telescope: Fuzzy Find in Current Buffer'
+      }
     },
     tag = '0.1.8',
     dependencies = {
