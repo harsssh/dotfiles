@@ -14,6 +14,8 @@
     re = restore
     dlog = "!f() { git log -p --ext-diff $@; }; f"
     pushf = push --force-if-includes --force-with-lease
+    cp = cherry-pick
+    rb = rebase
 [user]
     email = 66548698+harsssh@users.noreply.github.com
     name = Kentaro Mizuki
@@ -39,6 +41,8 @@
     defaultBranch = main
 [diff]
     external = difft
+[advice]
+    mergeConflict = false
 [gpg]
     format = ssh
 [gpg "ssh"]

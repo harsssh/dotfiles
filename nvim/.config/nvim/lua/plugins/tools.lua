@@ -63,6 +63,14 @@ return {
         '<leader>fb',
         function() require('telescope.builtin').current_buffer_fuzzy_find() end,
         desc = 'Telescope: Fuzzy Find in Current Buffer'
+      },
+      {
+        '<leader>fs',
+        function()
+          require('telescope.builtin').lsp_dynamic_workspace_symbols({
+            symbols = { "Class", "Function", "Method", "Interface", "Struct", "Module", "Constant", "Enum" }
+          })
+        end,
       }
     },
     tag = '0.1.8',

@@ -48,5 +48,6 @@ alias gresp='git restore -p'
 alias gd='git diff'
 alias gdh='git diff HEAD~..HEAD'
 alias gds='git diff --staged'
+alias gdn='git diff --name-only'
 alias gmt='git mergetool'
 alias glc='git log @{u}..HEAD --oneline' # 名前微妙 git log check?
