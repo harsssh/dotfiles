@@ -22,6 +22,7 @@ alias ff='fzf'
 alias ffb='git branch --format="%(refname:short)" | fzf'
 
 # git 系
+alias gpl='git pull'
 alias gps='git push'
 alias gs='git status'
 alias gr='git reset'
