@@ -11,6 +11,8 @@ path=(
   /opt/homebrew/opt/openssl@3/bin
   ~/.local/bin
   /opt/homebrew/opt/llvm/bin
+  ~/.local/go/bin
+  ~/nvim/bin
   $path
   /Applications/WezTerm.app/Contents/MacOS
   ~/.ghcup/bin
