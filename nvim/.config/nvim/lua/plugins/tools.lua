@@ -51,23 +51,33 @@ return {
     keys = {
       {
         '<leader>ff',
-        function() require('telescope.builtin').find_files() end,
+        function()
+          local builtin = require('telescope.builtin')
+          builtin.find_files()
+        end,
         desc = 'Telescope: Find Files'
       },
       {
         '<leader>fg',
-        function() require('telescope.builtin').live_grep() end,
+        function()
+          local builtin = require('telescope.builtin')
+          builtin.live_grep()
+        end,
         desc = 'Telescope: Live Grep'
       },
       {
         '<leader>fb',
-        function() require('telescope.builtin').current_buffer_fuzzy_find() end,
+        function()
+          local builtin = require('telescope.builtin')
+          builtin.current_buffer_fuzzy_find()
+        end,
         desc = 'Telescope: Fuzzy Find in Current Buffer'
       },
       {
         '<leader>fs',
         function()
-          require('telescope.builtin').lsp_dynamic_workspace_symbols({
+          local builtin = require('telescope.builtin')
+          builtin.lsp_dynamic_workspace_symbols({
             symbols = { "Class", "Function", "Method", "Interface", "Struct", "Module", "Constant", "Enum" }
           })
         end,
@@ -96,6 +106,17 @@ return {
         layout_config = {
           prompt_position = "top",
           mirror = true,
+        },
+        -- 必要最小限のパフォーマンス最適化
+        file_ignore_patterns = { "%.git/", "node_modules/", "target/" },
+        path_display = { "truncate" },
+      },
+      pickers = {
+        find_files = {
+          find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
+        },
+        live_grep = {
+          additional_args = { "--hidden", "--glob", "!.git/*" },
         },
       },
       extensions = {

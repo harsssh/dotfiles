@@ -19,6 +19,10 @@ vim.opt.expandtab = true
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 300
 
+-- Performance optimizations
+vim.opt.lazyredraw = true
+vim.opt.synmaxcol = 200
+
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 vim.opt.smarttab = true

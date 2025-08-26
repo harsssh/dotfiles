@@ -8,6 +8,12 @@ M.setup = function()
     completion = {
       completeopt = "menu,menuone,noinsert",
     },
+    performance = {
+      debounce = 60,
+      throttle = 30,
+      fetching_timeout = 500,
+      max_view_entries = 30,
+    },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered({ max_width = 40 }),

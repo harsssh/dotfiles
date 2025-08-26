@@ -6,6 +6,7 @@ vim.diagnostic.config({
   },
   signs = false,
   underline = true,
+  update_in_insert = false,
 })
 
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { undercurl = true, sp = "#FF5555" })
