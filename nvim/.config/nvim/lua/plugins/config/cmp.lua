@@ -16,19 +16,20 @@ M.setup = function()
     },
     window = {
       completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered({ max_width = 40 }),
+      documentation = cmp.config.disable,
+      -- documentation = cmp.config.window.bordered({ max_width = 25 }),
     },
     formatting = {
       expandable_indicator = true,
-      fields = { "kind", "abbr", "menu" },
+      fields = { "kind", "abbr" },
       format = lspkind.cmp_format({
         mode = 'symbol', -- show only symbol annotations
-        maxwidth = 20,
+        maxwidth = 50,
         ellipsis_char = '…',
         before = function(entry, vim_item)
           vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
           if vim_item.menu then
-            vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 20) .. "…"
+            vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 50) .. "…"
           end
           return vim_item
         end,

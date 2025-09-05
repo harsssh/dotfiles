@@ -18,6 +18,7 @@ alias vim='nvim'
 alias ..='cd ..'
 alias x="mise x --"
 alias doc="cat << 'EOF'"
+alias pp='pnpm'
 alias ff='fzf'
 alias ffb='git branch --format="%(refname:short)" | fzf'
 
