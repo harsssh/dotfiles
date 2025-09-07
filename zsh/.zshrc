@@ -6,3 +6,10 @@ source ~/.zsh/functions.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/path.zsh
 
+# pnpm
+export PNPM_HOME="/Users/kemizuki/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

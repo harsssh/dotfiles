@@ -172,7 +172,7 @@ return {
     lazy = false,
     keys = {
       {
-        "<leader>e",
+        "-",
         "",
         callback = function()
           if vim.bo.filetype == 'fern' then
