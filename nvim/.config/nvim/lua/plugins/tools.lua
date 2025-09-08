@@ -47,7 +47,7 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
-    cmd = "Telescope",
+    event = "VeryLazy",
     keys = {
       {
         '<leader>ff',
@@ -97,7 +97,7 @@ return {
       },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+        build = 'make'
       }
     },
     opts = {
@@ -107,16 +107,34 @@ return {
           prompt_position = "top",
           mirror = true,
         },
-        -- 必要最小限のパフォーマンス最適化
-        file_ignore_patterns = { "%.git/", "node_modules/", "target/" },
+        -- パフォーマンス最適化
+        file_ignore_patterns = { "%.git/", "node_modules/", "target/", "build/", "dist/" },
         path_display = { "truncate" },
+        dynamic_preview_title = true,
+        preview = {
+          timeout = 200,
+          filesize_limit = 0.1,
+        },
+        -- 起動時間短縮
+        results_title = false,
+        prompt_title = false,
       },
       pickers = {
         find_files = {
           find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
+          previewer = false,
+          theme = "dropdown",
         },
         live_grep = {
           additional_args = { "--hidden", "--glob", "!.git/*" },
+          only_sort_text = true,
+        },
+        current_buffer_fuzzy_find = {
+          previewer = false,
+          theme = "dropdown",
+        },
+        lsp_dynamic_workspace_symbols = {
+          -- sorterはfzf拡張に任せる
         },
       },
       extensions = {
@@ -127,8 +145,15 @@ return {
           case_mode = "smart_case",
         }
       }
-
-    }
+    },
+    config = function(_, opts)
+      require('telescope').setup(opts)
+      -- fzf-native が正常にビルドされている場合のみ読み込み
+      local ok, _ = pcall(require('telescope').load_extension, 'fzf')
+      if not ok then
+        vim.notify("telescope-fzf-native not available, using default sorter", vim.log.levels.WARN)
+      end
+    end
   },
   {
     "folke/trouble.nvim",
