@@ -34,6 +34,7 @@ config.keys = {
   -- ⌘ + Shift + [ / ] でタブ間の移動
   { key = '[', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(-1) },
   { key = ']', mods = 'CMD|SHIFT', action = act.ActivateTabRelative(1) },
+  { key = "K", mods = "CMD|SHIFT", action = act.ActivateCopyMode },
 }
 
 return config

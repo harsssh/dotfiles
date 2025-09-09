@@ -41,6 +41,12 @@ vim.opt.undofile = true
 
 vim.opt.clipboard:append({ 'unnamedplus' })
 
+-- Folding settings
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 99
+vim.opt.foldenable = true
+
 vim.g.loaded_ruby_provider   = 0
 vim.g.loaded_node_provider   = 0
 vim.g.loaded_perl_provider   = 0
