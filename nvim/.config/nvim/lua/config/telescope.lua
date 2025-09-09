@@ -2,7 +2,7 @@ local M = {}
 
 M.setup = function()
   local telescope = require('telescope')
-  
+
   telescope.setup({
     defaults = {
       layout_strategy = 'vertical',
@@ -11,7 +11,17 @@ M.setup = function()
         mirror = true,
       },
       -- パフォーマンス最適化
-      file_ignore_patterns = { "%.git/", "node_modules/", "target/", "build/", "dist/" },
+      file_ignore_patterns = {
+        "%.git/",
+        "node_modules/",
+        "target/",
+        "build/",
+        "dist/",
+        "%.lock$",           -- *.lock files
+        "%-lock%.json$",     -- *-lock.json files
+        "%-lock%.yaml$",     -- *-lock.yaml files
+        "%-lock%.yml$",      -- *-lock.yml files
+      },
       path_display = { "truncate" },
       dynamic_preview_title = true,
       preview = {
@@ -29,7 +39,15 @@ M.setup = function()
         theme = "dropdown",
       },
       live_grep = {
-        additional_args = { "--hidden", "--glob", "!.git/*" },
+        additional_args = function()
+          return {
+            "--hidden",
+            "--glob", "!.git/*",
+            "--glob", "!*.lock",
+            "--glob", "!*-lock.json",
+            "--glob", "!*-lock.yaml",
+          }
+        end,
         only_sort_text = true,
       },
       current_buffer_fuzzy_find = {
@@ -46,7 +64,7 @@ M.setup = function()
       }
     }
   })
-  
+
   -- fzf-native が正常にビルドされている場合のみ読み込み
   local ok, _ = pcall(telescope.load_extension, 'fzf')
   if not ok then
