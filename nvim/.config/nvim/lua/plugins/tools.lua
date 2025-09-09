@@ -6,6 +6,7 @@ return {
       { '<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Telescope: Find Files' },
       { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Telescope: Live Grep' },
       { '<leader>fb', function() require('telescope.builtin').current_buffer_fuzzy_find() end, desc = 'Telescope: Fuzzy Find in Current Buffer' },
+      { '<leader>gs', function() require('telescope.builtin').git_status({ show_untracked = true }) end, desc = 'Telescope: Git Status (with untracked)' },
       {
         '<leader>fs',
         function()
