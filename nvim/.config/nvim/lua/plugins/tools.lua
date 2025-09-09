@@ -133,9 +133,6 @@ return {
           previewer = false,
           theme = "dropdown",
         },
-        lsp_dynamic_workspace_symbols = {
-          -- sorterはfzf拡張に任せる
-        },
       },
       extensions = {
         fzf = {
