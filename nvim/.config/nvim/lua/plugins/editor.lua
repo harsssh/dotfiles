@@ -13,10 +13,26 @@ return {
         '<leader>bo',
         function()
           local cur = vim.api.nvim_get_current_buf()
-          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if buf ~= cur then
-              require("mini.bufremove").delete(buf, false)
+          local deleted_count = 0
+          
+          -- リストされているバッファを全て取得
+          local bufs = vim.api.nvim_list_bufs()
+          
+          for _, buf in ipairs(bufs) do
+            -- 現在のバッファ以外で、有効かつリストされているバッファを削除
+            if buf ~= cur 
+               and vim.api.nvim_buf_is_valid(buf) 
+               and vim.bo[buf].buflisted then
+              local ok = pcall(require("mini.bufremove").delete, buf, false)
+              if ok then
+                deleted_count = deleted_count + 1
+              end
             end
+          end
+          
+          -- 削除結果を通知（オプション）
+          if deleted_count > 0 then
+            vim.notify(string.format("Deleted %d buffer(s)", deleted_count))
           end
         end
       }
