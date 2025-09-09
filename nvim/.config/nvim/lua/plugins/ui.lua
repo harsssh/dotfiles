@@ -9,7 +9,7 @@ return {
     'nvim-lualine/lualine.nvim',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require("plugins/config/lualine").setup() end,
+    config = function() require("config.lualine").setup() end,
   },
   {
     "lewis6991/gitsigns.nvim",

@@ -21,7 +21,7 @@ return {
         end
       },
     },
-    config = function() require("plugins/config/cmp").setup() end,
+    config = function() require("config.cmp").setup() end,
   },
   {
     "zbirenbaum/copilot.lua",
