@@ -1,6 +1,14 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-right_format = '$time'
+# right_format = '$time'
+format = "$all$fill$time\n$character"
+
+[line_break]
+# format で明示的に改行をいれてるので、disabled にする
+disabled = true
+
+[fill]
+symbol = " "
 
 [character]
 success_symbol = '[\$](bold green)'
