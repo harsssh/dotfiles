@@ -20,4 +20,13 @@ return {
           }
     end
   },
+  {
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "williamboman/mason.nvim",
+    },
+    config = function() require("config.none-ls").setup() end,
+  },
 }

@@ -71,3 +71,13 @@ autocmd('LspAttach', {
     map('n', 'ga', vim.lsp.buf.code_action, opts)
   end,
 })
+
+-- Ruby ファイル保存時に Rubocop でフォーマット
+aug('RubyFormat', { clear = true })
+autocmd('BufWritePre', {
+  group = 'RubyFormat',
+  pattern = '*.rb',
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+  end,
+})
