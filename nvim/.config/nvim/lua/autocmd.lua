@@ -1,13 +1,13 @@
 local aug = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- terminal を開いたら insert mode に入る (行番号などは表示しない)
 aug('MyTerminal', { clear = true })
 autocmd('TermOpen', {
   group    = 'MyTerminal',
   pattern  = '*',
   callback = function()
-    vim.cmd('startinsert')
+    -- plugin にも同等の設定があるので省略
+    -- vim.cmd('startinsert')
     vim.opt_local.number         = false
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn     = 'no'
@@ -69,25 +69,5 @@ autocmd('LspAttach', {
     map('n', 'gf', vim.lsp.buf.format, opts)
     map('n', 'gn', vim.lsp.buf.rename, opts)
     map('n', 'ga', vim.lsp.buf.code_action, opts)
-  end,
-})
-
--- Ruby ファイル保存時に Rubocop でフォーマット
-aug('RubyFormat', { clear = true })
-autocmd('BufWritePre', {
-  group = 'RubyFormat',
-  pattern = '*.rb',
-  callback = function()
-    vim.lsp.buf.format({ async = true })
-  end,
-})
-
--- Lua ファイル保存時に自動フォーマット
-aug('LuaFormat', { clear = true })
-autocmd('BufWritePre', {
-  group = 'LuaFormat',
-  pattern = '*.lua',
-  callback = function()
-    vim.lsp.buf.format({ async = true })
   end,
 })

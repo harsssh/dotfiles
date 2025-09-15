@@ -5,6 +5,7 @@ M.setup = function()
 
   telescope.setup({
     defaults = {
+      sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
         prompt_position = "top",
@@ -17,10 +18,10 @@ M.setup = function()
         "target/",
         "build/",
         "dist/",
-        "%.lock$",           -- *.lock files
-        "%-lock%.json$",     -- *-lock.json files
-        "%-lock%.yaml$",     -- *-lock.yaml files
-        "%-lock%.yml$",      -- *-lock.yml files
+        "%.lock$",       -- *.lock files
+        "%-lock%.json$", -- *-lock.json files
+        "%-lock%.yaml$", -- *-lock.yaml files
+        "%-lock%.yml$",  -- *-lock.yml files
       },
       path_display = { "truncate" },
       dynamic_preview_title = true,
