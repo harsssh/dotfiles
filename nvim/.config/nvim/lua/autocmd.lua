@@ -81,3 +81,13 @@ autocmd('BufWritePre', {
     vim.lsp.buf.format({ async = true })
   end,
 })
+
+-- Lua ファイル保存時に自動フォーマット
+aug('LuaFormat', { clear = true })
+autocmd('BufWritePre', {
+  group = 'LuaFormat',
+  pattern = '*.lua',
+  callback = function()
+    vim.lsp.buf.format({ async = true })
+  end,
+})

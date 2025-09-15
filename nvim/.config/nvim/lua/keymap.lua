@@ -62,12 +62,6 @@ for _, cmd in ipairs({ 'q', 'w', 'qa', 'wq', 'wqa' }) do
   end
 end
 
--- Terminal
-map('n', '<leader>tt', "<cmd>terminal<CR>", silent)
-map('n', '<leader>ts', "<cmd>belowright 15 new<CR><cmd>terminal<CR>", silent)
-map('n', '<leader>tv', "<cmd>vertical belowright new<CR><cmd>terminal<CR>", silent)
-map('t', '<ESC>', [[<C-\><C-n>]], silent)
-
 -- Others
 -- format の gf が邪魔
 vim.g.no_ruby_maps = 1

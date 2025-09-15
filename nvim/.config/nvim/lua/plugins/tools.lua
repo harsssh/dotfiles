@@ -90,4 +90,17 @@ return {
       dir = vim.fn.stdpath("state") .. "/sessions/",
     },
   },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = function() require("config.toggleterm").setup() end,
+    keys = {
+      { "<leader>tt", "<cmd>ToggleTerm direction=float<cr>", desc = "Toggle floating terminal" },
+      { "<leader>ts", "<cmd>ToggleTerm direction=horizontal size=15<cr>", desc = "Toggle horizontal terminal" },
+      { "<leader>tv", "<cmd>ToggleTerm direction=vertical size=80<cr>", desc = "Toggle vertical terminal" },
+      { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+      { "<C-\\>", "<C-\\><C-n><cmd>ToggleTerm<cr>", mode = "t", desc = "Toggle terminal from terminal mode" },
+      { "<ESC>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode" },
+    },
+  },
 }
