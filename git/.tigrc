@@ -15,17 +15,17 @@ bind refs R !git rebase %(branch)
 bind main R !git rebase -i %(commit)
 
 # Stash all files
-bind generic S !git stash -u
+bind generic S ?@git stash -u
 
 # Create new branch
 bind main B ?@git switch -c "%(prompt Enter new branch name: )"
 bind refs B ?@git switch -c "%(prompt Enter new branch name: )" %(branch)
 
 # Delete branch
-bind refs D !git branch -d %(branch)
+bind refs D ?@git branch -d %(branch)
 
 # Discard all unstaged changes to tracked files
-bind status D @git restore :/
+bind status D ?@git restore :/
 
 # Undo commit
-bind main U !git reset --soft HEAD^
+bind main U ?@git reset --soft HEAD^

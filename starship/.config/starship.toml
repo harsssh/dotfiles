@@ -2,6 +2,13 @@
 
 right_format = '$time'
 
+[character]
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+
+# zsh ではこれだけしか使えない
+vimcmd_symbol = '[V](bold green)'
+
 [aws]
 disabled = true
 
@@ -18,4 +25,4 @@ disabled = true
 disabled = false
 
 [jobs]
-disabled = true
+disabled = false

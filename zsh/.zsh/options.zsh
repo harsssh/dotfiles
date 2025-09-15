@@ -39,3 +39,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history # set the completion strategy sequence
 zstyle ':completion:*:options' description 'yes'
 
+### Others
+bindkey -v
