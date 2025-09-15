@@ -4,7 +4,7 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.font = wezterm.font('Monaspace Argon', { weight = 'Medium' })
-config.font_size = 15
+config.font_size = 14
 config.color_scheme = 'GitHub Dark'
 config.inactive_pane_hsb = {
   saturation = 0.5,
@@ -12,7 +12,7 @@ config.inactive_pane_hsb = {
 }
 
 config.window_decorations = "RESIZE"
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.use_ime = true
 
 config.keys = {
