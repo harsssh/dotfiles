@@ -7,6 +7,8 @@ return {
       { '<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Telescope: Live Grep' },
       { '<leader>fb', function() require('telescope.builtin').current_buffer_fuzzy_find() end, desc = 'Telescope: Fuzzy Find in Current Buffer' },
       { '<leader>gs', function() require('telescope.builtin').git_status({ show_untracked = true }) end, desc = 'Telescope: Git Status (with untracked)' },
+      -- JetBrains の cmd + e を意識
+      { '<leader>fe', function() require('telescope.builtin').oldfiles({ prompt_title = "Recent Files" }) end, desc = 'Search Recent Files' },
       {
         '<leader>fs',
         function()
