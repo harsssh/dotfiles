@@ -44,8 +44,8 @@ map('n', 's=', repeatable_resize('resize +3', 's='), silent)
 map('n', 's0', '<C-w>=', silent)
 
 -- Edit
-map('n', '+', '<C-a>')
-map('n', '-', '<C-x>')
+-- map('n', '+', '<C-a>')
+-- map('n', '-', '<C-x>')
 
 -- Yank
 map('n', 'Y', 'y$')
