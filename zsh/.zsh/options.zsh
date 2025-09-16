@@ -30,7 +30,7 @@ setopt hist_save_no_dups
 setopt share_history
 
 ### Completion
-autoload -U compinit && compinit
+autoload -U compinit && compinit -C
 autoload -U bashcompinit && bashcompinit
 zstyle ':completion:*:default' menu select=2 # select by arrow keys
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
