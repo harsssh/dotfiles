@@ -104,3 +104,4 @@ bindkey -v
 # ----------------------------------------------------------------------------
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
+eval "$(fzf --zsh)"
