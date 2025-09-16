@@ -1,18 +1,15 @@
-source ~/.zsh/env.zsh
+# ============================================================================
+# Zsh Configuration Entry Point
+# ============================================================================
+# This file serves as the clean entry point for all zsh configurations.
+# All actual configuration is organized in ~/.zsh/ directory.
+# ============================================================================
 
-source ~/.zsh/options.zsh
-source ~/.zsh/zinit.zsh
-source ~/.zsh/functions.zsh
-source ~/.zsh/aliases.zsh
-source ~/.zsh/path.zsh
+# Load core configuration (environment, PATH, options, completion)
+source ~/.zsh/core.zsh
 
-# pnpm
-export PNPM_HOME="/Users/kemizuki/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Load plugin management (zinit)
+source ~/.zsh/plugins.zsh
 
-# bun completions
-[ -s "/Users/kentaro.mizuki/.bun/_bun" ] && source "/Users/kentaro.mizuki/.bun/_bun"
+# Load user customizations (aliases, functions)
+source ~/.zsh/user.zsh
