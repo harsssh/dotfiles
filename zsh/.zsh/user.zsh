@@ -1,10 +1,4 @@
-# ============================================================================
-# User Customizations
-# ============================================================================
-
-# ----------------------------------------------------------------------------
 # Aliases - System Commands
-# ----------------------------------------------------------------------------
 # Use GNU coreutils if available
 if command -v gls >/dev/null 2>&1; then
   alias ls='gls --color=auto'
@@ -24,9 +18,7 @@ alias mkdir='mkdir -p'
 alias tgz='tar -xzvf'
 alias ..='cd ..'
 
-# ----------------------------------------------------------------------------
 # Aliases - Development Tools
-# ----------------------------------------------------------------------------
 # Editors
 alias vi='nvim'
 alias vim='nvim'
@@ -43,9 +35,7 @@ alias ff='fzf'
 alias ffb='git branch --format="%(refname:short)" | fzf'
 alias doc="cat << 'EOF'"
 
-# ----------------------------------------------------------------------------
 # Aliases - Git
-# ----------------------------------------------------------------------------
 alias g='git'
 alias gpl='git pull'
 alias gps='git push'
@@ -78,9 +68,7 @@ alias gdn='git diff --name-only'
 alias gmt='git mergetool'
 alias glc='git log @{u}..HEAD --oneline'
 
-# ----------------------------------------------------------------------------
 # Custom Functions
-# ----------------------------------------------------------------------------
 # Interactive history search with fzf
 function select-history() {
     BUFFER=$(history -nr 1 | fzf -q "$LBUFFER" --prompt="History> " --reverse)

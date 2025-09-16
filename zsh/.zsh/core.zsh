@@ -1,10 +1,4 @@
-# ============================================================================
-# Core Zsh Configuration
-# ============================================================================
-
-# ----------------------------------------------------------------------------
 # Environment Variables
-# ----------------------------------------------------------------------------
 export CDPATH=~:~/Documents:~/Documents/42:~/ghq/github.com/harsssh:~/ghq/github.com
 export CLICOLOR=1
 export HISTFILE=${HOME}/.zhistory
@@ -13,9 +7,7 @@ export SAVEHIST=10000
 export MAKEFLAGS="SHELL=/bin/bash"
 export GHUSER='harsssh'
 
-# ----------------------------------------------------------------------------
 # PATH Configuration
-# ----------------------------------------------------------------------------
 # Ensure PATH uniqueness
 typeset -U path PATH
 
@@ -44,9 +36,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# ----------------------------------------------------------------------------
 # Shell Options
-# ----------------------------------------------------------------------------
 # File and Directory Operations
 setopt auto_param_slash      # Auto-append slash to directory names during tab completion
 setopt mark_dirs             # Mark directory names with a trailing slash during listing
@@ -78,9 +68,7 @@ setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt share_history
 
-# ----------------------------------------------------------------------------
 # Completion System
-# ----------------------------------------------------------------------------
 autoload -U compinit && compinit -C
 autoload -U bashcompinit && bashcompinit
 autoload -U colors && colors
@@ -93,15 +81,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:options' description 'yes'
 
-# ----------------------------------------------------------------------------
 # Key Bindings
-# ----------------------------------------------------------------------------
 bindkey -v
 
 
-# ----------------------------------------------------------------------------
 # Initialize Tools
-# ----------------------------------------------------------------------------
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 eval "$(fzf --zsh)"

@@ -8,7 +8,6 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 export PATH="$PATH:/Users/kemizuki/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
 
-# path が違ったらどうする?
 if [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
