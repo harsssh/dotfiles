@@ -64,9 +64,7 @@ function M.setup()
       end
     end,
     sources = {
-      null_ls.builtins.formatting.rubocop.with({
-        args = { "-f", "json", "--force-exclusion", "-A", "--stdin", "$FILENAME" },
-      }),
+      null_ls.builtins.formatting.rubocop,
       null_ls.builtins.formatting.biome,
       null_ls.builtins.formatting.stylua,
     },
