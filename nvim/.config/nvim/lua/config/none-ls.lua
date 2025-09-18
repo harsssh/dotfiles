@@ -67,6 +67,8 @@ function M.setup()
       null_ls.builtins.formatting.rubocop,
       null_ls.builtins.formatting.biome,
       null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.gofumpt,
+      null_ls.builtins.formatting.goimports,
     },
   })
 end
