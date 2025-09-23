@@ -82,7 +82,7 @@ zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _
 zstyle ':completion:*:options' description 'yes'
 
 # Key Bindings
-bindkey -v
+# bindkey -v
 
 
 # Initialize Tools
