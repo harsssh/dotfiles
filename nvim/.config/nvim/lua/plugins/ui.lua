@@ -21,7 +21,15 @@ return {
     event = "BufReadPre",
     opts = {},
   },
-  { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {
+      notification = {
+        override_vim_notify = true
+      }
+    }
+  },
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile" },
