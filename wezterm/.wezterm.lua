@@ -11,7 +11,7 @@ config.inactive_pane_hsb = {
   brightness = 0.5,
 }
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE | RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_ime = true
 config.scrollback_lines = 100000

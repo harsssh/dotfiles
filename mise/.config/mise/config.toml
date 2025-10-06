@@ -15,3 +15,8 @@ gradle = "latest"
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["ruby", "node"]
+
+[env]
+CLAUDE_CODE_USE_VERTEX=1
+CLOUD_ML_REGION="us-east5"
+ANTHROPIC_VERTEX_PROJECT_ID="c-630-ms-dev-ai-playground"
