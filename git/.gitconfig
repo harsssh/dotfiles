@@ -22,6 +22,7 @@
     signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+ kemizuki@MBP
 [core]
     editor = nvim
+	autocrlf = input
 [push]
     default = current
     autoSetupRemote = true
