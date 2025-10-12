@@ -16,12 +16,16 @@ config.hide_tab_bar_if_only_one_tab = true
 config.use_ime = true
 config.scrollback_lines = 100000
 
-config.keys = {
-  -- デフォルトは option + enter
+config.keys = { -- デフォルトは option + enter
   {
     key = "n",
     mods = "SHIFT|CTRL",
     action = act.ToggleFullScreen,
+  },
+  {
+    key = "Enter",
+    mods = "SHIFT",
+    action = wezterm.action.SendString("\x1b\r"),
   },
   -- ⌘ + d で右方向にペイン分割
   { key = "d", mods = "CMD", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
