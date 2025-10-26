@@ -35,7 +35,7 @@
 [rerere]
     enabled = true
 [pull]
-    rebase = true
+    rebase = false
 [commit]
     gpgsign = true
 [init]
