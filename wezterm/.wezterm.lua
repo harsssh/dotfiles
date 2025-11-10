@@ -3,7 +3,10 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("Monaspace Argon", { weight = "Regular" })
+config.font = wezterm.font_with_fallback({
+  "Monaspace Argon",
+  "Noto Sans Mono CJK JP", -- 標準では入ってない
+})
 config.font_size = 14
 config.color_scheme = "GitHub Dark"
 config.inactive_pane_hsb = {
