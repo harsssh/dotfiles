@@ -4,8 +4,8 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.font = wezterm.font_with_fallback({
-  "Monaspace Argon",
-  "Noto Sans Mono CJK JP", -- 標準では入ってない
+  { family = "Monaspace Argon", weight = "Medium" },
+  { family = "Noto Sans Mono CJK JP", weight = "Regular" }, -- 標準では入ってない
 })
 config.font_size = 14
 config.color_scheme = "GitHub Dark"
