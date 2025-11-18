@@ -1,0 +1,41 @@
+{
+  "shortcuts": {
+    "returnToMenu": {
+      "ctrl": true,
+      "key": "e"
+    },
+    "cancel": {
+      "key": "escape"
+    }
+  },
+  "statusHooks": {
+    "idle": {
+      "command": "osascript -e \"display notification \\\"Worktree: ${CCMANAGER_WORKTREE}\\nBranch: ${CCMANAGER_WORKTREE_BRANCH}\\\" with title \\\"ccmanager is now idle\\\"\"",
+      "enabled": true
+    },
+    "waiting_input": {
+      "command": "osascript -e \"display notification \\\"Worktree: ${CCMANAGER_WORKTREE}\\nBranch: ${CCMANAGER_WORKTREE_BRANCH}\\\" with title \\\"CCManager Waiting for Input\\\"\"",
+      "enabled": true
+    }
+  },
+  "worktreeHooks": {},
+  "worktree": {
+    "autoDirectory": true,
+    "autoDirectoryPattern": "../{branch}",
+    "copySessionData": true,
+    "sortByLastSession": false
+  },
+  "command": {
+    "command": "claude"
+  },
+  "commandPresets": {
+    "presets": [
+      {
+        "id": "1",
+        "name": "Main",
+        "command": "claude"
+      }
+    ],
+    "defaultPresetId": "1"
+  }
+}
