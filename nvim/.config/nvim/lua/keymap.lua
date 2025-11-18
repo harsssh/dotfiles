@@ -16,11 +16,17 @@ map('v', 'k', 'gk', silent)
 map('n', 'H', '0', silent)
 map('v', 'H', '0', silent)
 map('n', 'L', '$', silent)
-map('v', 'L', '$', silent) -- Window
-map('n', 'sh', '<C-w>h')
-map('n', 'sj', '<C-w>j')
-map('n', 'sk', '<C-w>k')
-map('n', 'sl', '<C-w>l')
+map('v', 'L', '$', silent)
+
+-- Window
+-- tmux 環境外でも Ctrl+hjkl でウィンドウ移動できるようにする
+-- tmux 環境では vim-tmux-navigator が優先される
+if vim.env.TMUX == nil then
+  map('n', '<C-h>', '<C-w>h')
+  map('n', '<C-j>', '<C-w>j')
+  map('n', '<C-k>', '<C-w>k')
+  map('n', '<C-l>', '<C-w>l')
+end
 map('n', 'sH', '<C-w>H')
 map('n', 'sJ', '<C-w>J')
 map('n', 'sK', '<C-w>K')

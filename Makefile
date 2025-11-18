@@ -1,4 +1,4 @@
-STOW_DIRS := config git mise nvim starship zsh wezterm vim mycli zellij claude
+STOW_DIRS := config git mise nvim starship zsh wezterm vim mycli claude tmux ccmanager
 
 .PHONY: all
 all: dry-run

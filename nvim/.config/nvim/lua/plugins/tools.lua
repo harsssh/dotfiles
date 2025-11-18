@@ -103,4 +103,27 @@ return {
       { "<ESC>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode" },
     },
   },
+  -- tmux integration
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<C-h>", "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate left (tmux aware)" },
+      { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate down (tmux aware)" },
+      { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate up (tmux aware)" },
+      { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right (tmux aware)" },
+      { "<C-p>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate to previous pane (tmux aware)" },
+    },
+  },
+  {
+    "tmux-plugins/vim-tmux",
+    ft = "tmux",
+  },
 }

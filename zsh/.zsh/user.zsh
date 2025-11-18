@@ -48,6 +48,8 @@ alias ga='git add'
 alias gai='git add -i'
 alias gaa='git add -A'
 alias gap='git add -p'
+alias gan='git add -N'
+alias gaan='git add -N -A'
 alias gb='git branch'
 alias gba='git branch --all'
 alias gbm='git branch -m'
@@ -68,6 +70,18 @@ alias gdn='git diff --name-only'
 alias gmt='git mergetool'
 alias glc='git log @{u}..HEAD --oneline'
 
+# Aliases - Tmux
+alias tmux='tmux -2'  # Force 256 color support
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tsd='tmux new-session -d -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
+
+alias ccm='ccmanager'
+
 # Custom Functions
 # Interactive history search with fzf
 function select-history() {
@@ -76,3 +90,31 @@ function select-history() {
 }
 zle -N select-history
 bindkey '^r' select-history
+
+# Auto-start tmux session
+# 以下の条件を満たす場合に tmux を自動起動:
+# - tmux がインストールされている
+# - 既に tmux セッション内でない
+# - SSH 接続でない、または SSH_TMUX 環境変数が設定されている
+# - インタラクティブシェルである
+if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$INSIDE_EMACS" ] && [[ $- == *i* ]]; then
+    # SSH 接続の場合は SSH_TMUX=1 を設定することで自動起動を有効化
+    if [ -z "$SSH_CONNECTION" ] || [ -n "$SSH_TMUX" ]; then
+        # 既存のセッションがあれば接続、なければ新規作成
+        tmux attach-session -t main 2>/dev/null || tmux new-session -s main
+    fi
+fi
+
+
+
+# tmux ウィンドウ一覧を詳細表示
+function tmux_windows() {
+    if [[ -z "$TMUX" ]]; then
+        tmux list-windows -a -F '#{session_name}:#{window_index} #{window_name} [#{pane_current_command}]'
+    else
+        tmux list-windows -F '#I: #W [#{pane_current_command}]'
+    fi
+}
+
+# エイリアス
+alias tw='tmux_windows'
