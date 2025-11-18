@@ -79,6 +79,8 @@ alias tl='tmux list-sessions'
 alias tksv='tmux kill-server'
 alias tkss='tmux kill-session -t'
 
+alias ccm='ccmanager'
+
 # Custom Functions
 # Interactive history search with fzf
 function select-history() {

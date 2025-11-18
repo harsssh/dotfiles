@@ -119,7 +119,7 @@ return {
       { "<C-j>", "<cmd>TmuxNavigateDown<cr>", desc = "Navigate down (tmux aware)" },
       { "<C-k>", "<cmd>TmuxNavigateUp<cr>", desc = "Navigate up (tmux aware)" },
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right (tmux aware)" },
-      { "<C-\\>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate to previous pane (tmux aware)" },
+      { "<C-p>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate to previous pane (tmux aware)" },
     },
   },
   {
