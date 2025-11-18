@@ -105,54 +105,7 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$INSIDE_EMACS" ] && [
     fi
 fi
 
-# =============================================================================
-# Tmux バックグラウンド実行ヘルパー
-# =============================================================================
 
-# 別ウィンドウで実行（フォーカスは現在のウィンドウに保持）
-function tmux_new_window() {
-    if [[ -z "$TMUX" ]]; then
-        echo "Error: tmux セッション内で実行してください"
-        return 1
-    fi
-
-    local cmd="$@"
-    if [[ -z "$cmd" ]]; then
-        echo "Usage: tnw <command>"
-        return 1
-    fi
-
-    # コマンド名をウィンドウ名として使用
-    local window_name="${cmd%% *}"
-
-    # -d オプションで detached（フォーカスを移動しない）で作成
-    tmux new-window -d -n "$window_name" "$cmd"
-
-    # 作成したウィンドウ番号を表示
-    local new_window=$(tmux list-windows -F "#{window_index}:#{window_name}" | grep ":$window_name" | tail -1 | cut -d: -f1)
-    echo "Created window $new_window: $window_name (running in background)"
-    echo "Switch to it with: Ctrl+b $new_window"
-}
-
-# 現在のペインでバックグラウンド実行（detach）
-function tmux_bg() {
-    if [[ -z "$TMUX" ]]; then
-        echo "Error: tmux セッション内で実行してください"
-        return 1
-    fi
-
-    local cmd="$@"
-    if [[ -z "$cmd" ]]; then
-        echo "Usage: tbg <command>"
-        return 1
-    fi
-
-    # バックグラウンドで実行
-    echo "Running in background: $cmd"
-    nohup bash -c "$cmd" > /tmp/tmux_bg_$(date +%s).log 2>&1 &
-    local pid=$!
-    echo "PID: $pid, Log: /tmp/tmux_bg_$(date +%s).log"
-}
 
 # tmux ウィンドウ一覧を詳細表示
 function tmux_windows() {
@@ -165,5 +118,3 @@ function tmux_windows() {
 
 # エイリアス
 alias tw='tmux_windows'
-alias tnw='tmux_new_window'
-alias tbg='tmux_bg'
