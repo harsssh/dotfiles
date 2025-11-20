@@ -11,11 +11,11 @@
   "statusHooks": {
     "idle": {
       "command": "osascript -e \"display notification \\\"Worktree: ${CCMANAGER_WORKTREE}\\nBranch: ${CCMANAGER_WORKTREE_BRANCH}\\\" with title \\\"ccmanager is now idle\\\"\"",
-      "enabled": true
+      "enabled": false
     },
     "waiting_input": {
       "command": "osascript -e \"display notification \\\"Worktree: ${CCMANAGER_WORKTREE}\\nBranch: ${CCMANAGER_WORKTREE_BRANCH}\\\" with title \\\"CCManager Waiting for Input\\\"\"",
-      "enabled": true
+      "enabled": false
     }
   },
   "worktreeHooks": {},
