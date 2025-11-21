@@ -121,6 +121,10 @@ return {
       { "<C-l>", "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right (tmux aware)" },
       { "<C-p>", "<cmd>TmuxNavigatePrevious<cr>", desc = "Navigate to previous pane (tmux aware)" },
     },
+    init = function()
+      -- ラップアラウンドを無効化 (端で停止)
+      vim.g.tmux_navigator_no_wrap = 1
+    end,
   },
   {
     "tmux-plugins/vim-tmux",
