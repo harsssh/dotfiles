@@ -1,5 +1,5 @@
 [alias]
-    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = log --all --topo-order --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
     st = status
     co = checkout
     ps = push
@@ -19,10 +19,10 @@
 [user]
     email = 66548698+harsssh@users.noreply.github.com
     name = Kentaro Mizuki
-    signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+ kemizuki@MBP
+    signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+
 [core]
     editor = nvim
-	autocrlf = input
+    autocrlf = input
 [push]
     default = current
     autoSetupRemote = true
@@ -48,4 +48,5 @@
     format = ssh
 [gpg "ssh"]
     program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-
+[url "git@github.com:"]
+	insteadOf = https://github.com/

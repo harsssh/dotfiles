@@ -6,3 +6,5 @@ source ~/.zsh/plugins.zsh
 
 # Load user customizations (aliases, functions)
 source ~/.zsh/user.zsh
+# bun completions
+[ -s "/Users/kentaro.mizuki/.bun/_bun" ] && source "/Users/kentaro.mizuki/.bun/_bun"

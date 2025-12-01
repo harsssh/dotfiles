@@ -91,22 +91,6 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
-# Auto-start tmux session
-# 以下の条件を満たす場合に tmux を自動起動:
-# - tmux がインストールされている
-# - 既に tmux セッション内でない
-# - SSH 接続でない、または SSH_TMUX 環境変数が設定されている
-# - インタラクティブシェルである
-if command -v tmux &> /dev/null && [ -z "$TMUX" ] && [ -z "$INSIDE_EMACS" ] && [[ $- == *i* ]]; then
-    # SSH 接続の場合は SSH_TMUX=1 を設定することで自動起動を有効化
-    if [ -z "$SSH_CONNECTION" ] || [ -n "$SSH_TMUX" ]; then
-        # 既存のセッションがあれば接続、なければ新規作成
-        tmux attach-session -t main 2>/dev/null || tmux new-session -s main
-    fi
-fi
-
-
-
 # tmux ウィンドウ一覧を詳細表示
 function tmux_windows() {
     if [[ -z "$TMUX" ]]; then
