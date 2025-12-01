@@ -1,5 +1,13 @@
 export LANG="en_US.UTF-8"
 
+# Homebrew
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# OrbStack
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
 if [[ -z "$SDKROOT" ]]; then
   local cache_file="$HOME/.cache/zsh_sdkroot"
   if [[ ! -f "$cache_file" || "$cache_file" -ot /usr/bin/xcrun ]]; then
