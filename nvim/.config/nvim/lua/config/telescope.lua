@@ -3,8 +3,15 @@ local M = {}
 M.setup = function()
   local telescope = require('telescope')
 
+  local actions = require('telescope.actions')
+
   telescope.setup({
     defaults = {
+      mappings = {
+        i = {
+          ['<C-f>'] = actions.to_fuzzy_refine,
+        },
+      },
       sorting_strategy = 'ascending',
       layout_strategy = 'vertical',
       layout_config = {
@@ -49,7 +56,7 @@ M.setup = function()
             "--glob", "!*-lock.yaml",
           }
         end,
-        only_sort_text = true,
+        only_sort_text = false,
       },
       current_buffer_fuzzy_find = {
         previewer = false,
