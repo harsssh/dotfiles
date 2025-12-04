@@ -24,20 +24,8 @@ opacity = 1.0
 size = 14
 
 [font.normal]
-family = "Monaspace Argon"
+family = "MonaspiceAr Nerd Font"
 style = "Regular"
-
-[font.bold]
-family = "Monaspace Argon SemiWide"
-style = "Bold"
-
-[font.italic]
-family = "Monaspace Argon"
-style = "Italic"
-
-[font.bold_italic]
-family = "Monaspace Argon SemiWide"
-style = "Bold Italic"
 
 [scrolling]
 history = 100000
