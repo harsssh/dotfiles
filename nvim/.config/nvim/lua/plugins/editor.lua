@@ -77,6 +77,7 @@ return {
     },
   },
   { "tpope/vim-repeat", event = { "BufReadPost", "BufNewFile" } },
+  { "neovimhaskell/haskell-vim", ft = { "haskell", "lhaskell", "cabal" } },
   {
     'windwp/nvim-ts-autotag',
     event = { "InsertEnter" },

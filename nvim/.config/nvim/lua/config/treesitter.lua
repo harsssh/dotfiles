@@ -7,9 +7,12 @@ M.setup = function()
     ignore_install = {},
     modules = {},
     auto_install = true,
-    highlight = { 
+    highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true,
     },
     fold = {
       enable = true,
