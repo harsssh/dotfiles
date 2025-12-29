@@ -10,7 +10,7 @@ fi
 # Zsh configuration shortcuts
 alias zrc='vim ~/.zshrc'
 alias zenv='vim ~/.zshenv'
-alias reload="source ~/.zshenv && source ~/.zshrc"
+alias reload="source ~/.zshrc"
 
 # Safety and convenience
 alias rm='rm -i'

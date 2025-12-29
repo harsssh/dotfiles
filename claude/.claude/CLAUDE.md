@@ -1,4 +1,12 @@
-# 全プロジェクト共通の instruction
+# CLAUDE.md ユーザー設定
+
+Always use context7 when I need code generation, setup or
+configuration steps, or library/API documentation. This means
+you should automatically use the Context7 MCP tools to resolve
+library id and get library docs without me having to
+explicitly ask.
+
+---
 
 ## 全般
 - 日本語で回答する
@@ -13,6 +21,8 @@
 ## コーディング
 - コードには How, テストコードには What, コミットログには Why, コードコメントには Why not を書く
     - 関数の処理内容を説明するだけのコメントは書いてはいけない。説明が必要なほど長い関数は分割するべきである。
-- コミットメッセージに Claude Code の署名を付けない
 - git-switch, git-restore を使って安全に git リポジトリを操作して。git-checkout, git-reset を乱用しない。
+- formatter, linter のエラーを ignore コメントで無効化してはいけない
 
+## その他
+- alias で `rm` は interactive に実行されるので、Claude がファイルを削除するときは `rm -f` を使う

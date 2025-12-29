@@ -1,3 +1,24 @@
+# Locale
+export LANG="en_US.UTF-8"
+
+# Homebrew
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# OrbStack
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# SDKROOT (cached for performance)
+if [[ -z "$SDKROOT" ]]; then
+  local cache_file="$HOME/.cache/zsh_sdkroot"
+  if [[ ! -f "$cache_file" || "$cache_file" -ot /usr/bin/xcrun ]]; then
+    [[ ! -d "$HOME/.cache" ]] && mkdir -p "$HOME/.cache"
+    command -v xcrun >/dev/null 2>&1 && xcrun --sdk macosx --show-sdk-path > "$cache_file" 2>/dev/null
+  fi
+  [[ -f "$cache_file" ]] && export SDKROOT=$(<"$cache_file")
+fi
+
 # Environment Variables
 export CDPATH=~:~/Documents:~/Documents/42:~/ghq/github.com/harsssh:~/ghq/github.com
 export CLICOLOR=1
@@ -19,6 +40,7 @@ path=(
   /opt/homebrew/opt/llvm/bin
   ~/.local/go/bin
   ~/nvim/bin
+  /usr/local/bin
   $path
   /Applications/WezTerm.app/Contents/MacOS
   ~/.ghcup/bin
@@ -85,7 +107,36 @@ zstyle ':completion:*:options' description 'yes'
 # bindkey -v
 
 
-# Initialize Tools
-eval "$(starship init zsh)"
-eval "$(mise activate zsh)"
-eval "$(fzf --zsh)"
+# Initialize Tools (cached for performance)
+_zsh_cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+[[ ! -d "$_zsh_cache_dir" ]] && mkdir -p "$_zsh_cache_dir"
+
+# starship
+_starship_cache="$_zsh_cache_dir/starship_init.zsh"
+if [[ ! -f "$_starship_cache" || "$_starship_cache" -ot "$(command -v starship)" ]]; then
+  starship init zsh > "$_starship_cache"
+fi
+source "$_starship_cache"
+
+# mise
+_mise_cache="$_zsh_cache_dir/mise_activate.zsh"
+if [[ ! -f "$_mise_cache" || "$_mise_cache" -ot "$(command -v mise)" ]]; then
+  mise activate zsh > "$_mise_cache"
+fi
+source "$_mise_cache"
+
+# LLVM (disabled if NO_LLVM is set via mise.local.toml etc.)
+if [ -z "$NO_LLVM" ] && [ -d "/opt/homebrew/opt/llvm" ]; then
+  export CC="/opt/homebrew/opt/llvm/bin/clang"
+  export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+  export CPLUS_INCLUDE_PATH="/opt/homebrew/opt/llvm/include"
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+fi
+
+# fzf
+_fzf_cache="$_zsh_cache_dir/fzf_init.zsh"
+if [[ ! -f "$_fzf_cache" || "$_fzf_cache" -ot "$(command -v fzf)" ]]; then
+  fzf --zsh > "$_fzf_cache"
+fi
+source "$_fzf_cache"

@@ -50,3 +50,7 @@
     program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[feature]
+	manyFiles = true
+[log]
+	abbrevCommit = true
