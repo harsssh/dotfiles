@@ -12,7 +12,7 @@
     r = reset
     sw = switch
     re = restore
-    dlog = "!f() { git log -p --ext-diff $@; }; f"
+    difft = "!GIT_EXTERNAL_DIFF=difft git diff"
     pushf = push --force-if-includes --force-with-lease
     cp = cherry-pick
     rb = rebase
@@ -23,6 +23,7 @@
 [core]
     editor = nvim
     autocrlf = input
+    fsmonitor = true
 [push]
     default = current
     autoSetupRemote = true
@@ -41,7 +42,6 @@
 [init]
     defaultBranch = main
 [diff]
-    external = difft
 [advice]
     mergeConflict = false
 [gpg]
