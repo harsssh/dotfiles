@@ -69,5 +69,5 @@
   };
 
   # tig
-  home.file.".tigrc".source = ../../config/tig/.tigrc;
+  home.file.".tigrc".source = ../../config/.tigrc;
 }
