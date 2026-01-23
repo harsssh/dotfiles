@@ -1,3 +1,8 @@
+{ pkgs, ... }:
+let
+  brewPrefix =
+    if pkgs.stdenv.hostPlatform.isAarch64 then "/opt/homebrew" else "/usr/local";
+in
 {
   homebrew = {
     enable = true;
@@ -20,4 +25,8 @@
       "visual-studio-code"
     ];
   };
+
+  environment.interactiveShellInit = ''
+    eval "$(${brewPrefix}/bin/brew shellenv)"
+  '';
 }
