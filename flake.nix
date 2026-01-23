@@ -21,12 +21,6 @@
     let
       system = "aarch64-darwin";
       username = "kentaro.mizuki";
-      pkgs = nixpkgs.legacyPackages.${system};
-      homeConfig = {
-        home.username = username;
-        home.homeDirectory = "/Users/${username}";
-        imports = [ ./modules/home.nix ];
-      };
     in
     {
       darwinConfigurations.work = nix-darwin.lib.darwinSystem {
@@ -35,13 +29,14 @@
           home-manager.darwinModules.home-manager
           (import ./modules/darwin.nix { inherit username; })
           ./modules/homebrew.nix
-          { home-manager.users.${username} = homeConfig; }
+          {
+            home-manager.users.${username} = {
+              home.username = username;
+              home.homeDirectory = "/Users/${username}";
+              imports = [ ./modules/home.nix ];
+            };
+          }
         ];
-      };
-
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ homeConfig ];
       };
     };
 }
