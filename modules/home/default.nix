@@ -47,6 +47,9 @@
   home.file.".claude/settings.json".source = ../../config/claude/settings.json;
   home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
 
+  # mycli
+  home.file.".myclirc".source = ../../config/mycli/.myclirc;
+
   # starship
   programs.starship.enable = true;
   xdg.configFile."starship.toml".source = ../../config/starship/starship.toml;
