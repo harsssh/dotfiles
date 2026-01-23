@@ -36,6 +36,9 @@
 
     # Go
     gopls
+
+    # Vim
+    vim
   ];
   programs.home-manager.enable = true;
 
@@ -52,6 +55,9 @@
 
   # mycli
   home.file.".myclirc".source = ../../config/mycli/.myclirc;
+
+  # vim
+  home.file.".vimrc".source = ../../config/vim/.vimrc;
 
   # starship
   programs.starship.enable = true;

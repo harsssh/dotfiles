@@ -1,5 +1,4 @@
 syntax on
-
 colorscheme habamax
 
 inoremap jj <ESC>
@@ -18,6 +17,4 @@ set hlsearch
 set clipboard+=unnamed
 set showcmd
 set virtualedit=all
-
-" vimdiff で役に立つ
 set diffopt+=algorithm:patience,indent-heuristic
