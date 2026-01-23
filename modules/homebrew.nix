@@ -10,7 +10,6 @@
       "mycli"
       "neovim"
       "ni"
-      "stow"
       "terraform"
       "uv"
     ];
