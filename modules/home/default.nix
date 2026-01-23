@@ -3,6 +3,7 @@
   imports = [
     ./git.nix
     ./shell.nix
+    ./tmux.nix
     ./zsh.nix
   ];
 
@@ -65,7 +66,4 @@
 
   # fzf
   programs.fzf.enable = true;
-
-  # tmux
-  programs.tmux.enable = true;
 }
