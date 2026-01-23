@@ -47,6 +47,8 @@
                   nixfmt
                 ];
                 programs.home-manager.enable = true;
+
+                xdg.configFile."starship.toml".source = ./config/starship/starship.toml;
               };
           }
         ];
