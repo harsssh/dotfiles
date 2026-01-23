@@ -47,6 +47,9 @@
   home.file.".claude/settings.json".source = ../../config/claude/settings.json;
   home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
 
+  # mise
+  xdg.configFile."mise/config.toml".source = ../../config/mise/config.toml;
+
   # mycli
   home.file.".myclirc".source = ../../config/mycli/.myclirc;
 
