@@ -22,7 +22,10 @@
       profiles = import ./profiles.nix;
       darwinProfiles = lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) profiles;
 
-      mkDarwinConfig = extraModules: profileName: profile:
+      mkDarwinConfig = privateModules: profileName: profile:
+        let
+          resolvedPrivateModules = map (f: privateModules.${f}) (profile.privateFeatures or [ ]);
+        in
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
           specialArgs = { inherit inputs profile profileName; };
@@ -30,11 +33,11 @@
             home-manager.darwinModules.home-manager
             ./modules/darwin
             ./modules/darwin/homebrew.nix
-          ] ++ extraModules;
+          ] ++ resolvedPrivateModules;
         };
 
-      mkDarwinConfigurations = extraModules:
-        lib.mapAttrs (mkDarwinConfig extraModules) darwinProfiles;
+      mkDarwinConfigurations = privateModules:
+        lib.mapAttrs (mkDarwinConfig privateModules) darwinProfiles;
     in
     {
       darwinConfigurations = mkDarwinConfigurations [ ];
