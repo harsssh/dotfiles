@@ -33,6 +33,9 @@
 
     # LLVM
     llvmPackages.clang
+
+    # Go
+    gopls
   ];
   programs.home-manager.enable = true;
 
