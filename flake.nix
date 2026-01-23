@@ -18,13 +18,11 @@
   outputs =
     inputs@{ nix-darwin, home-manager, ... }:
     let
+      lib = inputs.nixpkgs.lib;
       profiles = import ./profiles.nix;
 
       mkDarwinConfig =
-        profileName:
-        let
-          profile = profiles.${profileName};
-        in
+        profile:
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
           specialArgs = { inherit inputs profile; };
@@ -34,9 +32,16 @@
             ./modules/darwin/homebrew.nix
           ];
         };
+
+      builders = {
+        darwinConfigurations = {
+          predicate = p: lib.hasSuffix "darwin" p.system;
+          mkConfig = mkDarwinConfig;
+        };
+      };
     in
-    {
-      darwinConfigurations.work = mkDarwinConfig "work";
-      darwinConfigurations.personal = mkDarwinConfig "personal";
-    };
+    builtins.mapAttrs (
+      _: b:
+      builtins.mapAttrs (_: b.mkConfig) (lib.filterAttrs (_: b.predicate) profiles)
+    ) builders;
 }
