@@ -2,7 +2,7 @@
 
 このリポジトリは公開用の dotfiles。nix-darwin + home-manager で macOS の設定を宣言的に管理する。
 
-**このリポジトリは switch 対象ではない。** システムへの適用は `dotfiles-private` から行う。
+このリポジトリは switch 対象ではない。システムへの適用は `dotfiles-private` から行う。
 
 ## プロファイル
 
@@ -19,9 +19,10 @@
 
 `privateFeatures` によりプライベートモジュールの注入を制御する。
 
-1. `profiles.nix` で各プロファイルが必要とする `privateFeatures` を宣言する
-2. `dotfiles-private` でプライベートモジュールを定義し、feature 名と紐付ける
-3. ビルド時、プロファイルの `privateFeatures` に対応するモジュールが解決され注入される
+プライベートモジュールの追加手順:
+
+1. `dotfiles-private` でモジュールを定義し、名前をつけて `dotfiles` から export しているコンストラクタに渡す。
+2. `dotfiles` の `profiles.nix` でその名前を `privateFeatures` として参照する
 
 モジュールは `type` により home-manager モジュールか nix-darwin モジュールとして注入される。
 
