@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+  llvm = pkgs.llvmPackages;
+in
 {
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
@@ -24,6 +27,9 @@
     # JavaScript/Node
     bun
     pnpm
+
+    # LLVM
+    llvm.clang
   ];
   programs.home-manager.enable = true;
 
@@ -32,6 +38,8 @@
     CLICOLOR = "1";
     MAKEFLAGS = "SHELL=/bin/bash";
     GHUSER = "harsssh";
+    CC = "${llvm.clang}/bin/clang";
+    CXX = "${llvm.clang}/bin/clang++";
   };
 
   home.sessionPath = [

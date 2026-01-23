@@ -14,15 +14,6 @@ fi
 # CDPATH
 export CDPATH=~:~/Documents:~/Documents/42:~/ghq/github.com/harsssh:~/ghq/github.com
 
-# PATH for Homebrew-specific tools
-typeset -U path PATH
-path=(
-  /opt/homebrew/opt/coreutils/bin
-  /opt/homebrew/opt/openssl@3/bin
-  /opt/homebrew/opt/llvm/bin
-  $path
-)
-
 # Shell Options (auto_cd is set by home-manager)
 setopt auto_param_slash
 setopt mark_dirs
@@ -62,15 +53,6 @@ if [[ ! -f "$_mise_cache" || "$_mise_cache" -ot "$(command -v mise)" ]]; then
   mise activate zsh > "$_mise_cache"
 fi
 source "$_mise_cache"
-
-# LLVM (disabled if NO_LLVM is set)
-if [ -z "$NO_LLVM" ] && [ -d "/opt/homebrew/opt/llvm" ]; then
-  export CC="/opt/homebrew/opt/llvm/bin/clang"
-  export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-  export CPLUS_INCLUDE_PATH="/opt/homebrew/opt/llvm/include"
-  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-fi
 
 # Custom Functions
 function select-history() {
