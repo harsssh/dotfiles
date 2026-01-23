@@ -35,7 +35,14 @@
       "hist_save_no_dups"
     ];
     completionInit = ''
-      autoload -U compinit && compinit
+      autoload -Uz compinit
+      # Rebuild completion cache when nix profile changes
+      zcompdump="''${ZDOTDIR:-$HOME}/.zcompdump"
+      if [[ -e "$zcompdump" && -e ~/.nix-profile && "$zcompdump" -nt ~/.nix-profile ]]; then
+        compinit -C
+      else
+        compinit
+      fi
       autoload -U bashcompinit && bashcompinit
       autoload -U colors && colors
       zstyle ':completion:*:default' menu select=2
