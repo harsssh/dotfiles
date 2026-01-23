@@ -24,16 +24,18 @@
 
       mkDarwinConfig = privateModules: profileName: profile:
         let
-          resolvedPrivateModules = map (f: privateModules.${f}) (profile.privateFeatures or [ ]);
+          resolved = map (f: privateModules.${f}) (profile.privateFeatures or [ ]);
+          privateHomeModules = map (m: m.module) (lib.filter (m: m.type == "home") resolved);
+          privateDarwinModules = map (m: m.module) (lib.filter (m: m.type == "darwin") resolved);
         in
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
-          specialArgs = { inherit inputs profile profileName; };
+          specialArgs = { inherit inputs profile profileName privateHomeModules; };
           modules = [
             home-manager.darwinModules.home-manager
             ./modules/darwin
             ./modules/darwin/homebrew.nix
-          ] ++ resolvedPrivateModules;
+          ] ++ privateDarwinModules;
         };
 
       mkDarwinConfigurations = privateModules:
