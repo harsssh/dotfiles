@@ -50,7 +50,7 @@
     };
     initContent = ''
       [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh
-      eval "$(mise activate zsh)"
+      [ -z "$IN_NIX_SHELL" ] && eval "$(mise activate zsh)"
       eval "$(bun completions)"
     '';
   };
