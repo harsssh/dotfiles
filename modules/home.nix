@@ -54,6 +54,7 @@ in
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     autocd = true;
@@ -67,6 +68,35 @@ in
       share = true;
     };
     historySubstringSearch.enable = true;
+    setOptions = [
+      "auto_param_slash"
+      "mark_dirs"
+      "list_types"
+      "auto_menu"
+      "auto_param_keys"
+      "interactive_comments"
+      "always_last_prompt"
+      "extended_glob"
+      "globdots"
+      "list_packed"
+      "magic_equal_subst"
+      "complete_in_word"
+      "print_eight_bit"
+      "hist_no_store"
+      "hist_reduce_blanks"
+      "hist_save_no_dups"
+    ];
+    completionInit = ''
+      autoload -U compinit && compinit
+      autoload -U bashcompinit && bashcompinit
+      autoload -U colors && colors
+      zstyle ':completion:*:default' menu select=2
+      zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
+      zstyle ':completion:*' verbose yes
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+      zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+      zstyle ':completion:*:options' description 'yes'
+    '';
     shellAliases = {
       ls = "ls --color=auto";
       l = "ls -CF --color=auto";
@@ -75,28 +105,22 @@ in
 
       reload = "source ~/.zshrc";
 
-      # Safety and convenience
       rm = "rm -i";
       mkdir = "mkdir -p";
       tgz = "tar -xzvf";
       ".." = "cd ..";
 
-      # Editors
       vi = "nvim";
       vim = "nvim";
 
-      # Package managers
       pp = "pnpm";
       x = "mise x --";
 
-      # Docker
       dc = "docker compose";
 
-      # Utilities
       ff = "fzf";
       ffb = ''git branch --format="%(refname:short)" | fzf'';
 
-      # Git
       g = "git";
       gpl = "git pull";
       gps = "git push";
@@ -131,7 +155,6 @@ in
       gmt = "git mergetool";
       glc = "git log @{u}..HEAD --oneline";
 
-      # Tmux
       tmux = "tmux -2";
       ta = "tmux attach -t";
       tad = "tmux attach -d -t";
@@ -140,18 +163,14 @@ in
       tl = "tmux list-sessions";
       tksv = "tmux kill-server";
       tkss = "tmux kill-session -t";
-      tw = "tmux_windows";
-
-      ccm = "ccmanager";
     };
     initContent = ''
-      source ~/.config/zsh/extra.zsh
+      # FIXME: OrbStack init is environment-specific
+      source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+      eval "$(mise activate zsh)"
       eval "$(bun completions)"
     '';
   };
-
-  # Extra zsh config (PATH, tool init, functions)
-  xdg.configFile."zsh/extra.zsh".source = ../config/zsh/extra.zsh;
 
   # starship
   programs.starship.enable = true;
