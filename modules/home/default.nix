@@ -37,16 +37,16 @@
   programs.home-manager.enable = true;
 
   # alacritty
-  xdg.configFile."alacritty/alacritty.toml".source = ../config/alacritty/alacritty.toml;
+  xdg.configFile."alacritty/alacritty.toml".source = ../../config/alacritty/alacritty.toml;
   xdg.configFile."alacritty/themes".source = "${alacritty-theme}/themes";
 
   # claude
-  home.file.".claude/settings.json".source = ../config/claude/settings.json;
-  home.file.".claude/CLAUDE.md".source = ../config/claude/CLAUDE.md;
+  home.file.".claude/settings.json".source = ../../config/claude/settings.json;
+  home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
 
   # starship
   programs.starship.enable = true;
-  xdg.configFile."starship.toml".source = ../config/starship/starship.toml;
+  xdg.configFile."starship.toml".source = ../../config/starship/starship.toml;
 
   # fzf
   programs.fzf.enable = true;

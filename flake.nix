@@ -32,14 +32,14 @@
         inherit system;
         modules = [
           home-manager.darwinModules.home-manager
-          (import ./modules/darwin.nix { inherit username; })
-          ./modules/homebrew.nix
+          (import ./modules/darwin { inherit username; })
+          ./modules/darwin/homebrew.nix
           {
             home-manager.extraSpecialArgs = { inherit alacritty-theme; };
             home-manager.users.${username} = {
               home.username = username;
               home.homeDirectory = "/Users/${username}";
-              imports = [ ./modules/home.nix ];
+              imports = [ ./modules/home ];
             };
           }
         ];
