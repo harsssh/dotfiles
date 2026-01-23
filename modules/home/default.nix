@@ -62,9 +62,6 @@
   # ideavim
   home.file.".ideavimrc".source = ../../config/.ideavimrc;
 
-  # serena
-  home.file.".serena/serena_config.yml".source = ../../config/serena_config.yml;
-
   # starship
   programs.starship.enable = true;
   xdg.configFile."starship.toml".source = ../../config/starship.toml;
