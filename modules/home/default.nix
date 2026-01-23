@@ -68,4 +68,10 @@
 
   # fzf
   programs.fzf.enable = true;
+
+  # direnv
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
