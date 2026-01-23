@@ -1,7 +1,9 @@
-{ inputs, profile, ... }:
+{ inputs, profile, profileName, ... }:
 let
   inherit (profile) username;
   homeDirectory = "/Users/${username}";
+  privateCommon = [ ];
+  privateWork = [ ../../dotfiles-private/modules/home/alice-ssh.nix ];
 in
 {
   imports = [ ./system.nix ];
@@ -17,6 +19,9 @@ in
   home-manager.users.${username} = {
     home.username = username;
     home.homeDirectory = homeDirectory;
-    imports = [ ../home ];
+    imports =
+      [ ../home ]
+      ++ privateCommon
+      ++ (if profileName == "work" then privateWork else [ ]);
   };
 }
