@@ -35,7 +35,7 @@
       "1password-cli"
       "alacritty"
       "docker-desktop"
-      "google-cloud-sdk"
+      "gcloud-cli"
       "visual-studio-code"
     ];
   };
