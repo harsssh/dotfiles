@@ -26,54 +26,13 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
+          ./modules/homebrew.nix
           {
             # nix-darwin
             system.stateVersion = 5;
             system.primaryUser = username;
             users.users.${username}.home = "/Users/${username}";
             nix.enable = false;
-
-            # Homebrew
-            homebrew = {
-              enable = true;
-              onActivation.cleanup = "zap"; # 宣言されていないパッケージを削除
-              brews = [
-                "awscli"
-                "bazelisk"
-                "coreutils"
-                "difftastic"
-                "docker"
-                "fd"
-                "findutils"
-                "fzf"
-                "gh"
-                "ghq"
-                "gnu-sed"
-                "jq"
-                "mise"
-                "mycli"
-                "neovim"
-                "ni"
-                "pstree"
-                "ripgrep"
-                "starship"
-                "stow"
-                "terraform"
-                "tldr"
-                "tmux"
-                "tree"
-                "uv"
-                "watch"
-                "wget"
-              ];
-              casks = [
-                "1password-cli"
-                "alacritty"
-                "docker-desktop"
-                "google-cloud-sdk"
-                "visual-studio-code"
-              ];
-            };
 
             # Home Manager
             home-manager.useGlobalPkgs = true;
