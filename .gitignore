@@ -3,3 +3,4 @@
 nvim/.config/nvim/undo/*
 !nvim/.config/nvim/undo/.gitkeep
 .envrc
+result
