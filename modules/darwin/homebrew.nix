@@ -12,6 +12,7 @@ let
     "google-japanese-ime"
     "jetbrains-toolbox"
     "karabiner-elements"
+    "raycast"
     "visual-studio-code"
   ];
   additionalCasks = {
