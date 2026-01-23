@@ -6,7 +6,10 @@ in
 {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "zap";
+    onActivation = {
+      cleanup = "zap";
+      extraFlags = [ "--quiet" ];
+    };
     brews = [
       "awscli"
       "bazelisk"
