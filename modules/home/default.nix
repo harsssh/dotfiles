@@ -20,6 +20,7 @@
     gh
     ghq
     gnused
+    httpie
     jq
     pstree
     ripgrep
