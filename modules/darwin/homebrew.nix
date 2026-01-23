@@ -1,4 +1,4 @@
-{ pkgs, profile, ... }:
+{ pkgs, profileName, ... }:
 let
   brewPrefix =
     if pkgs.stdenv.hostPlatform.isAarch64 then "/opt/homebrew" else "/usr/local";
@@ -9,6 +9,9 @@ let
     "gcloud-cli"
     "visual-studio-code"
   ];
+  additionalCasks = {
+    personal = [ "orbstack" ];
+  };
 in
 {
   homebrew = {
@@ -27,7 +30,7 @@ in
       "terraform"
       "uv"
     ];
-    casks = commonCasks ++ profile.casks;
+    casks = commonCasks ++ (additionalCasks.${profileName} or [ ]);
   };
 
   environment.interactiveShellInit = ''

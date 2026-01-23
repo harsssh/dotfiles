@@ -22,10 +22,10 @@
       profiles = import ./profiles.nix;
 
       mkDarwinConfig =
-        profile:
+        profileName: profile:
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
-          specialArgs = { inherit inputs profile; };
+          specialArgs = { inherit inputs profile profileName; };
           modules = [
             home-manager.darwinModules.home-manager
             ./modules/darwin
@@ -42,6 +42,6 @@
     in
     builtins.mapAttrs (
       _: b:
-      builtins.mapAttrs (_: b.mkConfig) (lib.filterAttrs (_: b.predicate) profiles)
+      builtins.mapAttrs b.mkConfig (lib.filterAttrs (_: b.predicate) profiles)
     ) builders;
 }
