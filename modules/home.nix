@@ -2,6 +2,7 @@
 {
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
+    neovim
     nixfmt
 
     # CLI tools
@@ -36,9 +37,7 @@
   home.sessionPath = [
     "$HOME/.local/bin"
     "$HOME/.local/go/bin"
-    "$HOME/nvim/bin"
     "$HOME/.ghcup/bin"
-    "/Applications/WezTerm.app/Contents/MacOS"
   ];
 
   programs.zsh = {

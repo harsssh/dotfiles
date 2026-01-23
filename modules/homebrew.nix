@@ -8,7 +8,6 @@
       "docker"
       "mise"
       "mycli"
-      "neovim"
       "ni"
       "terraform"
       "uv"
