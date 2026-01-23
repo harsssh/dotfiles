@@ -1,6 +1,7 @@
 { inputs, profile, ... }:
 let
-  inherit (profile) username homeDirectory;
+  inherit (profile) username;
+  homeDirectory = "/Users/${username}";
 in
 {
   system.stateVersion = 5;
