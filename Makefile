@@ -27,6 +27,7 @@ clean:
 	stow -D $(STOW_DIRS)
 
 NIX_CONFIG ?= work
+HM_CONFIG ?= kentaro.mizuki
 
 .PHONY: switch
 switch:
@@ -40,4 +41,12 @@ build:
 update:
 	nix flake update
 	sudo darwin-rebuild switch --flake .#$(NIX_CONFIG)
+
+.PHONY: home
+home:
+	home-manager switch --flake .#$(HM_CONFIG)
+
+.PHONY: home-build
+home-build:
+	home-manager build --flake .#$(HM_CONFIG)
 

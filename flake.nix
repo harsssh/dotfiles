@@ -19,11 +19,18 @@
       ...
     }:
     let
+      system = "aarch64-darwin";
       username = "kentaro.mizuki";
+      pkgs = nixpkgs.legacyPackages.${system};
+      homeConfig = {
+        home.username = username;
+        home.homeDirectory = "/Users/${username}";
+        imports = [ ./modules/home.nix ];
+      };
     in
     {
       darwinConfigurations.work = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+        inherit system;
         modules = [
           home-manager.darwinModules.home-manager
           ./modules/homebrew.nix
@@ -37,21 +44,14 @@
             # Home Manager
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${username} =
-              { pkgs, ... }:
-              {
-                home.username = username;
-                home.homeDirectory = "/Users/${username}";
-                home.stateVersion = "24.11";
-                home.packages = with pkgs; [
-                  nixfmt
-                ];
-                programs.home-manager.enable = true;
-
-                xdg.configFile."starship.toml".source = ./config/starship/starship.toml;
-              };
+            home-manager.users.${username} = homeConfig;
           }
         ];
+      };
+
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ homeConfig ];
       };
     };
 }
