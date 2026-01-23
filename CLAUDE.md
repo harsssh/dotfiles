@@ -2,6 +2,8 @@
 
 このリポジトリは公開用の dotfiles。nix-darwin + home-manager で macOS の設定を宣言的に管理する。
 
+**このリポジトリは switch 対象ではない。** システムへの適用は `dotfiles-private` から行う。
+
 ## プロファイル
 
 `profiles.nix` で環境ごとのプロファイル (work, personal など) を定義している。同じ dotfiles を複数のマシンで使い分けるための仕組み。
