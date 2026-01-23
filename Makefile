@@ -28,16 +28,16 @@ clean:
 
 NIX_CONFIG ?= work
 
-.PHONY: nix-switch
-nix-switch:
+.PHONY: switch
+switch:
 	sudo darwin-rebuild switch --flake .#$(NIX_CONFIG)
 
-.PHONY: nix-build
-nix-build:
+.PHONY: build
+build:
 	darwin-rebuild build --flake .#$(NIX_CONFIG)
 
-.PHONY: nix-update
-nix-update:
+.PHONY: update
+update:
 	nix flake update
 	sudo darwin-rebuild switch --flake .#$(NIX_CONFIG)
 
