@@ -11,7 +11,8 @@
 
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    nixfmt
+    # Fonts
+    nerd-fonts.monaspace
 
     # CLI tools
     coreutils
@@ -30,14 +31,13 @@
     watch
     wget
 
-    # JavaScript/Node
+    # Languages
     bun
+    llvmPackages.clang
+    nixfmt
     pnpm
 
-    # LLVM
-    llvmPackages.clang
-
-    # Vim
+    # Editors
     vim
   ];
   programs.home-manager.enable = true;
