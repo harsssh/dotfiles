@@ -19,6 +19,10 @@
     tree
     watch
     wget
+
+    # JavaScript/Node
+    bun
+    pnpm
   ];
   programs.home-manager.enable = true;
 
@@ -28,6 +32,14 @@
     MAKEFLAGS = "SHELL=/bin/bash";
     GHUSER = "harsssh";
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+    "$HOME/.local/go/bin"
+    "$HOME/nvim/bin"
+    "$HOME/.ghcup/bin"
+    "/Applications/WezTerm.app/Contents/MacOS"
+  ];
 
   programs.zsh = {
     enable = true;
@@ -126,6 +138,7 @@
     };
     initContent = ''
       source ~/.config/zsh/extra.zsh
+      eval "$(bun completions)"
     '';
   };
 

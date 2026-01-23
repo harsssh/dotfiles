@@ -14,32 +14,14 @@ fi
 # CDPATH
 export CDPATH=~:~/Documents:~/Documents/42:~/ghq/github.com/harsssh:~/ghq/github.com
 
-# PATH Configuration
+# PATH for Homebrew-specific tools
 typeset -U path PATH
 path=(
   /opt/homebrew/opt/coreutils/bin
   /opt/homebrew/opt/openssl@3/bin
-  ~/.local/bin
   /opt/homebrew/opt/llvm/bin
-  ~/.local/go/bin
-  ~/nvim/bin
-  /usr/local/bin
   $path
-  /Applications/WezTerm.app/Contents/MacOS
-  ~/.ghcup/bin
 )
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-path=("$BUN_INSTALL/bin" $path)
-[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
-
-# pnpm
-export PNPM_HOME="/Users/kentaro.mizuki/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # Shell Options (auto_cd is set by home-manager)
 setopt auto_param_slash
