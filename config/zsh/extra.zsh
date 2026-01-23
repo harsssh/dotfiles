@@ -11,9 +11,6 @@ if [[ -z "$SDKROOT" ]]; then
   [[ -f "$cache_file" ]] && export SDKROOT=$(<"$cache_file")
 fi
 
-# CDPATH
-export CDPATH=~:~/Documents:~/Documents/42:~/ghq/github.com/harsssh:~/ghq/github.com
-
 # Shell Options (auto_cd is set by home-manager)
 setopt auto_param_slash
 setopt mark_dirs

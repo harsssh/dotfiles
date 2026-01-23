@@ -40,6 +40,11 @@ in
     GHUSER = "harsssh";
     CC = "${llvm.clang}/bin/clang";
     CXX = "${llvm.clang}/bin/clang++";
+    CDPATH = builtins.concatStringsSep ":" [
+      config.home.homeDirectory
+      "${config.home.homeDirectory}/Documents"
+      "${config.home.homeDirectory}/ghq/github.com"
+    ];
   };
 
   home.sessionPath = [
