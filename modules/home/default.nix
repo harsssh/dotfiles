@@ -15,6 +15,8 @@
     nerd-fonts.monaspace
 
     # CLI tools
+    awscli2
+    bazelisk
     coreutils
     difftastic
     fd
@@ -24,10 +26,13 @@
     gnused
     httpie
     jq
+    mise
+    mycli
     pstree
     ripgrep
     tldr
     tree
+    uv
     watch
     wget
 

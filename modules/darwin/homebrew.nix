@@ -27,14 +27,9 @@ in
       extraFlags = [ "--quiet" ];
     };
     brews = [
-      "awscli"
-      "bazelisk"
       "docker"
-      "mise"
-      "mycli"
       "ni"
       "terraform"
-      "uv"
     ];
     casks = commonCasks ++ (additionalCasks.${profileName} or [ ]);
   };
