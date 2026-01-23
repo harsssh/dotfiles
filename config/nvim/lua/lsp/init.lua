@@ -1,5 +1,6 @@
 vim.lsp.config('*', {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
-vim.lsp.enable(require('mason-lspconfig').get_installed_servers())
 
+local servers = { 'ts_ls', 'lua_ls', 'gopls' }
+vim.lsp.enable(servers)

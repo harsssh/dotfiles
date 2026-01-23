@@ -8,6 +8,9 @@ require("lazy").setup("plugins", {
   defaults = {
     lazy = true,
   },
+  rocks = {
+    enabled = false,
+  },
   performance = {
     rtp = {
       disabled_plugins = {

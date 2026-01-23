@@ -2,6 +2,7 @@
 {
   imports = [
     ./git.nix
+    ./neovim.nix
     ./shell.nix
     ./tmux.nix
     ./zsh.nix
@@ -9,7 +10,6 @@
 
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
-    neovim
     nixfmt
 
     # CLI tools
@@ -35,9 +35,6 @@
 
     # LLVM
     llvmPackages.clang
-
-    # Go
-    gopls
 
     # Vim
     vim
