@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   home.stateVersion = "24.11";
   home.packages = with pkgs; [
@@ -35,9 +35,8 @@
   };
 
   home.sessionPath = [
-    "$HOME/.local/bin"
-    "$HOME/.local/go/bin"
-    "$HOME/.ghcup/bin"
+    "${config.home.homeDirectory}/.local/bin"
+    "${config.home.homeDirectory}/.ghcup/bin"
   ];
 
   programs.zsh = {
@@ -46,7 +45,7 @@
     syntaxHighlighting.enable = true;
     autocd = true;
     history = {
-      path = "$HOME/.zhistory";
+      path = "${config.home.homeDirectory}/.zhistory";
       size = 10000;
       save = 10000;
       ignoreDups = true;
@@ -56,14 +55,11 @@
     };
     historySubstringSearch.enable = true;
     shellAliases = {
-      # ls (GNU coreutils)
       ls = "ls --color=auto";
       l = "ls -CF --color=auto";
       la = "ls -A --color=auto";
       ll = "ls -alF --color=auto";
 
-      # Zsh config
-      zrc = "vim ~/.config/zsh/extra.zsh";
       reload = "source ~/.zshrc";
 
       # Safety and convenience
