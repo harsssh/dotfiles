@@ -4,6 +4,7 @@ let
   homeDirectory = "/Users/${username}";
 in
 {
+  imports = [ ./system.nix ];
   system.stateVersion = 5;
   system.primaryUser = username;
   users.users.${username}.home = homeDirectory;
