@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, alacritty-theme, ... }:
 {
   imports = [
     ./shell.nix
@@ -34,6 +34,10 @@
     llvmPackages.clang
   ];
   programs.home-manager.enable = true;
+
+  # alacritty
+  xdg.configFile."alacritty/alacritty.toml".source = ../config/alacritty/alacritty.toml;
+  xdg.configFile."alacritty/themes".source = "${alacritty-theme}/themes";
 
   # starship
   programs.starship.enable = true;

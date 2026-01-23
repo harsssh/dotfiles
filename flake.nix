@@ -9,6 +9,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    alacritty-theme = {
+      url = "github:alacritty/alacritty-theme";
+      flake = false;
+    };
   };
 
   outputs =
@@ -16,6 +20,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
+      alacritty-theme,
       ...
     }:
     let
@@ -30,6 +35,7 @@
           (import ./modules/darwin.nix { inherit username; })
           ./modules/homebrew.nix
           {
+            home-manager.extraSpecialArgs = { inherit alacritty-theme; };
             home-manager.users.${username} = {
               home.username = username;
               home.homeDirectory = "/Users/${username}";

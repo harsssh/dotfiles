@@ -1,6 +1,6 @@
 [general]
 import = [
-  "~/.config/alacritty/themes/themes/miasma.toml"
+  "~/.config/alacritty/themes/miasma.toml"
 ]
 
 [colors.primary]
