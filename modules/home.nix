@@ -1,6 +1,7 @@
 { pkgs, alacritty-theme, ... }:
 {
   imports = [
+    ./git.nix
     ./shell.nix
     ./zsh.nix
   ];
