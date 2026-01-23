@@ -1,4 +1,4 @@
-{ pkgs, alacritty-theme, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./git.nix
@@ -46,7 +46,7 @@
 
   # alacritty
   xdg.configFile."alacritty/alacritty.toml".source = ../../config/alacritty/alacritty.toml;
-  xdg.configFile."alacritty/themes".source = "${alacritty-theme}/themes";
+  xdg.configFile."alacritty/themes".source = "${inputs.alacritty-theme}/themes";
 
   # claude
   home.file.".claude/settings.json".source = ../../config/claude/settings.json;

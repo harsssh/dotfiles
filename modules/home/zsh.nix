@@ -49,8 +49,7 @@
       reload = "source ~/.zshrc";
     };
     initContent = ''
-      # FIXME: OrbStack init is environment-specific
-      source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+      [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh
       eval "$(mise activate zsh)"
       eval "$(bun completions)"
     '';

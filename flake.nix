@@ -16,33 +16,27 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      nix-darwin,
-      home-manager,
-      alacritty-theme,
-      ...
-    }:
+    inputs@{ nix-darwin, home-manager, ... }:
     let
-      system = "aarch64-darwin";
-      username = "kentaro.mizuki";
+      profiles = import ./profiles.nix;
+
+      mkDarwinConfig =
+        profileName:
+        let
+          profile = profiles.${profileName};
+        in
+        nix-darwin.lib.darwinSystem {
+          inherit (profile) system;
+          specialArgs = { inherit inputs profile; };
+          modules = [
+            home-manager.darwinModules.home-manager
+            ./modules/darwin
+            ./modules/darwin/homebrew.nix
+          ];
+        };
     in
     {
-      darwinConfigurations.work = nix-darwin.lib.darwinSystem {
-        inherit system;
-        modules = [
-          home-manager.darwinModules.home-manager
-          (import ./modules/darwin { inherit username; })
-          ./modules/darwin/homebrew.nix
-          {
-            home-manager.extraSpecialArgs = { inherit alacritty-theme; };
-            home-manager.users.${username} = {
-              home.username = username;
-              home.homeDirectory = "/Users/${username}";
-              imports = [ ./modules/home ];
-            };
-          }
-        ];
-      };
+      darwinConfigurations.work = mkDarwinConfig "work";
+      darwinConfigurations.personal = mkDarwinConfig "personal";
     };
 }
