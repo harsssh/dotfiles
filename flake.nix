@@ -31,13 +31,13 @@
           inherit (profile) system;
           specialArgs = {
             inherit inputs profile profileName;
-            privateHomeModules = resolved.home;
+            privateHomeModules = resolved.homeModules;
           };
           modules = [
             home-manager.darwinModules.home-manager
             ./modules/darwin
             ./modules/darwin/homebrew.nix
-          ] ++ resolved.darwin;
+          ] ++ resolved.darwinModules;
         };
 
       mkDarwinConfigurations = privateModules:
