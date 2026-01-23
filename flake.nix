@@ -19,30 +19,32 @@
     inputs@{ nix-darwin, home-manager, ... }:
     let
       lib = inputs.nixpkgs.lib;
+      featuresLib = import ./lib/features.nix { inherit lib; };
       profiles = import ./profiles.nix;
       darwinProfiles = lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) profiles;
 
       mkDarwinConfig = privateModules: profileName: profile:
         let
-          resolved = map (f: privateModules.${f}) (profile.privateFeatures or [ ]);
-          privateHomeModules = map (m: m.module) (lib.filter (m: m.type == "home") resolved);
-          privateDarwinModules = map (m: m.module) (lib.filter (m: m.type == "darwin") resolved);
+          resolved = featuresLib.resolve privateModules (profile.privateFeatures or [ ]);
         in
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
-          specialArgs = { inherit inputs profile profileName privateHomeModules; };
+          specialArgs = {
+            inherit inputs profile profileName;
+            privateHomeModules = resolved.home;
+          };
           modules = [
             home-manager.darwinModules.home-manager
             ./modules/darwin
             ./modules/darwin/homebrew.nix
-          ] ++ privateDarwinModules;
+          ] ++ resolved.darwin;
         };
 
       mkDarwinConfigurations = privateModules:
         lib.mapAttrs (mkDarwinConfig privateModules) darwinProfiles;
     in
     {
-      darwinConfigurations = mkDarwinConfigurations [ ];
+      darwinConfigurations = mkDarwinConfigurations { };
 
       lib = { inherit mkDarwinConfig mkDarwinConfigurations; };
     };
