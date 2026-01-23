@@ -26,3 +26,18 @@ apply:
 clean:
 	stow -D $(STOW_DIRS)
 
+NIX_CONFIG ?= work
+
+.PHONY: nix-switch
+nix-switch:
+	sudo darwin-rebuild switch --flake .#$(NIX_CONFIG)
+
+.PHONY: nix-build
+nix-build:
+	darwin-rebuild build --flake .#$(NIX_CONFIG)
+
+.PHONY: nix-update
+nix-update:
+	nix flake update
+	sudo darwin-rebuild switch --flake .#$(NIX_CONFIG)
+
