@@ -20,9 +20,9 @@
     let
       lib = inputs.nixpkgs.lib;
       profiles = import ./profiles.nix;
+      darwinProfiles = lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) profiles;
 
-      mkDarwinConfig =
-        profileName: profile:
+      mkDarwinConfig = extraModules: profileName: profile:
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;
           specialArgs = { inherit inputs profile profileName; };
@@ -30,18 +30,15 @@
             home-manager.darwinModules.home-manager
             ./modules/darwin
             ./modules/darwin/homebrew.nix
-          ];
+          ] ++ extraModules;
         };
 
-      builders = {
-        darwinConfigurations = {
-          predicate = p: lib.hasSuffix "darwin" p.system;
-          mkConfig = mkDarwinConfig;
-        };
-      };
+      mkDarwinConfigurations = extraModules:
+        lib.mapAttrs (mkDarwinConfig extraModules) darwinProfiles;
     in
-    builtins.mapAttrs (
-      _: b:
-      builtins.mapAttrs b.mkConfig (lib.filterAttrs (_: b.predicate) profiles)
-    ) builders;
+    {
+      darwinConfigurations = mkDarwinConfigurations [ ];
+
+      lib = { inherit mkDarwinConfig mkDarwinConfigurations; };
+    };
 }
