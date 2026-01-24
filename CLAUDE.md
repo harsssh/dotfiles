@@ -1,12 +1,13 @@
 設計や使い方は README.md を参照。
 
-## privateFeatures によるモジュール注入
+## public feature の追加手順
 
-`privateFeatures` によりプライベートモジュールの注入を制御する。
+1. `modules/darwin/features/` または `modules/home/features/` にモジュールを作成
+2. `modules/features.nix` にマッピングを追加
+3. `profiles.nix` でその名前を `features` として参照
 
-プライベートモジュールの追加手順:
+`type` により home-manager モジュールか nix-darwin モジュールとして注入される。
 
-1. `dotfiles-private` でモジュールを定義し、名前をつけて `dotfiles` から export しているコンストラクタに渡す
-2. `dotfiles` の `profiles.nix` でその名前を `privateFeatures` として参照する
+## private feature の注入
 
-モジュールは `type` により home-manager モジュールか nix-darwin モジュールとして注入される。
+`dotfiles-private` は `flake.nix` が export する `mkDarwinConfigurations` にモジュールを渡す。渡されたモジュールは `modules/features.nix` の public feature と統合され、同じ仕組みで解決される。

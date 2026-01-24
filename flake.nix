@@ -22,10 +22,12 @@
       featuresLib = import ./lib/features.nix { inherit lib; };
       profiles = import ./profiles.nix;
       darwinProfiles = lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) profiles;
+      publicFeatureModules = import ./modules/features.nix;
 
       mkDarwinConfig = privateModules: profileName: profile:
         let
-          resolved = featuresLib.resolve privateModules (profile.privateFeatures or [ ]);
+          allModules = publicFeatureModules // privateModules;
+          resolved = featuresLib.resolve allModules (profile.features or [ ]);
         in
         nix-darwin.lib.darwinSystem {
           inherit (profile) system;

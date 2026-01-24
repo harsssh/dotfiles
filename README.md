@@ -15,7 +15,18 @@ nix-darwin + home-manager で macOS の設定を宣言的に管理する公開�
 - `dotfiles`: 共通設定とライブラリ関数を提供
 - `dotfiles-private`: dotfiles を flake input として参照し、プライベートモジュールを注入
 
-`dotfiles` 単体でビルドする場合は `privateFeatures` が解決されないため、プライベートモジュールなしで動作する。
+`dotfiles` 単体でビルドする場合は private feature が解決されないため、public feature のみで動作する。
+
+## features
+
+プロファイルごとに有効/無効を切り替えたい設定は feature として定義し、`profiles.nix` の `features` で指定する。
+
+feature は 2 種類ある:
+
+- public feature: `modules/features.nix` で定義。このリポジトリに含まれる
+- private feature: `dotfiles-private` から注入。機密性のある設定用
+
+両者は同じ仕組みで解決され、`flake.nix` で統合される。
 
 ## `config/` ディレクトリ
 
