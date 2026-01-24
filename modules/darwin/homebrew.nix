@@ -28,6 +28,9 @@ in
       "raycast"
       "visual-studio-code"
     ];
+    masApps = {
+      RunCat = 1429033973;
+    };
   };
 
   environment.interactiveShellInit = ''
