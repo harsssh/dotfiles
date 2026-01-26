@@ -23,9 +23,6 @@ in
   ];
 
   home.shellAliases = {
-    # 末尾スペースで次の単語もエイリアス展開される
-    sudo = "sudo ";
-
     ls = "ls --color=auto";
     l = "ls -CF --color=auto";
     la = "ls -A --color=auto";
