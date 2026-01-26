@@ -54,6 +54,8 @@
     '';
     shellAliases = {
       reload = "source ~/.zshrc";
+      # extended_glob の # が flake 参照 (nixpkgs#foo) と衝突するため
+      nix = "noglob nix";
     };
     initContent = ''
       [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh
