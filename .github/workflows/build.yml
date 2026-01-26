@@ -1,4 +1,4 @@
-name: Nix Flake Check
+name: Build
 
 on:
   push:
@@ -7,8 +7,11 @@ on:
     branches: [main]
 
 jobs:
-  check:
+  darwin:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        profile: [work, personal]
     steps:
       - uses: actions/checkout@v4
 
@@ -19,5 +22,5 @@ jobs:
           name: harsssh
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
-      - name: Run nix flake check
-        run: nix flake check
+      - name: Build
+        run: nix build .#darwinConfigurations.${{ matrix.profile }}.system

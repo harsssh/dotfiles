@@ -1,14 +1,25 @@
-name: Notify dotfiles-private
+name: Notify Private
 
 on:
-  workflow_run:
-    workflows: [Nix Flake Check]
-    types: [completed]
+  push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:
+  check:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Check
+        run: nix flake check
+
   notify:
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    needs: check
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v7
