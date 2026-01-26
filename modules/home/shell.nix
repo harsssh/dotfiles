@@ -3,6 +3,17 @@ let
   llvm = pkgs.llvmPackages;
 in
 {
+  programs.eza = {
+    enable = true;
+    icons = "auto";
+    git = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.sessionVariables = {
     LANG = "en_US.UTF-8";
     CLICOLOR = "1";
@@ -23,10 +34,10 @@ in
   ];
 
   home.shellAliases = {
-    ls = "ls --color=auto";
-    l = "ls -CF --color=auto";
-    la = "ls -A --color=auto";
-    ll = "ls -alF --color=auto";
+    ls = "eza";
+    l = "eza --classify";
+    la = "eza --all";
+    ll = "eza --long --all --group";
 
     rm = "rm -i";
     mkdir = "mkdir -p";
