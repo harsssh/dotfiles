@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
+    ./1password-ssh-agent.nix
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
@@ -17,6 +18,7 @@
 
     # CLI tools
     awscli2
+    ssm-session-manager-plugin
     bazelisk
     coreutils
     difftastic
@@ -29,6 +31,7 @@
     jq
     mise
     mycli
+    peco
     pstree
     ripgrep
     tldr

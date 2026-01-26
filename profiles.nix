@@ -2,7 +2,7 @@
   work = {
     system = "aarch64-darwin";
     username = "kentaro.mizuki";
-    features = [ "alice-ssh" ];
+    features = [ "1password-ssh-agent-keys-for-work" "alice-ssh" "docker-desktop" ];
   };
 
   personal = {
