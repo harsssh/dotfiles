@@ -2,10 +2,12 @@
 {
   options.onePasswordSshAgent.entries = lib.mkOption {
     type = lib.types.listOf (lib.types.attrsOf lib.types.str);
-    default = [{ vault = "Personal"; }];
+    default = [];
   };
 
   config = {
+    onePasswordSshAgent.entries = lib.mkBefore [{ vault = "Personal"; }];
+
     xdg.configFile."1Password/ssh/agent.toml".text =
       let
         formatEntry = entry:
