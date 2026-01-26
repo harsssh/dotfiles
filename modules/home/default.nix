@@ -17,6 +17,7 @@
 
     # CLI tools
     awscli2
+    ssm-session-manager-plugin
     bazelisk
     coreutils
     difftastic
@@ -29,6 +30,7 @@
     jq
     mise
     mycli
+    peco
     pstree
     ripgrep
     tldr
