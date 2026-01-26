@@ -11,7 +11,6 @@ in
       extraFlags = [ "--quiet" ];
     };
     brews = [
-      "docker"
       "ni"
       "terraform"
     ];
@@ -20,7 +19,6 @@ in
       "1password-cli"
       "arc"
       "alacritty"
-      "docker-desktop"
       "gcloud-cli"
       "google-japanese-ime"
       "jetbrains-toolbox"
