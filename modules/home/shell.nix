@@ -37,7 +37,6 @@ in
     vim = "nvim";
 
     pp = "pnpm";
-    x = "mise x --";
 
     dc = "docker compose";
 

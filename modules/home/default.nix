@@ -30,7 +30,6 @@
     gnused
     httpie
     jq
-    mise
     mycli
     peco
     pstree
@@ -59,9 +58,6 @@
   # claude
   home.file.".claude/settings.json".source = ../../config/claude/settings.json;
   home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
-
-  # mise
-  xdg.configFile."mise/config.toml".source = ../../config/mise.toml;
 
   # mycli
   home.file.".myclirc".source = ../../config/.myclirc;
