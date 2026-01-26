@@ -18,7 +18,6 @@ in
       "1password"
       "1password-cli"
       "arc"
-      "alacritty"
       "google-japanese-ime"
       "jetbrains-toolbox"
       "karabiner-elements"

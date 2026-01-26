@@ -2,6 +2,7 @@
 {
   imports = [
     ./1password-ssh-agent.nix
+    ./alacritty.nix
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
@@ -51,10 +52,6 @@
     vim
   ];
   programs.home-manager.enable = true;
-
-  # alacritty
-  xdg.configFile."alacritty/alacritty.toml".source = ../../config/alacritty.toml;
-  xdg.configFile."alacritty/themes".source = "${inputs.alacritty-theme}/themes";
 
   # claude
   home.file.".claude/settings.json".source = ../../config/claude/settings.json;
