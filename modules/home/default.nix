@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
+    ./1password-ssh-agent.nix
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
