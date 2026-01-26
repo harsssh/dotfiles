@@ -1,0 +1,19 @@
+name: Notify dotfiles-private
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.DOTFILES_PRIVATE_PAT }}
+          script: |
+            await github.rest.repos.createDispatchEvent({
+              owner: 'harsssh',
+              repo: 'dotfiles-private',
+              event_type: 'dotfiles-updated'
+            })
