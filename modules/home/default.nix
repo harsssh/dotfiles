@@ -18,6 +18,7 @@
 
     # CLI tools
     awscli2
+    google-cloud-sdk
     ssm-session-manager-plugin
     bazelisk
     coreutils

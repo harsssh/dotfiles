@@ -19,7 +19,6 @@ in
       "1password-cli"
       "arc"
       "alacritty"
-      "gcloud-cli"
       "google-japanese-ime"
       "jetbrains-toolbox"
       "karabiner-elements"
