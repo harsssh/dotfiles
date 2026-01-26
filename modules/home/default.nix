@@ -21,6 +21,7 @@
     ssm-session-manager-plugin
     bazelisk
     coreutils
+    devenv
     difftastic
     fd
     findutils
