@@ -1,6 +1,11 @@
 { ... }:
 {
   system.defaults = {
+    finder = {
+      AppleShowAllFiles = true;
+      AppleShowAllExtensions = true;
+    };
+
     dock = {
       autohide = true;
       show-recents = false;

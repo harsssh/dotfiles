@@ -71,7 +71,13 @@
   xdg.configFile."starship.toml".source = ../../config/starship.toml;
 
   # fzf
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    tmux.enableShellIntegration = true;
+    defaultCommand = "fd --type f --hidden --follow --exclude .git";
+    defaultOptions = [ "--height=40%" "--layout=reverse" "--border" ];
+  };
 
   # direnv
   programs.direnv = {
