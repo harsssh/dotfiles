@@ -21,6 +21,7 @@ in
       "google-japanese-ime"
       "jetbrains-toolbox"
       "karabiner-elements"
+      "obsidian"
       "raycast"
       "visual-studio-code"
     ];
