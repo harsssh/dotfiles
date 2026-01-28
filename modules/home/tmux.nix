@@ -10,7 +10,6 @@
       vim-tmux-navigator
       prefix-highlight
     ];
+    extraConfig = builtins.readFile ../../config/tmux/.tmux.conf;
   };
-
-  home.file.".tmux.conf".source = ../../config/tmux/.tmux.conf;
 }
