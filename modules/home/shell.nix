@@ -50,6 +50,7 @@ in
     pp = "pnpm";
 
     dc = "docker compose";
+    pc = "process-compose";
 
     ff = "fzf";
     ffb = ''git branch --format="%(refname:short)" | fzf'';
