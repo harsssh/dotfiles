@@ -31,7 +31,3 @@ disabled = true
 
 [jobs]
 disabled = false
-
-[shell]
-zsh_indicator = ''
-disabled = false
