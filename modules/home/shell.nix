@@ -97,5 +97,7 @@ in
     tl = "tmux list-sessions";
     tksv = "tmux kill-server";
     tkss = "tmux kill-session -t";
+
+    be = "bundle exec";
   };
 }
