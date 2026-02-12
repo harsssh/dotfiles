@@ -44,6 +44,7 @@
 
     # Languages
     bun
+    go
     llvmPackages.clang
     nixfmt
     pnpm
