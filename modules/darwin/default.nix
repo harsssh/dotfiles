@@ -9,6 +9,7 @@ in
   system.primaryUser = username;
   users.users.${username}.home = homeDirectory;
   nix.enable = false;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   environment.etc."nix/nix.custom.conf".text = ''
     trusted-users = root ${username}
