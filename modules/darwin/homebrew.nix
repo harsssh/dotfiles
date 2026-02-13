@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  brewPrefix =
-    if pkgs.stdenv.hostPlatform.isAarch64 then "/opt/homebrew" else "/usr/local";
-in
+{ config, ... }:
 {
   homebrew = {
     enable = true;
@@ -30,7 +26,5 @@ in
     };
   };
 
-  environment.interactiveShellInit = ''
-    eval "$(${brewPrefix}/bin/brew shellenv)"
-  '';
+  environment.systemPath = [ config.homebrew.brewPrefix ];
 }
