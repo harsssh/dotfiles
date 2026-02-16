@@ -2,6 +2,7 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    includes = [ "~/.ssh/config.local" ];
     matchBlocks = {
       "github.com" = {
         user = "git";
