@@ -6,9 +6,10 @@
       cleanup = "zap";
       extraFlags = [ "--quiet" ];
     };
+    taps = [ "hashicorp/tap" ];
     brews = [
       "ni"
-      "terraform"
+      { name = "hashicorp/tap/terraform"; link = true; }
     ];
     casks = [
       "1password"
