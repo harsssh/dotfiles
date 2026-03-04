@@ -24,7 +24,9 @@ explicitly ask.
 - git-switch, git-restore を使って安全に git リポジトリを操作して。git-checkout, git-reset を乱用しない。
 - formatter, linter のエラーを ignore コメントで無効化してはいけない
 
-## その他
+## CLI ツール
+- ファイル検索には `find` ではなく `fd` を使う
+- テキスト検索には `grep` ではなく `rg` (ripgrep) を使う
 - alias で `rm` は interactive に実行されるので、Claude がファイルを削除するときは `rm -f` を使う
 
 ## Nix
