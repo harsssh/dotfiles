@@ -30,7 +30,10 @@
       };
       bell.duration = 0;
       cursor.style.blinking = "Off";
-      terminal.shell.program = "/bin/zsh";
+      terminal.shell = {
+        program = "/bin/zsh";
+        args = [ "-l" ];
+      };
       keyboard.bindings = [
         {
           key = "Return";
