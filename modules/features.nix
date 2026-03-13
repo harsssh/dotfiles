@@ -1,4 +1,8 @@
 {
+  claude-otel = {
+    type = "home";
+    module = ./home/features/claude-otel.nix;
+  };
   docker-desktop = {
     type = "darwin";
     module = ./darwin/features/docker-desktop.nix;

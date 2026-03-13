@@ -6,6 +6,7 @@
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
+    ./claude.nix
     ./shell.nix
     ./ssh.nix
     ./tmux.nix
@@ -56,10 +57,6 @@
     vim
   ];
   programs.home-manager.enable = true;
-
-  # claude
-  home.file.".claude/settings.json".source = ../../config/claude/settings.json;
-  home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
 
   # mycli
   home.file.".myclirc".source = ../../config/.myclirc;
