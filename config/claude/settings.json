@@ -34,8 +34,6 @@
       "Bash(* --help)",
       "Bash(* --help *)",
       "Bash(tree *)",
-      "Bash(grep *)",
-      "Bash(find *)",
       "Bash(fd *)",
       "Bash(rg *)",
       "Bash(sort *)",
