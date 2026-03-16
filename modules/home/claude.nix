@@ -17,7 +17,7 @@ in
 
   config = {
     home.file.".claude/settings.json".source = jsonFormat.generate "settings.json" settings;
-    home.file.".claude/CLAUDE.md".source = ../../config/claude/CLAUDE.md;
+    home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
     home.file.".claude/statusline.sh" = {
       source = ../../config/claude/statusline.sh;
       executable = true;
