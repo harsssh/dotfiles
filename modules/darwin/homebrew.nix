@@ -20,6 +20,7 @@
       "karabiner-elements"
       "obsidian"
       "raycast"
+      "tailscale"
       "visual-studio-code"
     ];
     masApps = {
