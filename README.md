@@ -30,14 +30,14 @@ nix run 'home-manager/master' -- switch --flake .
 
 ## features
 
-プロファイルごとに有効/無効を切り替えたい設定は feature として定義し、`profiles.nix` の `features` で指定する。
+プロファイルごとに有効/無効を切り替えたい設定は feature として定義する。各 feature は NixOS module system の `mkEnableOption` + `mkIf` パターンで実装され、常に import されるが `enable` で有効/無効が制御される。
+
+プロファイルの `features` リストに名前を指定すると、対応する feature が有効になる。`enabledFeatures` は全レベル (nix-darwin, home-manager) に渡され、各モジュールが自分に関係ある名前だけを参照する。
 
 feature は 2 種類ある:
 
-- public feature: `modules/features.nix` で定義。このリポジトリに含まれる
-- private feature: `dotfiles-private` から注入。機密性のある設定用
-
-両者は同じ仕組みで解決され、`flake.nix` で統合される。
+- public feature: `modules/{darwin,home}/features/` にモジュールを作成し、対応する `default.nix` で import する
+- private feature: `dotfiles-private` から `homeModules`/`darwinModules` として注入する
 
 ## `config/` ディレクトリ
 

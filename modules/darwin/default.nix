@@ -4,7 +4,12 @@ let
   homeDirectory = "/Users/${username}";
 in
 {
-  imports = [ ./system.nix ];
+  imports = [
+    ../enabled-features.nix
+    ./system.nix
+    ./features/orbstack.nix
+    ./features/docker-desktop.nix
+  ];
   system.stateVersion = 5;
   system.primaryUser = username;
   users.users.${username}.home = homeDirectory;
@@ -27,5 +32,6 @@ in
     home.username = username;
     home.homeDirectory = homeDirectory;
     imports = [ ../home ] ++ privateHomeModules;
+    enabledFeatures = profile.features or [ ];
   };
 }

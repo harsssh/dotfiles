@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
+    ../enabled-features.nix
     ./alacritty.nix
     ./editorconfig.nix
     ./git.nix
@@ -10,6 +11,8 @@
     ./ssh.nix
     ./tmux.nix
     ./zsh.nix
+    ./features/1password.nix
+    ./features/claude-otel.nix
   ];
 
   programs.bash.enable = true;

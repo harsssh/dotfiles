@@ -19,38 +19,41 @@
     inputs@{ nix-darwin, home-manager, ... }:
     let
       lib = inputs.nixpkgs.lib;
-      featuresLib = import ./lib/features.nix { inherit lib; };
       defaultProfiles = import ./profiles.nix;
-      publicFeatureModules = import ./modules/features.nix;
 
-      mkConfigurations = { modules ? {}, profiles ? {} }:
+      mkConfigurations =
+        {
+          homeModules ? [ ],
+          darwinModules ? [ ],
+          profiles ? { },
+        }:
         let
-          allModules = publicFeatureModules // modules;
           allProfiles = defaultProfiles // profiles;
-          resolve = profile: featuresLib.resolve allModules (profile.features or [ ]);
+          featuresConfig = profile: { enabledFeatures = profile.features or [ ]; };
         in
         {
-          darwinConfigurations = lib.mapAttrs (name: profile:
-            let resolved = resolve profile; in
+          darwinConfigurations = lib.mapAttrs (
+            name: profile:
             nix-darwin.lib.darwinSystem {
               inherit (profile) system;
               specialArgs = {
                 inherit inputs profile;
                 profileName = name;
-                privateHomeModules = resolved.homeModules;
+                privateHomeModules = homeModules;
               };
               modules = [
                 home-manager.darwinModules.home-manager
                 ./modules/darwin
                 ./modules/darwin/homebrew.nix
-              ] ++ resolved.darwinModules;
+                (featuresConfig profile)
+              ] ++ darwinModules;
             }
           ) (lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) allProfiles);
 
-          homeConfigurations = lib.mapAttrs (name: profile:
+          homeConfigurations = lib.mapAttrs (
+            name: profile:
             let
               username = lib.elemAt (lib.splitString "@" name) 0;
-              resolved = resolve profile;
             in
             home-manager.lib.homeManagerConfiguration {
               pkgs = inputs.nixpkgs.legacyPackages.${profile.system};
@@ -61,7 +64,8 @@
                   home.homeDirectory = "/home/${username}";
                 }
                 ./modules/home
-              ] ++ resolved.homeModules ++ resolved.linuxModules;
+                (featuresConfig profile)
+              ] ++ homeModules;
             }
           ) (lib.filterAttrs (_: p: lib.hasSuffix "linux" p.system) allProfiles);
         };
