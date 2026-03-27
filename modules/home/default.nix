@@ -74,6 +74,7 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     tmux.enableShellIntegration = true;
     defaultCommand = "fd --type f --hidden --follow --exclude .git";
     defaultOptions = [ "--height=40%" "--layout=reverse" "--border" ];
