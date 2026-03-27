@@ -8,6 +8,13 @@
 
 `type` により home-manager モジュールか nix-darwin モジュールとして注入される。
 
-## private feature の注入
+## private feature・プロファイルの注入
 
-`dotfiles-private` は `flake.nix` が export する `mkDarwinConfigurations` にモジュールを渡す。渡されたモジュールは `modules/features.nix` の public feature と統合され、同じ仕組みで解決される。
+`dotfiles-private` は `flake.nix` が export する `mkConfigurations` に `{ modules, profiles }` を渡す。
+
+- `modules`: private feature のマッピング。public feature と統合され同じ仕組みで解決される。
+- `profiles`: ホスト名をキーとしたプロファイル定義。`profiles.nix` の CI 用デフォルトとマージされる。
+
+`mkConfigurations` は `{ darwinConfigurations, homeConfigurations }` を返す。
+
+`profiles.nix` には CI 用の最小プロファイルのみ含まれる。実際のホスト名・ユーザー名・features は `dotfiles-private` から注入する。

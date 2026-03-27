@@ -1,19 +1,17 @@
-NIX_CONFIG ?= $(if $(filter Darwin,$(shell uname -s)),work,linux)
-
 .PHONY: build
 build:
 ifeq ($(shell uname -s),Darwin)
-	darwin-rebuild build --flake .#$(NIX_CONFIG)
+	darwin-rebuild build --flake .
 else
-	home-manager build --flake .#$(NIX_CONFIG)
+	home-manager build --flake .
 endif
 
 .PHONY: switch
 switch:
 ifeq ($(shell uname -s),Darwin)
-	darwin-rebuild switch --flake .#$(NIX_CONFIG)
+	darwin-rebuild switch --flake .
 else
-	home-manager switch --flake .#$(NIX_CONFIG)
+	home-manager switch --flake .
 endif
 
 .PHONY: check

@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        profile: [work, personal]
+        profile: [ci-darwin]
     steps:
       - uses: actions/checkout@v4
 
@@ -23,13 +23,13 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build
-        run: nix build .#darwinConfigurations.${{ matrix.profile }}.system
+        run: nix build '.#darwinConfigurations.${{ matrix.profile }}.system'
 
   linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        profile: [linux]
+        profile: [runner@ci-linux]
     steps:
       - uses: actions/checkout@v4
 
@@ -41,4 +41,4 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
       - name: Build
-        run: nix build .#homeConfigurations.${{ matrix.profile }}.activationPackage
+        run: nix build '.#homeConfigurations."${{ matrix.profile }}".activationPackage'

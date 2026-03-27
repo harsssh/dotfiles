@@ -20,60 +20,56 @@
     let
       lib = inputs.nixpkgs.lib;
       featuresLib = import ./lib/features.nix { inherit lib; };
-      profiles = import ./profiles.nix;
-      darwinProfiles = lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) profiles;
-      linuxProfiles = lib.filterAttrs (_: p: lib.hasSuffix "linux" p.system) profiles;
+      defaultProfiles = import ./profiles.nix;
       publicFeatureModules = import ./modules/features.nix;
 
-      mkDarwinConfig = privateModules: profileName: profile:
+      mkConfigurations = { modules ? {}, profiles ? {} }:
         let
-          allModules = publicFeatureModules // privateModules;
-          resolved = featuresLib.resolve allModules (profile.features or [ ]);
+          allModules = publicFeatureModules // modules;
+          allProfiles = defaultProfiles // profiles;
+          resolve = profile: featuresLib.resolve allModules (profile.features or [ ]);
         in
-        nix-darwin.lib.darwinSystem {
-          inherit (profile) system;
-          specialArgs = {
-            inherit inputs profile profileName;
-            privateHomeModules = resolved.homeModules;
-          };
-          modules = [
-            home-manager.darwinModules.home-manager
-            ./modules/darwin
-            ./modules/darwin/homebrew.nix
-          ] ++ resolved.darwinModules;
-        };
-
-      mkHomeManagerConfig = privateModules: profileName: profile:
-        let
-          inherit (profile) username system;
-          allModules = publicFeatureModules // privateModules;
-          resolved = featuresLib.resolve allModules (profile.features or [ ]);
-        in
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = inputs.nixpkgs.legacyPackages.${system};
-          extraSpecialArgs = { inherit inputs profile; };
-          modules = [
-            {
-              home.username = username;
-              home.homeDirectory = "/home/${username}";
+        {
+          darwinConfigurations = lib.mapAttrs (name: profile:
+            let resolved = resolve profile; in
+            nix-darwin.lib.darwinSystem {
+              inherit (profile) system;
+              specialArgs = {
+                inherit inputs profile;
+                profileName = name;
+                privateHomeModules = resolved.homeModules;
+              };
+              modules = [
+                home-manager.darwinModules.home-manager
+                ./modules/darwin
+                ./modules/darwin/homebrew.nix
+              ] ++ resolved.darwinModules;
             }
-            ./modules/home
-          ] ++ resolved.homeModules ++ resolved.linuxModules;
+          ) (lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) allProfiles);
+
+          homeConfigurations = lib.mapAttrs (name: profile:
+            let
+              username = lib.elemAt (lib.splitString "@" name) 0;
+              resolved = resolve profile;
+            in
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = inputs.nixpkgs.legacyPackages.${profile.system};
+              extraSpecialArgs = { inherit inputs profile; };
+              modules = [
+                {
+                  home.username = username;
+                  home.homeDirectory = "/home/${username}";
+                }
+                ./modules/home
+              ] ++ resolved.homeModules ++ resolved.linuxModules;
+            }
+          ) (lib.filterAttrs (_: p: lib.hasSuffix "linux" p.system) allProfiles);
         };
 
-      mkDarwinConfigurations = privateModules:
-        lib.mapAttrs (mkDarwinConfig privateModules) darwinProfiles;
-
-      mkHomeManagerConfigurations = privateModules:
-        lib.mapAttrs (mkHomeManagerConfig privateModules) linuxProfiles;
+      defaultConfigs = mkConfigurations { };
     in
     {
-      darwinConfigurations = mkDarwinConfigurations { };
-      homeConfigurations = mkHomeManagerConfigurations { };
-
-      lib = {
-        inherit mkDarwinConfig mkDarwinConfigurations;
-        inherit mkHomeManagerConfig mkHomeManagerConfigurations;
-      };
+      inherit (defaultConfigs) darwinConfigurations homeConfigurations;
+      inherit mkConfigurations;
     };
 }

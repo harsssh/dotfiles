@@ -1,19 +1,12 @@
 {
-  work = {
+  ci-darwin = {
     system = "aarch64-darwin";
-    username = "kentaro.mizuki";
-    features = [ "1password-ssh-agent-keys-for-work" "alice-ssh" "claude-otel" "docker-desktop" ];
+    username = "runner";
+    features = [ ];
   };
 
-  personal = {
-    system = "aarch64-darwin";
-    username = "kemizuki";
-    features = [ "orbstack" ];
-  };
-
-  linux = {
+  "runner@ci-linux" = {
     system = "x86_64-linux";
-    username = "kemizuki";
     features = [ ];
   };
 }
