@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  opPaths = import ../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
+in
 {
   home.packages = [ pkgs.tig ];
 
@@ -54,10 +57,7 @@
       advice.mergeConflict = false;
       gpg = {
         format = "ssh";
-        ssh.program =
-          if pkgs.stdenv.isDarwin
-          then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-          else "/opt/1Password/op-ssh-sign";
+        ssh.program = opPaths.sshSignProgram;
       };
       url."git@github.com:".insteadOf = "https://github.com/";
       feature.manyFiles = true;

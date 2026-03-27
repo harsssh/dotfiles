@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  opPaths = import ../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
+in
 {
   programs.ssh = {
     enable = true;
@@ -14,10 +17,7 @@
         addKeysToAgent = "yes";
         forwardAgent = true;
         extraOptions = {
-          IdentityAgent =
-            if pkgs.stdenv.isDarwin
-            then "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\""
-            else "\"~/.1password/agent.sock\"";
+          IdentityAgent = "\"~/${opPaths.agentSockRelative}\"";
         };
       };
     };
