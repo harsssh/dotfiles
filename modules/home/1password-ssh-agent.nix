@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 {
   options.onePasswordSshAgent.entries = lib.mkOption {
     type = lib.types.listOf (lib.types.attrsOf lib.types.str);
@@ -9,7 +9,10 @@
     onePasswordSshAgent.entries = lib.mkBefore [{ vault = "Personal"; }];
 
     home.sessionVariables = {
-      SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+      SSH_AUTH_SOCK =
+        if pkgs.stdenv.isDarwin
+        then "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+        else "$HOME/.1password/agent.sock";
     };
 
     xdg.configFile."1Password/ssh/agent.toml".text =

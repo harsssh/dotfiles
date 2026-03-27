@@ -54,7 +54,10 @@
       advice.mergeConflict = false;
       gpg = {
         format = "ssh";
-        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        ssh.program =
+          if pkgs.stdenv.isDarwin
+          then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+          else "/opt/1Password/op-ssh-sign";
       };
       url."git@github.com:".insteadOf = "https://github.com/";
       feature.manyFiles = true;

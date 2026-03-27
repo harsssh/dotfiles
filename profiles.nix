@@ -10,4 +10,10 @@
     username = "kemizuki";
     features = [ "orbstack" ];
   };
+
+  linux = {
+    system = "x86_64-linux";
+    username = "kemizuki";
+    features = [ ];
+  };
 }
