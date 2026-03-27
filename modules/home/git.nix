@@ -1,17 +1,9 @@
 { pkgs, ... }:
-let
-  opPaths = import ../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
-in
 {
   home.packages = [ pkgs.tig ];
 
   programs.git = {
     enable = true;
-
-    signing = {
-      key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+";
-      signByDefault = true;
-    };
 
     settings = {
       user = {
@@ -55,10 +47,6 @@ in
       pull.rebase = false;
       init.defaultBranch = "main";
       advice.mergeConflict = false;
-      gpg = {
-        format = "ssh";
-        ssh.program = opPaths.sshSignProgram;
-      };
       url."git@github.com:".insteadOf = "https://github.com/";
       feature.manyFiles = true;
       log.abbrevCommit = true;

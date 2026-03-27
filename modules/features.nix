@@ -1,4 +1,8 @@
 {
+  "1password" = {
+    type = "home";
+    module = ./home/features/1password.nix;
+  };
   claude-otel = {
     type = "home";
     module = ./home/features/claude-otel.nix;

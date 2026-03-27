@@ -1,6 +1,6 @@
 { lib, pkgs, config, ... }:
 let
-  opPaths = import ../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
+  opPaths = import ../../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
 in
 {
   options.onePasswordSshAgent.entries = lib.mkOption {
@@ -23,5 +23,20 @@ in
           (if entry ? item then "\nitem = \"${entry.item}\"" else "");
       in
       lib.concatStringsSep "\n\n" (map formatEntry config.onePasswordSshAgent.entries) + "\n";
+
+    programs.git = {
+      signing = {
+        key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQbUsFbA0OhRzIPjHYyzXXkLN968HzLC9Md9c7fdtJ+";
+        signByDefault = true;
+      };
+      settings.gpg = {
+        format = "ssh";
+        ssh.program = opPaths.sshSignProgram;
+      };
+    };
+
+    programs.ssh.matchBlocks."*".extraOptions = {
+      IdentityAgent = "\"~/${opPaths.agentSockRelative}\"";
+    };
   };
 }

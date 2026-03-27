@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ./1password-ssh-agent.nix
     ./alacritty.nix
     ./editorconfig.nix
     ./git.nix
