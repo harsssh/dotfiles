@@ -1,4 +1,4 @@
-{ pkgs, profile, lib, ... }:
+{ pkgs, profile, lib, config, ... }:
 {
   home.packages = [ pkgs.tig ];
 
@@ -6,7 +6,11 @@
     enable = true;
 
     signing = lib.mkIf (profile ? signingKey) {
-      key = "key::${profile.signingKey}";
+      key =
+        if config.features."1password".enable then
+          "key::${profile.signingKey}"
+        else
+          profile.signingKeyFile or "~/.ssh/id_ed25519";
       signByDefault = true;
     };
 
