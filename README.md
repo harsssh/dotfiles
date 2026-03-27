@@ -1,21 +1,32 @@
 # harsssh's dotfiles
 
-nix-darwin + home-manager で macOS の設定を宣言的に管理する公開用 dotfiles。
+nix-darwin + home-manager で macOS / Linux の設定を宣言的に管理する公開用 dotfiles。
 
 このリポジトリは switch 対象ではない。システムへの適用は `dotfiles-private` から行う。
 
 ## プロファイル
 
-`profiles.nix` で環境ごとのプロファイル (work, personal など) を定義している。同じ dotfiles を複数のマシンで使い分けるための仕組み。
+プロファイルはホスト名をキーとして定義する。`make switch` 実行時にホスト名から自動解決される。
+
+- macOS: `darwin-rebuild switch --flake .` がホスト名で解決
+- Linux: `home-manager switch --flake .` が `user@hostname` で解決
+
+Linux 初回 (home-manager 未インストール時) は以下で bootstrap:
+
+```bash
+nix run 'home-manager/master' -- switch --flake .
+```
+
+実際のプロファイル定義 (ホスト名・ユーザー名・features) は `dotfiles-private` で管理している。`profiles.nix` には CI 用のダミープロファイルのみ含まれる。
 
 ## dotfiles-private との関係
 
 機密性のある設定は別リポジトリ `dotfiles-private` で管理している。
 
-- `dotfiles`: 共通設定とライブラリ関数を提供
-- `dotfiles-private`: dotfiles を flake input として参照し、プライベートモジュールを注入
+- `dotfiles`: 共通設定とライブラリ関数 (`mkConfigurations`) を提供
+- `dotfiles-private`: dotfiles を flake input として参照し、プロファイルとプライベートモジュールを注入
 
-`dotfiles` 単体でビルドする場合は private feature が解決されないため、public feature のみで動作する。
+`dotfiles` 単体でビルドする場合は CI 用プロファイルのみで動作する。
 
 ## features
 
