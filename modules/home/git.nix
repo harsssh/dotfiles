@@ -1,11 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, profile, lib, ... }:
 {
   home.packages = [ pkgs.tig ];
 
   programs.git = {
     enable = true;
 
-    settings = {
+    signing = lib.mkIf (profile ? signingKey) {
+      key = "key::${profile.signingKey}";
+      signByDefault = true;
+    };
+
+    settings = lib.mkMerge [
+      (lib.mkIf (profile ? signingKey) {
+        gpg.format = "ssh";
+      })
+    {
       user = {
         name = "Kentaro Mizuki";
         email = "66548698+harsssh@users.noreply.github.com";
@@ -56,7 +65,8 @@
         process = "git-lfs filter-process";
         required = true;
       };
-    };
+    }
+    ];
   };
 
   # tig
