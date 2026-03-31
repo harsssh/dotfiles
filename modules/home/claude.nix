@@ -22,5 +22,6 @@ in
       source = ../../config/claude/statusline.sh;
       executable = true;
     };
+    home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
   };
 }
