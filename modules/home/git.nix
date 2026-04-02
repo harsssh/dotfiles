@@ -15,18 +15,7 @@ in
         };
         alias = {
           lg = "log --all --topo-order --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-          st = "status";
-          co = "checkout";
-          ps = "push";
-          pl = "pull";
-          c = "commit";
-          cm = "commit -m";
-          a = "add --all";
           f = "fetch --prune";
-          b = "branch";
-          r = "reset";
-          sw = "switch";
-          re = "restore";
           difft = "!GIT_EXTERNAL_DIFF=difft git diff";
           pushf = "push --force-if-includes --force-with-lease";
           cp = "cherry-pick";

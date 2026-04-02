@@ -10,12 +10,13 @@ import ../../../lib/mkFeature.nix "1password" {
     { pkgs, config, lib, ... }:
     let
       opPaths = import ../../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
+      agentSock = opPaths.agentSockRelative;
     in
     {
       onePasswordSshAgent.entries = lib.mkBefore [{ vault = "Personal"; }];
 
       home.sessionVariables = {
-        SSH_AUTH_SOCK = "$HOME/${opPaths.agentSockRelative}";
+        SSH_AUTH_SOCK = "$HOME/${agentSock}";
       };
 
       xdg.configFile."1Password/ssh/agent.toml".text =
@@ -30,7 +31,7 @@ import ../../../lib/mkFeature.nix "1password" {
       programs.git.settings.gpg.ssh.program = opPaths.sshSignProgram;
 
       programs.ssh.matchBlocks."*".extraOptions = {
-        IdentityAgent = "\"~/${opPaths.agentSockRelative}\"";
+        IdentityAgent = "\"~/${agentSock}\"";
       };
     };
 }
