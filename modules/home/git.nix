@@ -1,4 +1,7 @@
 { pkgs, lib, config, ... }:
+let
+  hasSigningKey = config.programs.git.signing.key != null;
+in
 {
   home.packages = [ pkgs.tig ];
 
@@ -56,9 +59,9 @@
           process = "git-lfs filter-process";
           required = true;
         };
-      gpg.format = "ssh";
+      gpg.format = lib.mkIf hasSigningKey "ssh";
     };
-    signing.signByDefault = true;
+    signing.signByDefault = hasSigningKey;
   };
 
   # tig
