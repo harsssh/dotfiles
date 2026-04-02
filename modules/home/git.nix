@@ -56,7 +56,9 @@
           process = "git-lfs filter-process";
           required = true;
         };
-      };
+      gpg.format = "ssh";
+    };
+    signing.signByDefault = true;
   };
 
   # tig
