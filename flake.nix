@@ -38,13 +38,11 @@
               inherit (profile) system;
               specialArgs = {
                 inherit inputs profile;
-                profileName = name;
                 privateHomeModules = homeModules;
               };
               modules = [
                 home-manager.darwinModules.home-manager
                 ./modules/darwin
-                ./modules/darwin/homebrew.nix
                 (featuresConfig profile)
               ] ++ darwinModules;
             }

@@ -1,4 +1,4 @@
-{ inputs, profile, profileName, privateHomeModules ? [ ], ... }:
+{ inputs, profile, privateHomeModules ? [ ], ... }:
 let
   inherit (profile) username;
   homeDirectory = "/Users/${username}";
@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../enabled-features.nix
+    ./homebrew.nix
     ./system.nix
     ./features/orbstack.nix
     ./features/docker-desktop.nix
