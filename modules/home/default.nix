@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ../enabled-features.nix
     ./alacritty.nix
     ./editorconfig.nix
     ./git.nix

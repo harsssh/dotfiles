@@ -1,12 +1,11 @@
-{ pkgs, profile, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
   home.packages = [ pkgs.tig ];
 
-  programs.git = lib.mkMerge [
-    {
-      enable = true;
+  programs.git = {
+    enable = true;
 
-      settings = {
+    settings = {
         user = {
           name = "Kentaro Mizuki";
           email = "66548698+harsssh@users.noreply.github.com";
@@ -58,19 +57,7 @@
           required = true;
         };
       };
-    }
-    (lib.mkIf (profile ? signingKey) {
-      signing = {
-        key =
-          if config.features."1password".enable then
-            "key::${profile.signingKey}"
-          else
-            profile.signingKeyFile or "~/.ssh/id_ed25519";
-        signByDefault = true;
-      };
-      settings.gpg.format = "ssh";
-    })
-  ];
+  };
 
   # tig
   home.file.".tigrc".source = ../../config/.tigrc;

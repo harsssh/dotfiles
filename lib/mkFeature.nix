@@ -8,8 +8,5 @@ name:
 {
   options = { features.${name}.enable = lib.mkEnableOption description; } // (extraOptions args);
 
-  config = lib.mkMerge [
-    { features.${name}.enable = lib.mkDefault (builtins.elem name config.enabledFeatures); }
-    (lib.mkIf config.features.${name}.enable (enabledConfig args))
-  ];
+  config = lib.mkIf config.features.${name}.enable (enabledConfig args);
 }

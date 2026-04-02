@@ -29,21 +29,25 @@
         }:
         let
           allProfiles = defaultProfiles // profiles;
-          featuresConfig = profile: { enabledFeatures = profile.features or [ ]; };
         in
         {
           darwinConfigurations = lib.mapAttrs (
             name: profile:
+            let
+              username = profile.username or name;
+            in
             nix-darwin.lib.darwinSystem {
               inherit (profile) system;
-              specialArgs = {
-                inherit inputs profile;
-                privateHomeModules = homeModules;
-              };
+              specialArgs = { inherit inputs; };
               modules = [
                 home-manager.darwinModules.home-manager
                 ./modules/darwin
-                (featuresConfig profile)
+                { dotfiles.username = username; }
+                {
+                  home-manager.users.${username}.imports =
+                    [ ./modules/home (profile.home or { }) ] ++ homeModules;
+                }
+                (profile.darwin or { })
               ] ++ darwinModules;
             }
           ) (lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) allProfiles);
@@ -51,18 +55,18 @@
           homeConfigurations = lib.mapAttrs (
             name: profile:
             let
-              username = lib.elemAt (lib.splitString "@" name) 0;
+              username = profile.username or (lib.elemAt (lib.splitString "@" name) 0);
             in
             home-manager.lib.homeManagerConfiguration {
               pkgs = inputs.nixpkgs.legacyPackages.${profile.system};
-              extraSpecialArgs = { inherit inputs profile; };
+              extraSpecialArgs = { inherit inputs; };
               modules = [
                 {
                   home.username = username;
                   home.homeDirectory = "/home/${username}";
                 }
                 ./modules/home
-                (featuresConfig profile)
+                (profile.home or { })
               ] ++ homeModules;
             }
           ) (lib.filterAttrs (_: p: lib.hasSuffix "linux" p.system) allProfiles);
