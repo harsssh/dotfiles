@@ -2,7 +2,7 @@
 let
   lib = inputs.nixpkgs.lib;
   inherit (inputs) nix-darwin home-manager;
-  defaultProfiles = import ../profiles.nix;
+  ciProfiles = import ../profiles.nix;
 
   mkDarwinConfiguration =
     { homeModules, darwinModules }:
@@ -50,7 +50,7 @@ in
   profiles ? { },
 }:
 let
-  allProfiles = defaultProfiles // profiles;
+  allProfiles = ciProfiles // profiles;
   isDarwin = _: p: lib.hasSuffix "darwin" p.system;
   isLinux = _: p: lib.hasSuffix "linux" p.system;
 in
