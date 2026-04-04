@@ -5,6 +5,7 @@
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
+    ./nix.nix
     ./claude.nix
     ./shell.nix
     ./ssh.nix
