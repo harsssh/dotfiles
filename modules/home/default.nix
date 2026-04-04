@@ -53,6 +53,7 @@
     # Languages
     bun
     go
+    nodejs
     llvmPackages.clang
     nixfmt
     pnpm
