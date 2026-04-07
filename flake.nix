@@ -13,6 +13,10 @@
       url = "github:alacritty/alacritty-theme";
       flake = false;
     };
+    google-workspace-cli = {
+      url = "github:googleworkspace/cli";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
