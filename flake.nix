@@ -20,60 +20,9 @@
   };
 
   outputs =
-    inputs@{ nix-darwin, home-manager, ... }:
+    inputs:
     let
-      lib = inputs.nixpkgs.lib;
-      defaultProfiles = import ./profiles.nix;
-
-      mkConfigurations =
-        {
-          homeModules ? [ ],
-          darwinModules ? [ ],
-          profiles ? { },
-        }:
-        let
-          allProfiles = defaultProfiles // profiles;
-          featuresConfig = profile: { enabledFeatures = profile.features or [ ]; };
-        in
-        {
-          darwinConfigurations = lib.mapAttrs (
-            name: profile:
-            nix-darwin.lib.darwinSystem {
-              inherit (profile) system;
-              specialArgs = {
-                inherit inputs profile;
-                profileName = name;
-                privateHomeModules = homeModules;
-              };
-              modules = [
-                home-manager.darwinModules.home-manager
-                ./modules/darwin
-                ./modules/darwin/homebrew.nix
-                (featuresConfig profile)
-              ] ++ darwinModules;
-            }
-          ) (lib.filterAttrs (_: p: lib.hasSuffix "darwin" p.system) allProfiles);
-
-          homeConfigurations = lib.mapAttrs (
-            name: profile:
-            let
-              username = lib.elemAt (lib.splitString "@" name) 0;
-            in
-            home-manager.lib.homeManagerConfiguration {
-              pkgs = inputs.nixpkgs.legacyPackages.${profile.system};
-              extraSpecialArgs = { inherit inputs profile; };
-              modules = [
-                {
-                  home.username = username;
-                  home.homeDirectory = "/home/${username}";
-                }
-                ./modules/home
-                (featuresConfig profile)
-              ] ++ homeModules;
-            }
-          ) (lib.filterAttrs (_: p: lib.hasSuffix "linux" p.system) allProfiles);
-        };
-
+      mkConfigurations = import ./lib/mkConfigurations.nix { inherit inputs; };
       defaultConfigs = mkConfigurations { };
     in
     {

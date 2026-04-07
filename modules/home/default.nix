@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ../enabled-features.nix
     ./alacritty.nix
     ./editorconfig.nix
     ./git.nix
     ./neovim.nix
+    ./nix.nix
     ./claude.nix
     ./shell.nix
     ./ssh.nix
@@ -54,6 +54,7 @@
     # Languages
     bun
     go
+    nodejs
     llvmPackages.clang
     nixfmt
     pnpm

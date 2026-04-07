@@ -1,25 +1,22 @@
-{ lib, pkgs, config, ... }:
-let
-  cfg = config.features."1password";
-  opPaths = import ../../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
-in
-{
-  options.features."1password".enable = lib.mkEnableOption "1Password SSH agent integration";
-
-  options.onePasswordSshAgent.entries = lib.mkOption {
-    type = lib.types.listOf (lib.types.attrsOf lib.types.str);
-    default = [ ];
+import ../../../lib/mkFeature.nix "1password" {
+  description = "1Password SSH agent integration";
+  extraOptions = { lib, ... }: {
+    onePasswordSshAgent.entries = lib.mkOption {
+      type = lib.types.listOf (lib.types.attrsOf lib.types.str);
+      default = [ ];
+    };
   };
-
-  config = lib.mkMerge [
+  enabledConfig =
+    { pkgs, config, lib, ... }:
+    let
+      opPaths = import ../../../lib/1password.nix { inherit (pkgs.stdenv) isDarwin; };
+      agentSock = opPaths.agentSockRelative;
+    in
     {
-      features."1password".enable = lib.mkDefault (builtins.elem "1password" config.enabledFeatures);
-    }
-    (lib.mkIf cfg.enable {
       onePasswordSshAgent.entries = lib.mkBefore [{ vault = "Personal"; }];
 
       home.sessionVariables = {
-        SSH_AUTH_SOCK = "$HOME/${opPaths.agentSockRelative}";
+        SSH_AUTH_SOCK = "$HOME/${agentSock}";
       };
 
       xdg.configFile."1Password/ssh/agent.toml".text =
@@ -34,8 +31,7 @@ in
       programs.git.settings.gpg.ssh.program = opPaths.sshSignProgram;
 
       programs.ssh.matchBlocks."*".extraOptions = {
-        IdentityAgent = "\"~/${opPaths.agentSockRelative}\"";
+        IdentityAgent = "\"~/${agentSock}\"";
       };
-    })
-  ];
+    };
 }
