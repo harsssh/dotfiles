@@ -73,7 +73,10 @@
   home.file.".ideavimrc".source = ../../config/.ideavimrc;
 
   # starship
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = false;
+  };
   xdg.configFile."starship.toml".source = ../../config/starship.toml;
 
   # fzf
