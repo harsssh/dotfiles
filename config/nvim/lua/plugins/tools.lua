@@ -103,6 +103,21 @@ return {
       { "<ESC>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode" },
     },
   },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
   -- tmux integration
   {
     "christoomey/vim-tmux-navigator",
