@@ -5,6 +5,17 @@ in
 {
   home.packages = [ pkgs.tig ];
 
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.nerdFontsVersion = "3";
+      git.paging = {
+        colorArg = "always";
+        externalDiffCommand = "difft --color=always";
+      };
+    };
+  };
+
   programs.git = {
     enable = true;
 
