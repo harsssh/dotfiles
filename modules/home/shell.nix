@@ -57,6 +57,8 @@ in
     ff = "fzf";
     ffb = ''git branch --format="%(refname:short)" | fzf'';
 
+    lg = "lazygit";
+
     g = "git";
     gpl = "git pull";
     gps = "git push";
