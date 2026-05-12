@@ -4,7 +4,7 @@
     ./alacritty.nix
     ./editorconfig.nix
     ./git.nix
-    ./neovim.nix
+    ./neovim
     ./nix.nix
     ./claude.nix
     ./shell.nix

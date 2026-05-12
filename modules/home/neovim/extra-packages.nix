@@ -1,20 +1,16 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
+  # nixvim 自身が neovim を導入するので個別の neovim パッケージは不要
   home.packages = with pkgs; [
-    neovim
-
     # LSP servers
     lua-language-server
     nodePackages.typescript-language-server
     gopls
 
-    # Formatters
+    # Formatters (none-ls から呼び出される)
     stylua
     gofumpt
     goimports-reviser
     biome
   ];
-
-  xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/nvim";
 }
