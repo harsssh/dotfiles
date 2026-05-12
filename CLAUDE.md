@@ -1,5 +1,8 @@
 設計や使い方は README.md を参照。
 
+このプロジェクトで設定の変更などを依頼した場合は、git 管理下のファイルを編集すること。
+配置された設定ファイルを直接編集しない。
+
 ## public feature の追加手順
 
 1. `modules/darwin/features/` または `modules/home/features/` にモジュールを作成
