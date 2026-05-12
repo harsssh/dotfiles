@@ -12,6 +12,7 @@ in
       git.pagers = [
         { externalDiffCommand = "difft --color=always"; }
       ];
+      git.overrideGpg = true;
     };
   };
 
