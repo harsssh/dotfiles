@@ -9,10 +9,9 @@ in
     enable = true;
     settings = {
       gui.nerdFontsVersion = "3";
-      git.paging = {
-        colorArg = "always";
-        externalDiffCommand = "difft --color=always";
-      };
+      git.pagers = [
+        { externalDiffCommand = "difft --color=always"; }
+      ];
     };
   };
 
