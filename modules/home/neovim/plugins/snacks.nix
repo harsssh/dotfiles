@@ -54,9 +54,7 @@ in
 
     keymaps = [
       # Top Pickers & Explorer
-      { mode = "n"; key = "<leader><space>"; action = mkRaw "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
-      { mode = "n"; key = "<leader>,"; action = mkRaw "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
-      { mode = "n"; key = "<leader>/"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
+      { mode = "n"; key = "<leader><leader>"; action = mkRaw "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
       { mode = "n"; key = "-"; action = mkRaw "function() Snacks.explorer() end"; options.desc = "File Explorer"; }
 
       # Find
@@ -72,8 +70,8 @@ in
       { mode = "n"; key = "<leader>gd"; action = mkRaw "function() Snacks.picker.git_diff() end"; options.desc = "Git Diff (Hunks)"; }
 
       # Grep
-      { mode = "n"; key = "<leader>sb"; action = mkRaw "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
-      { mode = "n"; key = "<leader>sg"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
+      { mode = "n"; key = "<leader>/"; action = mkRaw "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
+      { mode = "n"; key = "<leader>g/"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
 
       # Search
       { mode = "n"; key = "<leader>sd"; action = mkRaw "function() Snacks.picker.diagnostics() end"; options.desc = "Diagnostics"; }
