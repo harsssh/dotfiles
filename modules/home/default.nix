@@ -70,8 +70,30 @@
   programs.starship = {
     enable = true;
     enableBashIntegration = false;
+    settings = {
+      format = "$all\n$character";
+      command_timeout = 1000;
+
+      line_break = {
+        # format で明示的に改行をいれてるので、disabled にする
+        disabled = true;
+      };
+
+      character = {
+        success_symbol = "[\\$](bold green)";
+        error_symbol = "[\\$](bold red)";
+        # zsh ではこれだけしか使えない
+        vimcmd_symbol = "[V](bold green)";
+      };
+
+      aws.disabled = true;
+      gcloud.disabled = true;
+      package.disabled = true;
+      username.disabled = true;
+      time.disabled = true;
+      jobs.disabled = false;
+    };
   };
-  xdg.configFile."starship.toml".source = ../../config/starship.toml;
 
   # fzf
   programs.fzf = {
