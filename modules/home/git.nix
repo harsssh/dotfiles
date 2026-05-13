@@ -9,6 +9,8 @@ in
     enable = true;
     settings = {
       gui.nerdFontsVersion = "3";
+      gui.showCommandLog = false;
+      gui.expandFocusedSidePanel = true;
       git.pagers = [
         { externalDiffCommand = "difft --color=always"; }
       ];
