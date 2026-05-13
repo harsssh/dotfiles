@@ -57,25 +57,22 @@ in
       { mode = "n"; key = "<leader><space>"; action = mkRaw "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
       { mode = "n"; key = "<leader>,"; action = mkRaw "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
       { mode = "n"; key = "<leader>/"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
-      { mode = "n"; key = "<leader>e"; action = mkRaw "function() Snacks.explorer() end"; options.desc = "File Explorer"; }
       { mode = "n"; key = "-"; action = mkRaw "function() Snacks.explorer() end"; options.desc = "File Explorer"; }
 
       # Find
       { mode = "n"; key = "<leader>fb"; action = mkRaw "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
       { mode = "n"; key = "<leader>fc"; action = mkRaw ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end''; options.desc = "Find Config File"; }
       { mode = "n"; key = "<leader>ff"; action = mkRaw "function() Snacks.picker.files() end"; options.desc = "Find Files"; }
-      { mode = "n"; key = "<leader>fg"; action = mkRaw "function() Snacks.picker.git_files() end"; options.desc = "Find Git Files"; }
       { mode = "n"; key = "<leader>fr"; action = mkRaw "function() Snacks.picker.recent() end"; options.desc = "Recent"; }
 
       # Git
       { mode = "n"; key = "<leader>gl"; action = mkRaw "function() Snacks.picker.git_log() end"; options.desc = "Git Log"; }
+      { mode = "n"; key = "<leader>gf"; action = mkRaw "function() Snacks.picker.git_log_file() end"; options.desc = "Git Log File"; }
       { mode = "n"; key = "<leader>gs"; action = mkRaw "function() Snacks.picker.git_status() end"; options.desc = "Git Status"; }
       { mode = "n"; key = "<leader>gd"; action = mkRaw "function() Snacks.picker.git_diff() end"; options.desc = "Git Diff (Hunks)"; }
-      { mode = "n"; key = "<leader>gf"; action = mkRaw "function() Snacks.picker.git_log_file() end"; options.desc = "Git Log File"; }
 
       # Grep
-      { mode = "n"; key = "<leader>sb"; action = mkRaw "function() Snacks.picker.lines() end"; options.desc = "Buffer Lines"; }
-      { mode = "n"; key = "<leader>sB"; action = mkRaw "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
+      { mode = "n"; key = "<leader>sb"; action = mkRaw "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
       { mode = "n"; key = "<leader>sg"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
 
       # Search
