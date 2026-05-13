@@ -43,7 +43,7 @@ in
         };
         merge = {
           conflictStyle = "diff3";
-          tool = "vimdiff";
+          tool = "nvimdiff";
         };
         mergetool.keepBackup = false;
         rerere.enabled = true;

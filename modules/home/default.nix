@@ -57,17 +57,11 @@
     llvmPackages.clang
     nixfmt
     pnpm
-
-    # Editors
-    vim
   ];
   programs.home-manager.enable = true;
 
   # mycli
   home.file.".myclirc".source = ../../config/.myclirc;
-
-  # vim
-  home.file.".vimrc".source = ../../config/vim/.vimrc;
 
   # ideavim
   home.file.".ideavimrc".source = ../../config/.ideavimrc;
