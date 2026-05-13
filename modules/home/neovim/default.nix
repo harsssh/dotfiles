@@ -18,9 +18,12 @@
     vimAlias = true;
     performance.byteCompileLua.enable = true;
 
-    colorschemes.kanagawa = {
+    colorschemes.everforest = {
       enable = true;
-      settings.theme = "dragon";
+      settings = {
+        background = "medium";  # "soft" | "medium" | "hard"
+        ui_contrast = "high";
+      };
     };
   };
 }
