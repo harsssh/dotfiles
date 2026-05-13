@@ -1,79 +1,6 @@
-let
-  mkRaw = body: { __raw = body; };
-in
 {
   programs.nixvim = {
     plugins = {
-      telescope = {
-        enable = true;
-        extensions.fzf-native = {
-          enable = true;
-          settings = {
-            fuzzy = true;
-            override_generic_sorter = true;
-            override_file_sorter = true;
-            case_mode = "smart_case";
-          };
-        };
-        settings = {
-          defaults = {
-            mappings.i = {
-              "<C-f>".__raw = "require('telescope.actions').to_fuzzy_refine";
-            };
-            sorting_strategy = "ascending";
-            layout_strategy = "vertical";
-            layout_config = {
-              prompt_position = "top";
-              mirror = true;
-            };
-            file_ignore_patterns = [
-              "%.git/"
-              "node_modules/"
-              "target/"
-              "build/"
-              "dist/"
-              "%.lock$"
-              "%-lock%.json$"
-              "%-lock%.yaml$"
-              "%-lock%.yml$"
-            ];
-            path_display = [ "truncate" ];
-            dynamic_preview_title = true;
-            preview = {
-              timeout = 200;
-              filesize_limit = 0.1;
-            };
-            results_title = false;
-            prompt_title = false;
-          };
-          pickers = {
-            find_files = {
-              find_command = [ "fd" "--type" "f" "--hidden" "--exclude" ".git" ];
-              previewer = false;
-              theme = "dropdown";
-            };
-            live_grep = {
-              additional_args.__raw = ''
-                function()
-                  return {
-                    "--hidden",
-                    "--glob", "!.git/*",
-                    "--glob", "!*.lock",
-                    "--glob", "!*-lock.json",
-                    "--glob", "!*-lock.yaml",
-                  }
-                end
-              '';
-              only_sort_text = false;
-            };
-            current_buffer_fuzzy_find = {
-              previewer = false;
-              theme = "dropdown";
-            };
-          };
-        };
-      };
-
       trouble = {
         enable = true;
         settings = { };
@@ -98,8 +25,6 @@ in
         };
       };
 
-      lazygit.enable = true;
-
       tmux-navigator = {
         enable = true;
         settings.no_wrap = 1;
@@ -118,25 +43,6 @@ in
     };
 
     keymaps = [
-      # Telescope
-      { mode = "n"; key = "<leader>ff"; action = mkRaw "function() require('telescope.builtin').find_files() end"; options.desc = "Telescope: Find Files"; }
-      { mode = "n"; key = "<leader>fg"; action = mkRaw "function() require('telescope.builtin').live_grep() end"; options.desc = "Telescope: Live Grep"; }
-      { mode = "n"; key = "<leader>fb"; action = mkRaw "function() require('telescope.builtin').current_buffer_fuzzy_find() end"; options.desc = "Telescope: Fuzzy Find in Current Buffer"; }
-      { mode = "n"; key = "<leader>gs"; action = mkRaw "function() require('telescope.builtin').git_status({ show_untracked = true }) end"; options.desc = "Telescope: Git Status"; }
-      { mode = "n"; key = "<leader>fe"; action = mkRaw "function() require('telescope.builtin').oldfiles({ prompt_title = 'Recent Files' }) end"; options.desc = "Recent Files"; }
-      {
-        mode = "n";
-        key = "<leader>fs";
-        action = mkRaw ''
-          function()
-            require('telescope.builtin').lsp_dynamic_workspace_symbols({
-              symbols = { "Class", "Function", "Method", "Interface", "Struct", "Module", "Constant", "Enum" }
-            })
-          end
-        '';
-        options.desc = "Telescope: Workspace Symbols";
-      }
-
       # Trouble
       { mode = "n"; key = "<leader>xx"; action = "<cmd>Trouble diagnostics toggle<cr>"; options.desc = "Diagnostics (Trouble)"; }
       { mode = "n"; key = "<leader>xX"; action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>"; options.desc = "Buffer Diagnostics (Trouble)"; }
@@ -146,10 +52,10 @@ in
       { mode = "n"; key = "<leader>xQ"; action = "<cmd>Trouble qflist toggle<cr>"; options.desc = "Qflist (Trouble)"; }
 
       # Persistence
-      { mode = "n"; key = "<leader>qs"; action = mkRaw "function() require('persistence').load() end"; options.desc = "Restore Session"; }
-      { mode = "n"; key = "<leader>qS"; action = mkRaw "function() require('persistence').select() end"; options.desc = "Select Session"; }
-      { mode = "n"; key = "<leader>ql"; action = mkRaw "function() require('persistence').load({ last = true }) end"; options.desc = "Restore Last Session"; }
-      { mode = "n"; key = "<leader>qd"; action = mkRaw "function() require('persistence').stop() end"; options.desc = "Stop Persistence"; }
+      { mode = "n"; key = "<leader>qs"; action.__raw = "function() require('persistence').load() end"; options.desc = "Restore Session"; }
+      { mode = "n"; key = "<leader>qS"; action.__raw = "function() require('persistence').select() end"; options.desc = "Select Session"; }
+      { mode = "n"; key = "<leader>ql"; action.__raw = "function() require('persistence').load({ last = true }) end"; options.desc = "Restore Last Session"; }
+      { mode = "n"; key = "<leader>qd"; action.__raw = "function() require('persistence').stop() end"; options.desc = "Stop Persistence"; }
 
       # Toggleterm
       { mode = "n"; key = "<leader>tt"; action = "<cmd>ToggleTerm direction=float<cr>"; options.desc = "Toggle floating terminal"; }
@@ -158,9 +64,6 @@ in
       { mode = "n"; key = "<C-\\>"; action = "<cmd>ToggleTerm<cr>"; options.desc = "Toggle terminal"; }
       { mode = "t"; key = "<C-\\>"; action = "<C-\\><C-n><cmd>ToggleTerm<cr>"; options.desc = "Toggle terminal (term mode)"; }
       { mode = "t"; key = "<ESC>"; action = "<C-\\><C-n>"; options.desc = "Exit terminal mode"; }
-
-      # LazyGit
-      { mode = "n"; key = "<leader>lg"; action = "<cmd>LazyGit<cr>"; options.desc = "LazyGit"; }
 
       # tmux-navigator
       { mode = "n"; key = "<C-h>"; action = "<cmd>TmuxNavigateLeft<cr>"; options.desc = "Navigate left"; }

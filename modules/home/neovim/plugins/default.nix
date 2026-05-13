@@ -6,5 +6,6 @@
     ./treesitter.nix
     ./tools.nix
     ./extra.nix
+    ./snacks.nix
   ];
 }

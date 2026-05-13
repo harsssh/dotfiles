@@ -13,11 +13,6 @@
         settings = { };
       };
 
-      fidget = {
-        enable = true;
-        settings.notification.override_vim_notify = true;
-      };
-
       todo-comments = {
         enable = true;
         settings.signs = false;
