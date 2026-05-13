@@ -53,13 +53,12 @@ in
     };
 
     keymaps = [
-      # Top Pickers & Explorer
-      { mode = "n"; key = "<leader><leader>"; action = mkRaw "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
+      # Explorer
       { mode = "n"; key = "-"; action = mkRaw "function() Snacks.explorer() end"; options.desc = "File Explorer"; }
 
       # Find
+      { mode = "n"; key = "<leader><leader>"; action = mkRaw "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
       { mode = "n"; key = "<leader>fb"; action = mkRaw "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
-      { mode = "n"; key = "<leader>fc"; action = mkRaw ''function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end''; options.desc = "Find Config File"; }
       { mode = "n"; key = "<leader>ff"; action = mkRaw "function() Snacks.picker.files() end"; options.desc = "Find Files"; }
       { mode = "n"; key = "<leader>fr"; action = mkRaw "function() Snacks.picker.recent() end"; options.desc = "Recent"; }
 
