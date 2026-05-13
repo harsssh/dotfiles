@@ -61,11 +61,12 @@
             })
           end)()
         '';
+        # group_index による fallback: 1 のソースに候補がない時だけ 2 を使う
         sources = [
-          { name = "nvim_lsp"; }
-          { name = "lazydev"; }
-          { name = "copilot"; }
-          { name = "buffer"; keyword_length = 2; }
+          { name = "nvim_lsp"; group_index = 1; }
+          { name = "lazydev"; group_index = 1; }
+          { name = "copilot"; group_index = 1; }
+          { name = "buffer"; keyword_length = 2; group_index = 2; }
         ];
       };
 
