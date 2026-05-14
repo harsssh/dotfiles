@@ -6,7 +6,7 @@
     ];
 
     extraConfigLua = ''
-      require("render-markdown").setup({})
+      require("render-markdown").setup({ heading = { enabled = false } })
     '';
 
     plugins = {
