@@ -81,6 +81,7 @@ in
       # Grep
       { mode = "n"; key = "<leader>/"; action = mkRaw "function() Snacks.picker.grep_buffers() end"; options.desc = "Grep Open Buffers"; }
       { mode = "n"; key = "<leader>g/"; action = mkRaw "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
+      { mode = "n"; key = "<leader>sw"; action = mkRaw "function() Snacks.picker.grep({ search = vim.fn.expand('<cword>') }) end"; options.desc = "Grep Word"; }
 
       # Search
       { mode = "n"; key = "<leader>sd"; action = mkRaw "function() Snacks.picker.diagnostics() end"; options.desc = "Diagnostics"; }
