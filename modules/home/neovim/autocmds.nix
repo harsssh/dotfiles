@@ -6,6 +6,7 @@
       HelpDisplay.clear = true;
       RestoreCursor.clear = true;
       LspKeymaps.clear = true;
+      RubyIndent.clear = true;
     };
 
     autoCmd = [
@@ -47,6 +48,18 @@
             if mark > 1 and mark <= vim.fn.line("$") then
               vim.cmd('normal! g`"')
             end
+          end
+        '';
+      }
+      {
+        event = [ "FileType" ];
+        group = "RubyIndent";
+        pattern = [ "ruby" ];
+        callback.__raw = ''
+          function()
+            vim.schedule(function()
+              vim.opt_local.indentexpr = "GetRubyIndent()"
+            end)
           end
         '';
       }
