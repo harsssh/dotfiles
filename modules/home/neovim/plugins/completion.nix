@@ -32,21 +32,15 @@
         };
         formatting = {
           expandable_indicator = true;
-          fields = [ "kind" "abbr" ];
+          fields = [ "icon" "abbr" ];
           format = lib.mkForce { __raw = ''
-            require('lspkind').cmp_format({
-              mode = 'symbol',
-              maxwidth = 50,
-              ellipsis_char = '…',
-              before = function(entry, vim_item)
-                vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
-                if vim_item.menu then
-                  vim_item.menu = vim.fn.strcharpart(vim_item.menu, 0, 50) .. "…"
-                end
-                return vim_item
-              end,
-              symbol_map = { Copilot = "" },
-            })
+            function(entry, vim_item)
+              if entry.source.name == 'copilot' then
+                vim_item.icon = ""
+              end
+              vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
+              return vim_item
+            end
           ''; };
         };
         mapping.__raw = ''
