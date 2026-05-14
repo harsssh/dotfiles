@@ -1,11 +1,11 @@
 {
   imports = [
     ./completion.nix
+    ./lsp.nix
+    ./editing.nix
     ./ui.nix
-    ./editor.nix
-    ./treesitter.nix
-    ./tools.nix
-    ./extra.nix
     ./snacks.nix
+    ./util.nix
+    ./extra.nix
   ];
 }
