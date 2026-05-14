@@ -47,7 +47,7 @@
 
       undofile = true;
 
-      clipboard = "unnamedplus";
+      clipboard = "unnamed,unnamedplus";
 
       foldmethod = "expr";
       foldexpr = "v:lua.vim.treesitter.foldexpr()";
