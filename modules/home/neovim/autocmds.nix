@@ -22,7 +22,7 @@
         '';
       }
       {
-        event = [ "WinEnter" "FocusGained" "BufEnter" ];
+        event = [ "WinEnter" "FocusGained" "BufEnter" "CursorHold" ];
         group = "AutoReload";
         pattern = "*";
         command = "checktime";
@@ -59,10 +59,6 @@
             local opts  = { buffer = bufnr, silent = true }
             local map   = vim.keymap.set
             map('n', 'K', vim.lsp.buf.hover, opts)
-            map('n', 'gr', vim.lsp.buf.references, opts)
-            map('n', 'gd', vim.lsp.buf.definition, opts)
-            map('n', 'gD', vim.lsp.buf.declaration, opts)
-            map('n', 'gi', vim.lsp.buf.implementation, opts)
             map('n', 'ge', vim.diagnostic.open_float, opts)
             map('n', 'g]', function()
               vim.diagnostic.jump({ count = 1, forward = true })
