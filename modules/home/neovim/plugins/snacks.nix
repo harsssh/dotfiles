@@ -50,14 +50,6 @@ in
         };
         picker.sources.explorer = {
           layout.layout.position = "right";
-          win.list.keys = {
-            # snacks picker のデフォルトで <c-j>/<c-k> が list_down/list_up にマップされ
-            # グローバルの TmuxNavigate に届かなくなるため explorer 側で上書き
-            "<c-h>".__raw = "function() vim.cmd('TmuxNavigateLeft') end";
-            "<c-j>".__raw = "function() vim.cmd('TmuxNavigateDown') end";
-            "<c-k>".__raw = "function() vim.cmd('TmuxNavigateUp') end";
-            "<c-l>".__raw = "function() vim.cmd('TmuxNavigateRight') end";
-          };
         };
       };
     };
