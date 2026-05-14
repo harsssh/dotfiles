@@ -21,6 +21,8 @@ in
             "typescript"
             "javascript"
             "ruby"
+            "markdown"
+            "markdown_inline"
           ];
           highlight = {
             enable = true;
