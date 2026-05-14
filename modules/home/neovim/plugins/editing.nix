@@ -1,8 +1,14 @@
+{ pkgs, ... }:
 let
   mkRaw = body: { __raw = body; };
 in
 {
   programs.nixvim = {
+    extraPlugins = [
+      pkgs.vimPlugins.vim-repeat
+      pkgs.vimPlugins.haskell-vim
+    ];
+
     plugins = {
       treesitter = {
         enable = true;

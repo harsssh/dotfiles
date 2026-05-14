@@ -6,6 +6,5 @@
     ./ui.nix
     ./snacks.nix
     ./util.nix
-    ./extra.nix
   ];
 }
