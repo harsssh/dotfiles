@@ -23,3 +23,20 @@
 `mkConfigurations` は `{ darwinConfigurations, homeConfigurations }` を返す。
 
 `profiles.nix` には CI 用の最小プロファイルのみ含まれる。実際のホスト定義は `dotfiles-private` から注入する。
+
+## neovim の設定管理
+
+設定は `modules/home/neovim/` 以下にある。nixvim で管理している。
+
+### plugins/ の構成と配置方針
+
+- `editing.nix`: treesitter など構文解析・インデント・テキスト編集系。言語固有のシンタックスプラグインもここ。
+- `lsp.nix`: none-ls (フォーマッタ) と LSP attach 処理。
+- `ui.nix`: ステータスライン・サイン・装飾など見た目系。
+- `util.nix`: セッション管理・ターミナル・tmux 連携など。
+- `completion.nix`: 補完系。
+- `snacks.nix`: snacks.nvim の設定。
+
+### nixvim の managed plugin にないものを追加する場合
+
+`extraPlugins` に `pkgs.vimPlugins.<name>` を追加し、`extraConfigLua` で `require("...").setup({})` を呼ぶ。配置先は上記の構成に従う。
