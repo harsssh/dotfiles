@@ -7,6 +7,7 @@
       RestoreCursor.clear = true;
       LspKeymaps.clear = true;
       RubyIndent.clear = true;
+      ExplorerTmuxNav.clear = true;
     };
 
     autoCmd = [
@@ -59,6 +60,28 @@
           function()
             vim.schedule(function()
               vim.opt_local.indentexpr = "GetRubyIndent()"
+            end)
+          end
+        '';
+      }
+      {
+        event = [ "BufWinEnter" ];
+        group = "ExplorerTmuxNav";
+        pattern = [ "*" ];
+        callback.__raw = ''
+          function(ev)
+            if vim.bo[ev.buf].filetype ~= "snacks_picker_list" then return end
+            -- explorer は split (non-floating), 他の picker は floating window
+            local win = vim.api.nvim_get_current_win()
+            if vim.api.nvim_win_get_config(win).relative ~= "" then return end
+            -- snacks がキーマップを設定し終えた後に上書きする
+            vim.schedule(function()
+              local map = vim.keymap.set
+              local opts = { buffer = ev.buf, nowait = true, silent = true }
+              map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  opts)
+              map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>",  opts)
+              map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>",    opts)
+              map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", opts)
             end)
           end
         '';
