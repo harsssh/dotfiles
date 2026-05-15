@@ -50,12 +50,6 @@ in
         };
         picker.sources.explorer = {
           layout.layout.position = "right";
-          win.list.keys = {
-            "<C-h>" = { __raw = ''{ "<cmd>TmuxNavigateLeft<cr>", desc = "Navigate left", mode = { "n" } }''; };
-            "<C-j>" = { __raw = ''{ "<cmd>TmuxNavigateDown<cr>", desc = "Navigate down", mode = { "n" } }''; };
-            "<C-k>" = { __raw = ''{ "<cmd>TmuxNavigateUp<cr>", desc = "Navigate up", mode = { "n" } }''; };
-            "<C-l>" = { __raw = ''{ "<cmd>TmuxNavigateRight<cr>", desc = "Navigate right", mode = { "n" } }''; };
-          };
         };
       };
     };
