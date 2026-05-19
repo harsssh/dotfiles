@@ -53,5 +53,39 @@
       { mode = "n"; key = "<C-l>"; action = "<cmd>TmuxNavigateRight<cr>"; options.desc = "Navigate right"; }
       { mode = "n"; key = "<C-p>"; action = "<cmd>TmuxNavigatePrevious<cr>"; options.desc = "Navigate previous"; }
     ];
+
+    extraConfigLua = ''
+      -- snacks explorer (snacks_picker_list) での tmux navigation
+      -- snacks_picker_list は floating window のため wincmd l が editor に向かい
+      -- TmuxNavigateRight が tmux に届かない。snacks_layout_box (非 floating の右端) を
+      -- 経由することで正しく tmux 右ペインへ移動できる。
+      do
+        local group = vim.api.nvim_create_augroup("ExplorerTmuxNav", { clear = true })
+        vim.api.nvim_create_autocmd("BufWinEnter", {
+          group = group,
+          callback = function(ev)
+            if vim.bo[ev.buf].filetype ~= "snacks_picker_list" then return end
+            vim.schedule(function()
+              if not vim.api.nvim_buf_is_valid(ev.buf) then return end
+              local opts = { buffer = ev.buf, nowait = true, silent = true }
+              local map = vim.keymap.set
+              map("n", "<C-l>", function()
+                for _, w in ipairs(vim.api.nvim_list_wins()) do
+                  if vim.bo[vim.api.nvim_win_get_buf(w)].filetype == "snacks_layout_box"
+                     and vim.api.nvim_win_get_config(w).relative == "" then
+                    vim.api.nvim_set_current_win(w)
+                    vim.cmd("TmuxNavigateRight")
+                    return
+                  end
+                end
+              end, opts)
+              map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  opts)
+              map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>",  opts)
+              map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>",    opts)
+            end)
+          end,
+        })
+      end
+    '';
   };
 }
