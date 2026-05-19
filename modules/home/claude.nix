@@ -2,12 +2,12 @@
 let
   cfg = config.claude;
   jsonFormat = pkgs.formats.json { };
-  localSettings = lib.optionalAttrs (cfg.otelHeadersHelper != null) {
-    inherit (cfg) otelHeadersHelper;
+  localSettings = lib.optionalAttrs (cfg.enduserId != null) {
+    env.OTEL_RESOURCE_ATTRIBUTES = "enduser.id=${cfg.enduserId}";
   };
 in
 {
-  options.claude.otelHeadersHelper = lib.mkOption {
+  options.claude.enduserId = lib.mkOption {
     type = lib.types.nullOr lib.types.str;
     default = null;
   };
