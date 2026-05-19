@@ -69,19 +69,19 @@
               if not vim.api.nvim_buf_is_valid(ev.buf) then return end
               local opts = { buffer = ev.buf, nowait = true, silent = true }
               local map = vim.keymap.set
-              map("n", "<C-l>", function()
-                for _, w in ipairs(vim.api.nvim_list_wins()) do
-                  if vim.bo[vim.api.nvim_win_get_buf(w)].filetype == "snacks_layout_box"
-                     and vim.api.nvim_win_get_config(w).relative == "" then
-                    vim.api.nvim_set_current_win(w)
-                    vim.cmd("TmuxNavigateRight")
-                    return
+              -- floating window からは wincmd が全てアンカーに向かうため
+              -- vim-tmux-navigator を経由せず tmux select-pane を直接呼ぶ
+              local function tmux_pane(flag)
+                return function()
+                  if vim.env.TMUX and vim.env.TMUX ~= "" then
+                    vim.fn.system("tmux select-pane -" .. flag)
                   end
                 end
-              end, opts)
-              map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>",  opts)
-              map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>",  opts)
-              map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>",    opts)
+              end
+              map("n", "<C-l>", tmux_pane("R"), opts)
+              map("n", "<C-j>", tmux_pane("D"), opts)
+              map("n", "<C-k>", tmux_pane("U"), opts)
+              map("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>", opts)
             end)
           end,
         })
