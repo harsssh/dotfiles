@@ -41,6 +41,7 @@
     jq
     k9s
     mycli
+    tfenv
     peco
     pstree
     ripgrep
