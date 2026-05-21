@@ -39,6 +39,7 @@
     gnused
     httpie
     jq
+    k9s
     mycli
     peco
     pstree
