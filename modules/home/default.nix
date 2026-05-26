@@ -42,6 +42,7 @@
     k9s
     mycli
     tenv
+    tflint
     peco
     pstree
     ripgrep

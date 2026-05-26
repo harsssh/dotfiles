@@ -74,8 +74,10 @@
     "skill-creator@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
-    "serena@claude-plugins-official": true
+    "serena@claude-plugins-official": true,
+    "slack@claude-plugins-official": true
   },
   "effortLevel": "medium",
+  "theme": "dark",
   "skipAutoPermissionPrompt": true
 }
