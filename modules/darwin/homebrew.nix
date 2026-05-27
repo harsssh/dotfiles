@@ -18,6 +18,7 @@
       "karabiner-elements"
       "obsidian"
       "raycast"
+      "slack"
       "tailscale-app"
       "visual-studio-code"
     ];
