@@ -12,7 +12,6 @@ in
     plugins = {
       treesitter = {
         enable = true;
-        folding.enable = true;
         settings = {
           auto_install = true;
           sync_install = false;

@@ -1,21 +1,35 @@
 { pkgs, lib, ... }:
+let
+  nodeBin = "${pkgs.nodejs}/bin/node";
+in
 {
-  programs.nixvim.plugins = {
-    lazydev.enable = true;
-    lspkind.enable = true;
+  programs.nixvim = {
+    extraPlugins = [
+      pkgs.vimPlugins.copilot-lua
+      pkgs.vimPlugins.copilot-cmp
+      pkgs.vimPlugins.copilot-lsp
+    ];
 
-    copilot-lua = {
-      enable = true;
-      settings = {
-        suggestion.enabled = false;
-        panel.enabled = false;
-        copilot_node_command = "${pkgs.nodejs}/bin/node";
-      };
-    };
+    # copilot は node プロセスを起動するため、InsertEnter まで defer して起動時間を削減
+    extraConfigLua = ''
+      vim.api.nvim_create_autocmd("InsertEnter", {
+        once = true,
+        callback = function()
+          require("copilot").setup({
+            suggestion = { enabled = false },
+            panel = { enabled = false },
+            copilot_node_command = "${nodeBin}",
+          })
+          require("copilot_cmp").setup()
+        end,
+      })
+    '';
 
-    copilot-cmp.enable = true;
+    plugins = {
+      lazydev.enable = true;
+      lspkind.enable = true;
 
-    cmp = {
+      cmp = {
       enable = true;
       autoEnableSources = true;
       settings = {
@@ -83,6 +97,7 @@
           matching.disallow_symbol_nonprefix_matching = false;
         };
       };
+    };
     };
   };
 }

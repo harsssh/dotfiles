@@ -16,7 +16,10 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    performance.byteCompileLua.enable = true;
+    performance = {
+      byteCompileLua.enable = true;
+      combinePlugins.enable = true;
+    };
 
     colorschemes.everforest = {
       enable = true;
