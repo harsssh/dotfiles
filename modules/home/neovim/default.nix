@@ -18,7 +18,11 @@
     vimAlias = true;
     performance = {
       byteCompileLua.enable = true;
-      combinePlugins.enable = true;
+      combinePlugins = {
+        enable = true;
+        # treesitter はクエリファイルが他プラグイン (snacks.nvim 等) と競合するため除外
+        standalonePlugins = [ "nvim-treesitter" ];
+      };
     };
 
     colorschemes.everforest = {
