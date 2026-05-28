@@ -16,14 +16,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    performance = {
-      byteCompileLua.enable = true;
-      combinePlugins = {
-        enable = true;
-        # treesitter はクエリファイルが他プラグイン (snacks.nvim 等) と競合するため除外
-        standalonePlugins = [ "nvim-treesitter" ];
-      };
-    };
+    performance.byteCompileLua.enable = true;
 
     colorschemes.everforest = {
       enable = true;
