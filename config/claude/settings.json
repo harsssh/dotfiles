@@ -48,14 +48,6 @@
       "mcp__git__git_branch",
       "WebSearch",
       "mcp__sequential-thinking__sequentialthinking",
-      "mcp__serena__list_dir",
-      "mcp__serena__search_for_pattern",
-      "mcp__serena__find_file",
-      "mcp__serena__find_symbol",
-      "mcp__serena__get_symbols_overview",
-      "mcp__serena__list_memories",
-      "mcp__serena__read_memory",
-      "mcp__serena__check_onboarding_performed",
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs"
     ]
@@ -74,7 +66,6 @@
     "skill-creator@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
-    "serena@claude-plugins-official": true,
     "slack@claude-plugins-official": true
   },
   "effortLevel": "medium",
