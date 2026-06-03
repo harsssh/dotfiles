@@ -27,10 +27,7 @@
 
       tmux-navigator = {
         enable = true;
-        settings = {
-          no_wrap = 1;
-          no_mappings = 1;
-        };
+        settings.no_wrap = 1;
       };
     };
 
@@ -56,6 +53,10 @@
       { mode = "n"; key = "<C-l>"; action = "<cmd>TmuxNavigateRight<cr>"; options.desc = "Navigate right"; }
       { mode = "n"; key = "<C-p>"; action = "<cmd>TmuxNavigatePrevious<cr>"; options.desc = "Navigate previous"; }
     ];
+
+    extraConfigLuaPre = ''
+      vim.g.tmux_navigator_no_mappings = 1
+    '';
 
     extraConfigLua = ''
       -- snacks explorer (snacks_picker_list) での tmux navigation
