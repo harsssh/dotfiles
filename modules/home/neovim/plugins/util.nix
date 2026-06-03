@@ -27,11 +27,12 @@
 
       tmux-navigator = {
         enable = true;
-        settings.no_wrap = 1;
+        settings = {
+          no_wrap = 1;
+          no_mappings = 1;
+        };
       };
     };
-
-    globals."tmux_navigator_no_mappings" = 1;
 
     keymaps = [
       # Persistence
