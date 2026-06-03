@@ -31,6 +31,8 @@
       };
     };
 
+    globals."tmux_navigator_no_mappings" = 1;
+
     keymaps = [
       # Persistence
       { mode = "n"; key = "<leader>qs"; action.__raw = "function() require('persistence').load() end"; options.desc = "Restore Session"; }
