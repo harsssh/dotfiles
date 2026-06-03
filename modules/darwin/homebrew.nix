@@ -24,6 +24,8 @@
     ];
     masApps = {
       RunCat = 1429033973;
+      "Okta Verify" = 490179405;
+      Kindle = 302584613;
     };
   };
 
