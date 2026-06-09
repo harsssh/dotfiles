@@ -8,6 +8,7 @@
     };
     brews = [
       "ni"
+      "render"
     ];
     casks = [
       "1password"
