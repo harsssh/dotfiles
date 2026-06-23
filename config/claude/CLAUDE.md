@@ -18,6 +18,7 @@
 - テキスト検索には組み込みの Grep ツール、Bash にフォールバックする場合は `rg` を使う
 - alias で `rm` は interactive に実行されるので、Claude がファイルを削除するときは `rm -f` を使う
 - git-switch, git-restore を使って安全に git リポジトリを操作して。git-checkout, git-reset を乱用しない。
+- ユーザーの指示なく PR を作成してはいけない
 
 ## コーディング
 
