@@ -3,10 +3,12 @@
   programs.nixvim = {
     extraPlugins = [
       pkgs.vimPlugins.render-markdown-nvim
+      pkgs.vimPlugins.nvim-hlslens
     ];
 
     extraConfigLua = ''
       require("render-markdown").setup({ heading = { enabled = false } })
+      require("hlslens").setup({})
     '';
 
     plugins = {
@@ -15,11 +17,6 @@
       gitsigns = {
         enable = true;
         settings.signcolumn = true;
-      };
-
-      hlslens = {
-        enable = true;
-        settings = { };
       };
 
       todo-comments = {

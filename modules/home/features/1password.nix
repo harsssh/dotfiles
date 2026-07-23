@@ -30,8 +30,6 @@ import ../../../lib/mkFeature.nix "1password" {
 
       programs.git.settings.gpg.ssh.program = opPaths.sshSignProgram;
 
-      programs.ssh.matchBlocks."*".extraOptions = {
-        IdentityAgent = "\"~/${agentSock}\"";
-      };
+      programs.ssh.settings."*".IdentityAgent = "\"~/${agentSock}\"";
     };
 }

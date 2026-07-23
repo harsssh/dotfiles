@@ -4,15 +4,15 @@
     enable = true;
     enableDefaultConfig = false;
     includes = [ "~/.ssh/config.local" ];
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        user = "git";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
+        User = "git";
+        IdentityFile = "~/.ssh/id_ed25519";
+        IdentitiesOnly = true;
       };
       "*" = {
-        addKeysToAgent = "yes";
-        forwardAgent = true;
+        AddKeysToAgent = "yes";
+        ForwardAgent = true;
       };
     };
   };

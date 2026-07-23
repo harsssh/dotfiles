@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     # LSP servers
     lua-language-server
-    nodePackages.typescript-language-server
+    typescript-language-server
     gopls
 
     # Formatters (none-ls から呼び出される)

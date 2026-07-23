@@ -30,5 +30,5 @@
     };
   };
 
-  environment.systemPath = [ config.homebrew.brewPrefix ];
+  environment.systemPath = [ "${config.homebrew.prefix}/bin" ];
 }
