@@ -57,6 +57,7 @@ in
           enabled = true;
           replace_netrw = true;
         };
+        gitbrowse = { enabled = true; };
         picker.sources.explorer = {
           layout.layout.position = "right";
         };
@@ -103,6 +104,10 @@ in
 
       # LazyGit
       { mode = "n"; key = "<leader>lg"; action = mkRaw "function() Snacks.lazygit() end"; options.desc = "LazyGit"; }
+
+      # GitBrowse (permalink)
+      { mode = ["n" "v"]; key = "<leader>go"; action = mkRaw "function() Snacks.gitbrowse() end"; options.desc = "Open in Browser"; }
+      { mode = ["n" "v"]; key = "<leader>gy"; action = mkRaw "function() Snacks.gitbrowse({ open = function(url) vim.fn.setreg('+', url) end, notify = false }) end"; options.desc = "Yank Permalink"; }
 
       # Bufdelete (mini.bufremove の置き換え)
       { mode = "n"; key = "<leader>bd"; action = mkRaw "function() Snacks.bufdelete() end"; options.desc = "Delete Buffer"; }
