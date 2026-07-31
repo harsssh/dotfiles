@@ -32,7 +32,6 @@ in
   home.sessionPath = [
     "${config.home.homeDirectory}/.bun/bin"
     "${config.home.homeDirectory}/.local/bin"
-    "${config.home.homeDirectory}/.ghcup/bin"
   ];
 
   home.shellAliases = {

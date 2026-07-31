@@ -3,7 +3,10 @@
   homebrew = {
     enable = true;
     onActivation = {
-      cleanup = "zap";
+      # "zap" だと nix-darwin が付与する --force-cleanup を現行の brew が受け付けず
+      # activation が失敗するため、直るまで "check" にしておく
+      # https://github.com/nix-darwin/nix-darwin/issues/1807
+      cleanup = "check";
       extraFlags = [ "--quiet" ];
     };
     brews = [
