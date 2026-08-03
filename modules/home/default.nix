@@ -54,6 +54,8 @@
 
     # Languages
     bun
+    ghc
+    cabal-install
     go
     nodejs
     ruby
