@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 {
   programs.eza = {
     enable = true;
@@ -17,8 +17,6 @@
     CLICOLOR = "1";
     MAKEFLAGS = "SHELL=/bin/bash";
     GHUSER = "harsssh";
-    CC = "${llvm.clang}/bin/clang";
-    CXX = "${llvm.clang}/bin/clang++";
     CDPATH = builtins.concatStringsSep ":" [
       config.home.homeDirectory
       "${config.home.homeDirectory}/Documents"
