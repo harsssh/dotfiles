@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  llvm = pkgs.llvmPackages;
-in
 {
   programs.eza = {
     enable = true;
