@@ -29,7 +29,10 @@
         settings = { };
       };
 
-      treesitter-context.enable = true;
+      treesitter-context = {
+        enable = true;
+        settings.max_lines = 5;
+      };
 
       lualine = {
         enable = true;
