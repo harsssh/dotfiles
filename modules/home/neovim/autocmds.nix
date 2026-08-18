@@ -7,6 +7,7 @@
       RestoreCursor.clear = true;
       LspKeymaps.clear = true;
       RubyIndent.clear = true;
+      DiffStart.clear = true;
     };
 
     autoCmd = [
@@ -48,6 +49,27 @@
             if mark > 1 and mark <= vim.fn.line("$") then
               vim.cmd('normal! g`"')
             end
+          end
+        '';
+      }
+      {
+        event = [ "VimEnter" ];
+        group = "DiffStart";
+        pattern = "*";
+        callback.__raw = ''
+          function()
+            if not vim.wo.diff then return end
+            vim.schedule(function()
+              local conflict = vim.fn.search([[^<<<<<<< ]], 'cnw')
+              if conflict > 0 then
+                vim.api.nvim_win_set_cursor(0, { conflict, 0 })
+              elseif vim.fn.diff_hlID(1, 1) <= 0 then
+                vim.cmd('keepjumps normal! gg]c')
+              else
+                vim.cmd('keepjumps normal! gg')
+              end
+              vim.cmd('normal! zvzz')
+            end)
           end
         '';
       }

@@ -6,6 +6,17 @@ let
   v = mk "v";
   i = mk "i";
 
+  # diff モードでは組み込みの ]c / [c が変更ブロック単位で移動できるので、そちらに委ねる
+  mkHunkNav = key: direction: s key (raw ''
+    function()
+      if vim.wo.diff then
+        vim.cmd('normal! ' .. vim.v.count1 .. '${key}')
+      else
+        require('gitsigns').nav_hunk('${direction}', { target = 'all' })
+      end
+    end
+  '') silent;
+
   # vim-repeat 連動の resize keymap
   mkResize = key: cmd: s key (raw ''
     function()
@@ -51,6 +62,10 @@ in
       (mkResize "s-" "resize -3")
       (mkResize "s=" "resize +3")
       (s "s0" "<C-w>=" silent)
+
+      # Git hunk
+      (mkHunkNav "]c" "next")
+      (mkHunkNav "[c" "prev")
 
       # Yank / Paste
       (s "Y" "y$" { })
