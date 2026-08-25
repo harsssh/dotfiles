@@ -1,29 +1,11 @@
-{ config, lib, pkgs, ... }:
-let
-  cfg = config.claude;
-  jsonFormat = pkgs.formats.json { };
-  localSettings = lib.optionalAttrs (cfg.enduserId != null) {
-    env.OTEL_RESOURCE_ATTRIBUTES = "enduser.id=${cfg.enduserId}";
-  };
-in
+{ config, ... }:
 {
-  options.claude.enduserId = lib.mkOption {
-    type = lib.types.nullOr lib.types.str;
-    default = null;
+  # settings.json は Claude Code 自身が model・theme・autoMode 等の実行時状態を書き込む先なので、
+  # Nix で配置すると CLI の書き込みと衝突する。宣言的に管理せず CLI に所有させる。
+  home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
+  home.file.".claude/statusline.sh" = {
+    source = ../../config/claude/statusline.sh;
+    executable = true;
   };
-
-  config = {
-    # settings.json は手動で権限を調整できるよう symlink で配置する。
-    # 環境固有の設定 (otelHeadersHelper 等) は settings.local.json に分離して Nix で生成する。
-    home.file.".claude/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/settings.json";
-    home.file.".claude/settings.local.json" = lib.mkIf (localSettings != { }) {
-      source = jsonFormat.generate "settings.local.json" localSettings;
-    };
-    home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
-    home.file.".claude/statusline.sh" = {
-      source = ../../config/claude/statusline.sh;
-      executable = true;
-    };
-    home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
-  };
+  home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
 }
