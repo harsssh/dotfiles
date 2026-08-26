@@ -7,5 +7,11 @@
     source = ../../config/claude/statusline.sh;
     executable = true;
   };
+  # Stop hook 本体。hook の登録先は settings.json しかなく、そのファイルは上記の理由で
+  # Nix 管理外なので、スクリプトのみ配置し settings.json への登録は手動で行う。
+  home.file.".claude/hooks/notify.sh" = {
+    source = ../../config/claude/hooks/notify.sh;
+    executable = true;
+  };
   home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
 }
