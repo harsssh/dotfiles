@@ -16,7 +16,7 @@ project="${project//\"/\\\"}"
 
 if [ -x /usr/bin/osascript ]; then
   /usr/bin/osascript \
-    -e "display notification \"作業が完了しました\" with title \"Claude Code\" subtitle \"${project}\" sound name \"Funk\"" \
+    -e "display notification \"作業が完了しました\" with title \"Claude Code\" subtitle \"${project}\"" \
     >/dev/null 2>&1
 fi
 
