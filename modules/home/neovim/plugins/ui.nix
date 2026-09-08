@@ -1,14 +1,32 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
+    # 起動時間短縮のため opt に置き、必要になった時点で packadd する
     extraPlugins = [
-      pkgs.vimPlugins.render-markdown-nvim
-      pkgs.vimPlugins.nvim-hlslens
+      { plugin = pkgs.vimPlugins.render-markdown-nvim; optional = true; }
+      { plugin = pkgs.vimPlugins.nvim-hlslens; optional = true; }
     ];
 
     extraConfigLua = ''
-      require("render-markdown").setup({ heading = { enabled = false } })
-      require("hlslens").setup({})
+      -- render-markdown は plugin/ 側が vim.g.render_markdown_config で setup し、
+      -- packadd 時点のカレントバッファにも attach するので、設定を渡して packadd するだけでよい
+      vim.g.render_markdown_config = { heading = { enabled = false } }
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        once = true,
+        callback = function()
+          vim.cmd.packadd("render-markdown.nvim")
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("CmdlineEnter", {
+        pattern = { "/", "?" },
+        once = true,
+        callback = function()
+          vim.cmd.packadd("nvim-hlslens")
+          require("hlslens").setup({})
+        end,
+      })
     '';
 
     plugins = {

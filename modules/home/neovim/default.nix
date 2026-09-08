@@ -16,7 +16,21 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    performance.byteCompileLua.enable = true;
+    performance = {
+      byteCompileLua = {
+        enable = true;
+        plugins = true;
+      };
+      # everforest と lualine が lua/lualine/themes/everforest.lua を、
+      # snacks と nvim-treesitter が queries/markdown/injections.scm を
+      # 同名で持つため、この 2 つは pack にまとめられない
+      combinePlugins = {
+        enable = true;
+        standalonePlugins = [ "snacks.nvim" "everforest" ];
+      };
+    };
+
+    luaLoader.enable = true;
 
     # Ruby provider は使っていない。有効だと nvim のラッパーが GEM_HOME を
     # 自身の gem 環境へ上書きし、LSP など子プロセスの gem 解決を壊す

@@ -73,6 +73,9 @@
           end
         '';
       }
+      # nixvim の treesitter indent は filetype 単位で無効化できないため、ruby だけ
+      # Vim 標準の indentexpr に戻す。FileType の時点では nixvim 側の設定が未適用なので
+      # schedule で後から上書きする
       {
         event = [ "FileType" ];
         group = "RubyIndent";

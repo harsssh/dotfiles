@@ -5,13 +5,11 @@
       loaded_ruby_provider = 0;
       loaded_node_provider = 0;
       loaded_perl_provider = 0;
-      loaded_python_provider = 0;
+      loaded_python3_provider = 0;
       no_ruby_maps = 1;
     };
 
     opts = {
-      syntax = "on";
-
       number = true;
       relativenumber = true;
       showtabline = 2;
@@ -29,7 +27,6 @@
       timeoutlen = 300;
       updatetime = 300;
 
-      lazyredraw = true;
       synmaxcol = 200;
 
       smartindent = true;
@@ -49,8 +46,8 @@
 
       clipboard = "unnamed,unnamedplus";
 
-      foldmethod = "expr";
-      foldexpr = "v:lua.vim.treesitter.foldexpr()";
+      # foldmethod / foldexpr は plugins.treesitter.folding が FileType ごとに
+      # ウィンドウローカルで設定する
       foldlevel = 99;
       foldenable = true;
     };

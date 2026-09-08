@@ -1,30 +1,6 @@
-{ pkgs, lib, ... }:
-let
-  nodeBin = "${pkgs.nodejs}/bin/node";
-in
+{ lib, ... }:
 {
   programs.nixvim = {
-    extraPlugins = [
-      pkgs.vimPlugins.copilot-lua
-      pkgs.vimPlugins.copilot-cmp
-      pkgs.vimPlugins.copilot-lsp
-    ];
-
-    # copilot は node プロセスを起動するため、InsertEnter まで defer して起動時間を削減
-    extraConfigLua = ''
-      vim.api.nvim_create_autocmd("InsertEnter", {
-        once = true,
-        callback = function()
-          require("copilot").setup({
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            copilot_node_command = "${nodeBin}",
-          })
-          require("copilot_cmp").setup()
-        end,
-      })
-    '';
-
     plugins = {
       lazydev.enable = true;
       lspkind.enable = true;
@@ -49,9 +25,6 @@ in
           fields = [ "icon" "abbr" ];
           format = lib.mkForce { __raw = ''
             function(entry, vim_item)
-              if entry.source.name == 'copilot' then
-                vim_item.icon = ""
-              end
               vim_item.abbr = vim_item.abbr:gsub('%b()', '(…)')
               return vim_item
             end
@@ -73,7 +46,6 @@ in
         sources = [
           { name = "nvim_lsp"; group_index = 1; }
           { name = "lazydev"; group_index = 1; }
-          { name = "copilot"; group_index = 1; }
           { name = "buffer"; keyword_length = 2; group_index = 2; }
         ];
       };
