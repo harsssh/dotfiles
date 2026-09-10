@@ -67,6 +67,13 @@ in
       (mkHunkNav "]c" "next")
       (mkHunkNav "[c" "prev")
 
+      # Format
+      # conform 経由で呼ぶことで formatters_by_ft の設定を使う。
+      # LSP が attach していない filetype でも動くよう LspAttach ではなくグローバルに定義する
+      (s "gf" (raw ''
+        function() require('conform').format({ lsp_format = 'fallback' }) end
+      '') silent)
+
       # Yank / Paste
       (s "Y" "y$" { })
       (s "p" "]p" { })

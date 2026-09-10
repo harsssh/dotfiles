@@ -104,7 +104,6 @@
             map('n', 'g[', function()
               vim.diagnostic.jump({ count = 1, forward = false })
             end, opts)
-            map('n', 'gf', vim.lsp.buf.format, opts)
             map('n', 'gn', vim.lsp.buf.rename, opts)
             map('n', 'ga', vim.lsp.buf.code_action, opts)
           end
