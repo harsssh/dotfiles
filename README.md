@@ -42,3 +42,27 @@ feature は 2 種類ある:
 ## `config/` ディレクトリ
 
 Nix で設定を書くメリットがないものは、`config/` に設定ファイルを配置して配布するだけにしている。
+
+## Claude Code
+
+`~/.claude/settings.json` は Claude Code が実行時状態を書き込むため Nix 管理・git 追跡の対象外
+(詳細は `modules/home/claude.nix` のコメント)。hook の登録先はこの settings.json しかないので、
+スクリプトだけを配布し、登録は手動で 1 度だけ行う。
+
+macOS で作業完了時に通知を出す hook の登録:
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "~/.claude/hooks/notify.sh" }
+        ]
+      }
+    ]
+  }
+}
+```
+
+初回は macOS の通知許可が必要。許可されるまで hook は正常終了するが通知は表示されない。

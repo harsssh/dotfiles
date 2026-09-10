@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let
-  llvm = pkgs.llvmPackages;
-in
+{ config, ... }:
 {
   programs.eza = {
     enable = true;
@@ -20,8 +17,6 @@ in
     CLICOLOR = "1";
     MAKEFLAGS = "SHELL=/bin/bash";
     GHUSER = "harsssh";
-    CC = "${llvm.clang}/bin/clang";
-    CXX = "${llvm.clang}/bin/clang++";
     CDPATH = builtins.concatStringsSep ":" [
       config.home.homeDirectory
       "${config.home.homeDirectory}/Documents"

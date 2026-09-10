@@ -59,7 +59,6 @@
     go
     nodejs
     ruby
-    llvmPackages.clang
     nixfmt
     pnpm
   ];

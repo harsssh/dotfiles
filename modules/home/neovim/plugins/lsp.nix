@@ -12,9 +12,6 @@
         lua = [ "stylua" ];
         go = [ "gofumpt" "goimports" ];
       };
-      format_after_save = {
-        lsp_format = "fallback";
-      };
     };
   };
 }

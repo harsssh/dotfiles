@@ -7,6 +7,7 @@
       RestoreCursor.clear = true;
       LspKeymaps.clear = true;
       RubyIndent.clear = true;
+      DiffStart.clear = true;
     };
 
     autoCmd = [
@@ -52,6 +53,30 @@
         '';
       }
       {
+        event = [ "VimEnter" ];
+        group = "DiffStart";
+        pattern = "*";
+        callback.__raw = ''
+          function()
+            if not vim.wo.diff then return end
+            vim.schedule(function()
+              local conflict = vim.fn.search([[^<<<<<<< ]], 'cnw')
+              if conflict > 0 then
+                vim.api.nvim_win_set_cursor(0, { conflict, 0 })
+              elseif vim.fn.diff_hlID(1, 1) <= 0 then
+                vim.cmd('keepjumps normal! gg]c')
+              else
+                vim.cmd('keepjumps normal! gg')
+              end
+              vim.cmd('normal! zvzz')
+            end)
+          end
+        '';
+      }
+      # nixvim の treesitter indent は filetype 単位で無効化できないため、ruby だけ
+      # Vim 標準の indentexpr に戻す。FileType の時点では nixvim 側の設定が未適用なので
+      # schedule で後から上書きする
+      {
         event = [ "FileType" ];
         group = "RubyIndent";
         pattern = [ "ruby" ];
@@ -79,7 +104,6 @@
             map('n', 'g[', function()
               vim.diagnostic.jump({ count = 1, forward = false })
             end, opts)
-            map('n', 'gf', vim.lsp.buf.format, opts)
             map('n', 'gn', vim.lsp.buf.rename, opts)
             map('n', 'ga', vim.lsp.buf.code_action, opts)
           end
