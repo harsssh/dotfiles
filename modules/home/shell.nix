@@ -45,7 +45,6 @@
 
     pp = "pnpm";
 
-    dc = "docker compose";
     pc = "process-compose";
 
     ff = "fzf";

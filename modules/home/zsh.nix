@@ -55,7 +55,6 @@
       reload = "source ~/.zshrc";
     };
     initContent = ''
-      [ -f ~/.orbstack/shell/init.zsh ] && source ~/.orbstack/shell/init.zsh
       eval "$(bun completions)"
     '';
   };
