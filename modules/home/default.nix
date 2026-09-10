@@ -11,7 +11,7 @@
     ./ssh.nix
     ./tmux.nix
     ./zsh.nix
-    ./features/1password.nix
+    ./1password.nix
   ];
 
   programs.bash.enable = true;

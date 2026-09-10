@@ -1,37 +1,23 @@
-{ lib, config, inputs, ... }:
+{ config, ... }:
 let
-  username = config.dotfiles.username;
-  homeDirectory = "/Users/${username}";
+  username = config.system.primaryUser;
 in
 {
   imports = [
     ./homebrew.nix
     ./system.nix
-    ./features/orbstack.nix
-    ./features/docker-desktop.nix
   ];
 
-  options.dotfiles.username = lib.mkOption {
-    type = lib.types.str;
-    description = "The primary user's username.";
-  };
+  system.stateVersion = 5;
+  users.users.${username}.home = "/Users/${username}";
+  nix.enable = false;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
-  config = {
-    system.stateVersion = 5;
-    system.primaryUser = username;
-    users.users.${username}.home = homeDirectory;
-    nix.enable = false;
-    security.pam.services.sudo_local.touchIdAuth = true;
+  environment.etc."nix/nix.custom.conf".text = import ../nix-custom-conf.nix username;
 
-    environment.etc."nix/nix.custom.conf".text = import ../nix-custom-conf.nix username;
-
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
-    home-manager.backupFileExtension = "backup";
-    home-manager.extraSpecialArgs = { inherit inputs; };
-    home-manager.users.${username} = {
-      home.username = username;
-      home.homeDirectory = homeDirectory;
-    };
-  };
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "backup";
+  # ホスト側が home-manager.users を定義しなくても primary user に共通設定が適用されるようにする
+  home-manager.users.${username} = { };
 }
