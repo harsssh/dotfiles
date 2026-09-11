@@ -96,5 +96,7 @@
     tkss = "tmux kill-session -t";
 
     be = "bundle exec";
+
+    dsync = "(cd ~/dotfiles-private && make sync)";
   };
 }
