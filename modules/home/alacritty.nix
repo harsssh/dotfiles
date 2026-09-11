@@ -25,7 +25,7 @@
         };
       };
       scrolling = {
-        history = 100000;
+        history = 10000;
         multiplier = 3;
       };
       bell.duration = 0;
