@@ -16,7 +16,8 @@ description: >-
 
 - コード例は動くプログラムではなく設計の図。関数の本体は書かない
 - 提示する言語と実装する言語は別。Haskell の構造をそのまま実装言語に持ち込むことは勧めない。特に Maybe や Either を模倣するクラス・ライブラリの導入は提案しない
-- 使うのは data / newtype / type / 関数シグネチャ / Maybe / Either / IO の範囲に限る。GHC 拡張、型レベルの技巧、モナド変換子は使わない。この範囲で表現できない設計は、コードではなく文章で説明する
+- 使うのは data / newtype / type / class / 関数シグネチャ / Maybe / Either / IO と、「使ってよい拡張」に挙げたものの範囲に限る。型レベルの技巧は使わない。この範囲で表現できない設計は、コードではなく文章で説明する
+- モナド変換子は、工程を順に繋いだ 1 本道を示す `ExceptT e IO` だけ使ってよい。実装言語では早期 return になるものなので、そのまま持ち込むことは勧めない
 
 ## 手順
 
@@ -33,7 +34,28 @@ description: >-
 - 失敗しうる操作は `Either Error a`、値の不在は `Maybe a` で戻り値の型に表す
 - 副作用は境界の関数だけが持つ。判断・変換は純粋関数のシグネチャとして書く
 - 意味の違う文字列や数値は newtype で区別する
+- フィールド名に型名の接頭辞を付けない (`accountId` ではなく `id`)。フィールドは型ごとの名前空間にあるものとして書き、参照はドットで書く
 - 型定義と主要なシグネチャで 40 行以内を目安にする。網羅ではなく骨格を示す。省略は `-- ...` で示す
+
+## 使ってよい拡張
+
+読みやすさのためだけに使う。実装言語に対応物があるものに限る。
+
+- `OverloadedRecordDot` / `DuplicateRecordFields` / `NoFieldSelectors`
+  - フィールドの参照は `t.country.dataRepo` と書く。接頭辞で型を区別しない
+  - たいていの実装言語のフィールドアクセスがこの形なので、設計と実装で名前が変わらない
+- `NamedFieldPuns`
+  - パターンではフィールド名をそのまま束縛する (`Variant { country, command }`)。位置で覚えさせない
+- `ExistentialQuantification`
+  - 型引数を登録時に隠す構造を書くときだけ使う。`forall` は明示する
+
+使わないもの。
+
+- `RecordWildCards`: 束縛の出所がコード例から読めない
+- `OverloadedStrings`: 意味の違う文字列を newtype で区別する方針と逆になる
+- `GADTs`: 存在型の `forall` が消えて、何が隠れているかが読めない
+- `OverloadedRecordUpdate`: 実験的。ネストした更新が要る設計は、記法ではなく構造を疑う
+- `TypeApplications`, `TypeFamilies`, `DerivingVia` などの型レベルの拡張: 実装言語に対応物が無い
 
 ## 例
 
@@ -41,9 +63,10 @@ description: >-
 newtype RawInput = RawInput Text
 newtype UserId = UserId Text
 
+-- 参照は account.plan のようにドットで書く
 data Account = Account
-  { accountId :: UserId
-  , accountPlan :: Plan
+  { id   :: UserId
+  , plan :: Plan
   }
 
 data Plan = Free | Pro | Enterprise
@@ -64,6 +87,7 @@ saveAccount :: Account -> IO ()
 - `Plan` のような直和型: Ruby なら定数と網羅的な case-in、TypeScript なら union type
 - `Either ValidationError UserId`: 例外か、成功と失敗を別の型で返すか。どちらもその言語の標準的な流儀に従う
 - `RawInput` と `UserId` の区別: 別クラス・別型にするか、区別を諦めて命名と検証位置で担保するか
+- フィールドのドットアクセス: Go や TypeScript はそのまま同じ形。Ruby なら attr_reader。どの言語でも型名の接頭辞は付けない
 
 ## 注意
 
