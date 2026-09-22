@@ -57,24 +57,9 @@ Nix で設定を書くメリットがないものは、`config/` に設定ファ
 
 ## Claude Code
 
-`~/.claude/settings.json` は Claude Code が実行時状態を書き込むため Nix 管理・git 追跡の対象外
-(詳細は `modules/home/claude.nix` のコメント)。hook の登録先はこの settings.json しかないので、
-スクリプトだけを配布し、登録は手動で 1 度だけ行う。
+`~/.claude/settings.json` は Claude Code が実行時状態を書き込むため、ファイルごとの Nix 管理・git 追跡はしない。
+statusline・hook・autoCompactEnabled など CLI の UI から変更しない値だけを、home-manager の activation で
+settings.json にマージする (詳細は `modules/home/claude.nix` のコメント)。
+これらの値を CLI から変更しても、次の switch で Nix の値に戻る。
 
-macOS で作業完了時に通知を出す hook の登録:
-
-```json
-{
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          { "type": "command", "command": "~/.claude/hooks/notify.sh" }
-        ]
-      }
-    ]
-  }
-}
-```
-
-初回は macOS の通知許可が必要。許可されるまで hook は正常終了するが通知は表示されない。
+Stop hook は作業完了時に macOS の通知を出す。初回は macOS の通知許可が必要。許可されるまで hook は正常終了するが通知は表示されない。
