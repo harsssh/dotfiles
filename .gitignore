@@ -7,3 +7,6 @@ result
 
 # Claude Code が実行時状態 (model, theme, autoMode 等) を書き込むため管理対象外
 config/claude/settings.json
+
+# Claude Code がスキルを自動同期する際のキャッシュのため管理対象外
+config/claude/skills/synced/
