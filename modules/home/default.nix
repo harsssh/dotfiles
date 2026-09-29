@@ -3,6 +3,7 @@
   imports = [
     ./alacritty.nix
     ./editorconfig.nix
+    ./ghostty.nix
     ./git.nix
     ./neovim
     ./nix.nix
