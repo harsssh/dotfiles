@@ -11,7 +11,7 @@
         "1=#a65d57"
         "9=#c47a72"
       ];
-      font-family = "MonaspiceAr Nerd Font";
+      font-family = "Moralerspace Argon";
       font-size = 14;
       cursor-style = "block";
       cursor-style-blink = false;
