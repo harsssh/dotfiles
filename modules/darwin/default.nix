@@ -11,7 +11,11 @@ in
   system.stateVersion = 5;
   users.users.${username}.home = "/Users/${username}";
   nix.enable = false;
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    # tmux 内では pam_tid が Touch ID のダイアログを出せないため
+    reattach = true;
+  };
 
   environment.etc."nix/nix.custom.conf".text = import ../nix-custom-conf.nix username;
 
