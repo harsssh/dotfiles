@@ -18,7 +18,6 @@
       # shell integration はプロンプトでカーソルを bar に変えるため、cursor-style が上書きされる
       shell-integration-features = "no-cursor";
       macos-option-as-alt = true;
-      keybind = [ "shift+enter=text:\\n" ];
     };
   };
 }
