@@ -55,6 +55,7 @@
 ### シェル
 
 - alias で `rm` は interactive に実行されるので、ファイルを削除するときは `rm -f` を使う
+- PATH 上の sed, find, coreutils (stat, date など) は Nix で入れた GNU 版。macOS だが BSD 版の構文 (`sed -i ''` など) は使わない
 
 ### git, gh
 
