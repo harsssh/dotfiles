@@ -11,6 +11,8 @@
         "1=#a65d57"
         "9=#c47a72"
       ];
+      # 既定の 0.5 では Miasma の暗い色を faint にしたときに黒背景へ沈んで読めない
+      faint-opacity = 0.75;
       font-family = "Moralerspace Argon";
       font-size = 15;
       cursor-style = "block";
