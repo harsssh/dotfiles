@@ -12,7 +12,7 @@
         "9=#c47a72"
       ];
       font-family = "Moralerspace Argon";
-      font-size = 14;
+      font-size = 15;
       cursor-style = "block";
       cursor-style-blink = false;
       # shell integration はプロンプトでカーソルを bar に変えるため、cursor-style が上書きされる
