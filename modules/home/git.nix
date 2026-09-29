@@ -52,7 +52,6 @@ in
         pull.rebase = false;
         init.defaultBranch = "main";
         advice.mergeConflict = false;
-        url."git@github.com:".insteadOf = "https://github.com/";
         feature.manyFiles = true;
         log.abbrevCommit = true;
         filter.lfs = {
