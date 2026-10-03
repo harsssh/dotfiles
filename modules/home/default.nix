@@ -1,7 +1,6 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    ./alacritty.nix
     ./editorconfig.nix
     ./ghostty.nix
     ./git.nix

@@ -13,10 +13,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    alacritty-theme = {
-      url = "github:alacritty/alacritty-theme";
-      flake = false;
-    };
   };
 
   outputs =

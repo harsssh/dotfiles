@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "alacritty-theme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1763308759,
-        "narHash": "sha256-Jcxl1/fEWXPXVdJxRonXJpJx/5iQvTHfZqvd18gjvGk=",
-        "owner": "alacritty",
-        "repo": "alacritty-theme",
-        "rev": "f82c742634b5e840731dd7c609e95231917681a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alacritty",
-        "repo": "alacritty-theme",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -117,7 +101,6 @@
     },
     "root": {
       "inputs": {
-        "alacritty-theme": "alacritty-theme",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",
