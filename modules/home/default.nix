@@ -7,6 +7,7 @@
     ./neovim
     ./nix.nix
     ./claude.nix
+    ./codex.nix
     ./shell.nix
     ./ssh.nix
     ./tmux.nix
