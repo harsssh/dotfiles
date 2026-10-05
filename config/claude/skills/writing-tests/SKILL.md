@@ -19,7 +19,9 @@ See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking g
 
 A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals.
 
-**Test only at pre-agreed seams.** Before writing any test, write down the seams under test and the test cases (see below), and confirm them with the user. No test is written at an unconfirmed seam. You can't test everything, so agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
+**Test only at agreed seams.** Before writing tests at a seam that has no tests yet, write down the seam and the test cases (see below), and confirm them with the user. No test is written at an unconfirmed new seam. You can't test everything, so agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
+
+Adding cases at a seam that already has tests needs no confirmation: write them, and list the added cases in your report.
 
 Ask: "What's the public interface, and which seams should we test?"
 
@@ -43,7 +45,7 @@ Don't list:
 
 Write each case as "input condition → expected result". That sentence becomes the test name, in English, including RSpec `describe` / `context` / `it` strings.
 
-Write exactly the confirmed cases: no extra tests, none missing. If you find a missing case while writing, update the list and show it to the user again.
+At a new seam, write exactly the confirmed cases: no extra tests, none missing. If you find a missing case while writing, update the list and show it to the user again.
 
 ## Anti-patterns
 
