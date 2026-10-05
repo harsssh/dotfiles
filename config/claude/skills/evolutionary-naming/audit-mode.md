@@ -6,7 +6,7 @@ Scan provided code and produce a **structured report** of all naming improvement
 
 ## Scope
 
-**Audit only what the user provides:** pasted code, named files, named directories. Do NOT recursively scan the broader codebase unless explicitly invited (e.g. "リポジトリ全体を見て").
+**Audit only what the user provides:** pasted code, named files, named directories. Do NOT recursively scan the broader codebase unless explicitly invited (e.g. "look at the whole repository").
 
 If the user provides a path: read those files. If the user pastes code: audit that snippet. If both: audit the union.
 
@@ -75,7 +75,7 @@ For fast classification (full criteria in `reference.md`):
 
 ## Handoff to Improve Mode
 
-When the user picks one identifier from the audit ("X だけ直して", "Improve OrderManager"):
+When the user picks one identifier from the audit ("just fix X", "Improve OrderManager"):
 - Switch to improve-mode for that single target.
 - Do NOT re-audit. The diagnosis is already in your output.
 - Carry forward the current-step classification you assigned.

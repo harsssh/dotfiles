@@ -13,18 +13,18 @@ Take ONE identifier and walk it through the naming process, one transition at a 
 3. **Read the user's depth signal** to decide how far to propose walking. Use the "Depth Signals — How Far to Walk" table in `reference.md`.
 4. **Walk Phase 1 continuously.** Propose transitions through Honest and Complete WITHOUT pausing for each micro-step. Phase 1 is pure renaming (no structural change, behavior-preserving). Show each transition with the commit message the user would use.
 5. **Pause before Phase 2.** State that the next step requires structural refactoring and ask:
-   > 次は構造的リファクタリング（メソッド/クラス分割）が必要です。`X`, `Y`, `Z` を切り出して進めますか?
+   > The next step needs structural refactoring (splitting methods/classes). Shall I extract `X`, `Y`, `Z` and continue?
 6. **Pause before Phase 3.** State that you need to read call sites / consider domain language and ask:
-   > 次は呼び出し元を読んで意図を抽出します。コードベース全体の文脈が必要ですが、進めますか?
-7. **Stop on user signal.** If user says "ここまでで" / "OK" / "十分" → stop and confirm final state.
+   > Next I would read the call sites to extract intent. This needs context from the whole codebase. Shall I continue?
+7. **Stop on user signal.** If user says "stop here" / "OK" / "that's enough" → stop and confirm final state.
 
 ## Pause Protocol
 
 **Inside Phase 1: don't pause.** Per-step pauses (Missing → applesauce → Honest → Honest and Complete) feel like noise. Walk through them in one response, showing each commit point.
 
-**At Phase boundaries: always pause.** The user must explicitly authorize structural changes (Phase 2) and design-level changes (Phase 3). Do not infer permission from a generic "改善して" prompt.
+**At Phase boundaries: always pause.** The user must explicitly authorize structural changes (Phase 2) and design-level changes (Phase 3). Do not infer permission from a generic "improve it" prompt.
 
-**Override:** If the user pre-authorized depth in their initial prompt ("リファクタリング", "全部やって", "Phase 2まで進めて"), you may cross the boundary they authorized without pausing. Pause only at the next un-authorized boundary.
+**Override:** If the user pre-authorized depth in their initial prompt ("refactor", "do all of it", "go up to Phase 2"), you may cross the boundary they authorized without pausing. Pause only at the next un-authorized boundary.
 
 ## Output Shape
 
@@ -36,7 +36,7 @@ Each transition shows:
 Example:
 
 ```
-1. 診断: `process(String s)` → 現在 Missing (generic verb + 1-letter param)
+1. Diagnosis: `process(String s)` → currently Missing (generic verb + 1-letter param)
 2. Missing → Nonsense:  process → applesauce
    commit: rename process to applesauce
 3. Nonsense → Honest:   applesauce → probably_parseAndStoreFlight_AndStuff
@@ -45,12 +45,12 @@ Example:
    probably_parseAndStoreFlight_AndStuff → parseXmlAndStoreFlightToDatabase
    commit: complete the name with all responsibilities
 
-到達: Honest and Complete (Phase 1 終了)
+Reached: Honest and Complete (end of Phase 1)
 
 ---
-次は Phase 2 (Does the Right Thing) です。
-このメソッドは parseXml / storeFlightToDatabase の2つの責務を持つことが名前から明らかです。
-構造的リファクタリングで2つのメソッドに分割しますか?
+Next is Phase 2 (Does the Right Thing).
+The name shows this method has two responsibilities: parseXml and storeFlightToDatabase.
+Shall I split it into two methods with a structural refactoring?
 ```
 
 ## Anti-Patterns — Do NOT Do These
@@ -62,10 +62,10 @@ Example:
 | Audit other identifiers "while I'm here" | Improve-mode is single-target. For broad scans, use audit-mode. |
 | Skip applesauce for misleading names like `-Manager` | The applesauce step forces letting go of false comfort. Don't skip it. |
 | Use applesauce for a one-letter variable like `d` | Applesauce is for misleading names and extracted chunks. A nameless `d` can go directly to Honest. |
-| Run all 7 steps when user said "急いでる" | Honor the depth signal. Stop at Honest. |
+| Run all 7 steps when user said "I'm in a hurry" | Honor the depth signal. Stop at Honest. |
 | Suggest a Value Object when only Phase 1 was authorized | Note the opportunity, don't do the work. |
 | Compress the `applesauce` step into commentary (esp. on handoff from audit) | Show the literal `→ applesauce` rename with its own commit message, even when the diagnosis was already done in audit. The per-step commit visibility is the point. |
 
 ## When to Defer to Audit Mode
 
-If the user starts asking about multiple identifiers ("`r` も `cnt` も `s` も") or about general code quality ("このクラス全体を見直したい"), suggest switching to audit-mode for the broader survey. Improve-mode loses focus when the target multiplies.
+If the user starts asking about multiple identifiers ("`r`, `cnt`, and `s` too") or about general code quality ("I want to review this whole class"), suggest switching to audit-mode for the broader survey. Improve-mode loses focus when the target multiplies.

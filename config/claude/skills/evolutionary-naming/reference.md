@@ -30,10 +30,10 @@ How far to propose walking a name depends on the user's story. This is the canon
 
 | User signal | Stop at |
 |-------------|---------|
-| "急いでる" / "bug fix" / "とりあえず" | Honest (mid Phase 1) |
-| "改善して" / generic rename | Honest and Complete (end of Phase 1) |
-| "リファクタリング" | Does the Right Thing (Phase 2) |
-| "設計から見直したい" / "ドメイン的に整理" | Intent or Domain Abstraction (Phase 3) |
+| "I'm in a hurry" / "bug fix" / "for now" | Honest (mid Phase 1) |
+| "improve it" / generic rename | Honest and Complete (end of Phase 1) |
+| "refactor" | Does the Right Thing (Phase 2) |
+| "rethink the design" / "organize by domain" | Intent or Domain Abstraction (Phase 3) |
 
 ## Step Transitions
 

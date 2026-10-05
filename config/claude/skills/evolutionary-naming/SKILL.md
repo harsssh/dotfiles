@@ -28,11 +28,11 @@ This skill operates in two modes. Pick the one that matches the user's request.
 
 | User signal | Mode | File |
 |-------------|------|------|
-| Specific identifier named ("`d` を改善", "DocumentManager をどうにか", "this method") | **improve-mode** | `improve-mode.md` |
-| One clear target inside a code block + "リファクタリング" / "改善" | **improve-mode** | `improve-mode.md` |
-| "全体の命名を見直したい", "改善余地ある?", "命名レビュー", "scan", "audit", "リストだけほしい" | **audit-mode** | `audit-mode.md` |
-| Audit followup: "X だけ直して" after audit output | **improve-mode** (target = X) | `improve-mode.md` |
-| Ambiguous (large code paste, no specific target, no "全体" language) | **Ask the user**: "全体を監査しますか、特定の識別子を改善しますか?" |
+| Specific identifier named ("improve `d`", "do something about DocumentManager", "this method") | **improve-mode** | `improve-mode.md` |
+| One clear target inside a code block + "refactor" / "improve" | **improve-mode** | `improve-mode.md` |
+| "review all the names", "anything to improve?", "naming review", "scan", "audit", "just give me a list" | **audit-mode** | `audit-mode.md` |
+| Audit followup: "just fix X" after audit output | **improve-mode** (target = X) | `improve-mode.md` |
+| Ambiguous (large code paste, no specific target, no "whole"/"all" language) | **Ask the user**: "Should I audit the whole scope, or improve a specific identifier?" |
 
 **Mode = audit:** Read `audit-mode.md`. Produce a structured table of all naming opportunities. Do not execute changes.
 
