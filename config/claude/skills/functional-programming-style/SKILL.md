@@ -3,7 +3,6 @@ name: functional-programming-style
 description: >-
   関数型プログラミングのスタイルでコードを書くための規則。純粋関数と副作用の分離、
   immutable な値、型による状態と不変条件の表現を定める。
-  CLAUDE.md から常に読み込まれる。
 disable-model-invocation: true
 ---
 
