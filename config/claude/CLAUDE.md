@@ -33,12 +33,10 @@
 
 ## Nix
 
-- 作業が完了したら `nix flake check` で検証する
-- 再現性を最重視して設定を書く
-- warning は解消する。解消できない warning はその理由を報告する
+- コードを変更したら `nix flake check` で検証する
+- 再現性が最重要の観点
 - 必要な CLI がインストールされていないときは、`nix shell nixpkgs#<pkg> -c <cmd>` や `nix run nixpkgs#<pkg>` で一時的に使ってよい
 
 ## Ruby
 
 - 3.1+ の hash shorthand を活用する
-- 重複する setup は shared_examples / shared_context に括り出す
