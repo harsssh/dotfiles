@@ -26,7 +26,7 @@
 ## git, gh
 
 - ブランチの切り替えは git-switch、ファイルの復元は git-restore を使う。git-checkout, git-reset は使わない
-- 未コミットの変更を破棄する操作 (`git restore .`、`git reset --hard`、`git clean` など) はユーザーの指示があるときだけ行う
+- 未コミットの変更を破棄する操作 (`git restore .`、`git restore --staged --worktree .`、`git clean` など) はユーザーの指示があるときだけ行う
 - ユーザーの指示なく PR を作成してはいけない
 - ブランチ名は kebab-case を使う。日付などは含めない
 - コミットログには変更の理由 (Why) を書く
