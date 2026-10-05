@@ -1,5 +1,7 @@
 # When to Mock
 
+Test pure functions directly, without mocks. For functions with side effects, mock only the system boundaries they touch, never your own pure functions.
+
 Mock at **system boundaries** only:
 
 - External APIs (payment, email, etc.)

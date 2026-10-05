@@ -1,0 +1,3 @@
+interface:
+  display_name: "Writing Tests"
+  short_description: "Write behavior-focused tests through public interfaces"
