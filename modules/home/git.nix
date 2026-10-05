@@ -43,6 +43,7 @@ in
           default = "current";
           autoSetupRemote = true;
         };
+        branch.autoSetupMerge = "simple";
         merge = {
           conflictStyle = "diff3";
           tool = "nvimdiff";
