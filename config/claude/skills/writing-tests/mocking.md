@@ -15,6 +15,14 @@ Don't mock:
 - Internal collaborators
 - Anything you control
 
+## When a seam needs its own interface
+
+An **adapter** is a concrete implementation that fills an interface at a seam: a production client, an in-memory fake, a mock.
+
+**One adapter means a hypothetical seam. Two adapters means a real one.** Introduce an interface only when something actually varies across it today, typically a production adapter and a test adapter. An interface with a single implementation adds indirection without letting anything be swapped. Keep the dependency inside one module instead, and extract the interface when a second adapter is needed. "We might switch databases someday" is not a second adapter.
+
+**Your own services across a network** (microservices, internal APIs) are something you control, so don't mock them. Define a port (an interface) at the seam instead: keep the logic in one module and inject the transport as an adapter. Production uses an HTTP/gRPC/queue adapter; tests use an in-memory adapter.
+
 ## Designing for Mockability
 
 At system boundaries, design interfaces that are easy to mock:
