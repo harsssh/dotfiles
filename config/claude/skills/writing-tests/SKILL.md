@@ -7,8 +7,6 @@ description: Guidelines for writing tests that verify behavior through public in
 
 This skill is the reference for writing tests worth keeping: what a good test is, where tests go, which cases to cover, and the anti-patterns.
 
-When exploring the codebase, read `GLOSSARY.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
-
 ## What a good test is
 
 Tests verify behavior through public interfaces, not implementation details. Code can change entirely; tests shouldn't. A good test reads like a specification: "user can checkout with valid cart" tells you exactly what capability exists, and it survives refactors because it doesn't care about internal structure.
