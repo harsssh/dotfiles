@@ -30,3 +30,4 @@ disable-model-invocation: true
 ## 名前が決まらないとき
 
 - 名前に and が入る、長くなりすぎる、汎用的な語しか浮かばない場合は、責務が多すぎるサインと考える。名前を妥協せず、境界を見直す
+- 既存の名前を段階的に直すときは、evolutionary-naming skill を使う
