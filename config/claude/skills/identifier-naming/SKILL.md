@@ -3,7 +3,6 @@ name: identifier-naming
 description: >-
   関数・変数・型などの識別子を命名するための規則。名前に込める情報、誤解を防ぐ語の選び方、
   名前の長さと形、名前が決まらないときの扱いを定める。
-disable-model-invocation: true
 ---
 
 # identifier-naming

@@ -10,9 +10,7 @@
 
 ## コーディング
 
-@skills/a-philosophy-of-software-design/a-philosophy-of-software-design.mini.md
 @skills/functional-programming-style/SKILL.md
-@skills/identifier-naming/SKILL.md
 
 - コードコメントは日本語で書く
 - 許可なく formatter, linter のエラーを ignore コメントで無効化してはいけない
