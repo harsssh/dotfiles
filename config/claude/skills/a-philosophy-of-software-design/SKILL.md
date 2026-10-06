@@ -1,6 +1,10 @@
 ---
 name: a-philosophy-of-software-design
-description: Apply John Ousterhout-inspired software design rules when reducing complexity, designing module boundaries, or reviewing APIs and abstractions.
+description: >-
+  Use when adding or reshaping modules, classes, function signatures, or APIs,
+  refactoring, deciding where logic belongs, or reviewing design (設計,
+  リファクタリング, 責務分割), even if design is not mentioned. Based on
+  Ousterhout's "A Philosophy of Software Design".
 license: MIT
 ---
 
