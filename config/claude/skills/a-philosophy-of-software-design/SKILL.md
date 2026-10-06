@@ -1,10 +1,13 @@
 ---
 name: a-philosophy-of-software-design
 description: >-
-  Use when adding or reshaping modules, classes, function signatures, or APIs,
-  refactoring, deciding where logic belongs, or reviewing design (設計,
-  リファクタリング, 責務分割), even if design is not mentioned. Based on
-  Ousterhout's "A Philosophy of Software Design".
+  Use before writing or changing code that adds a function, class, module,
+  file, or API, or that moves, splits, or merges existing code, including
+  ordinary feature work and bug fixes that touch interfaces (実装, 機能追加,
+  リファクタリング, 責務分割, 共通化, 抽象化, インターフェース). Also use when
+  reviewing a diff or a design. Provides rules for deep modules, information
+  hiding, and pulling complexity downward, from Ousterhout's
+  "A Philosophy of Software Design".
 license: MIT
 ---
 
