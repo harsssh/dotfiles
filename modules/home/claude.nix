@@ -24,9 +24,7 @@ let
     permissions.deny = [
       "mcp__github__add_issue_comment"
       "mcp__github__add_comment_to_pending_review"
-      "mcp__github__create_pending_pull_request_review"
-      "mcp__github__submit_pending_pull_request_review"
-      "mcp__github__create_and_submit_pull_request_review"
+      "mcp__github__pull_request_review_write"
     ];
   };
   managedSettingsFile = (pkgs.formats.json { }).generate "claude-managed-settings.json" managedSettings;
