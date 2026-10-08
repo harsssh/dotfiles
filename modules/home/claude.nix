@@ -20,6 +20,20 @@ let
       }
     ];
     autoCompactEnabled = false;
+    # オブジェクトは深くマージされ、書かなかったプラグインは CLI 側の値が残るので、使わないものは false を書く
+    enabledPlugins = {
+      "commit-commands@claude-plugins-official" = true;
+      "skill-creator@claude-plugins-official" = true;
+      "slack@claude-plugins-official" = true;
+      "typescript-lsp@claude-plugins-official" = true;
+      "ruby-lsp@claude-plugins-official" = true;
+      "gopls-lsp@claude-plugins-official" = true;
+      "lua-lsp@claude-plugins-official" = true;
+      # 組み込みの /code-review スキルと役割が重なる
+      "code-review@claude-plugins-official" = false;
+      "frontend-design@claude-plugins-official" = false;
+      "serena@claude-plugins-official" = false;
+    };
     permissions.deny = [
       # 取り消せない、または影響の大きい GitHub の操作をさせない
       "mcp__github__delete_repository"
