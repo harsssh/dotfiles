@@ -20,11 +20,20 @@ let
       }
     ];
     autoCompactEnabled = false;
-    # GitHub MCP から issue や PR にコメント・レビューを投稿させない
     permissions.deny = [
+      # 取り消せない、または影響の大きい GitHub の操作をさせない
+      "mcp__github__delete_repository"
+      "mcp__github__merge_pull_request"
+      "mcp__github__delete_file"
+      # 利用者の名前で、他人に見えるコメント・レビューの投稿や Copilot の起動をさせない
       "mcp__github__add_issue_comment"
       "mcp__github__add_comment_to_pending_review"
       "mcp__github__pull_request_review_write"
+      "mcp__github__add_reply_to_pull_request_comment"
+      "mcp__github__update_issue_comment"
+      "mcp__github__request_copilot_review"
+      "mcp__github__assign_copilot_to_issue"
+      "mcp__github__create_pull_request_with_copilot"
     ];
   };
   managedSettingsFile = (pkgs.formats.json { }).generate "claude-managed-settings.json" managedSettings;
