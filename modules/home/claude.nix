@@ -20,6 +20,9 @@ let
       }
     ];
     autoCompactEnabled = false;
+    autoMemoryEnabled = true;
+    permissions.defaultMode = "auto";
+    skipAutoPermissionPrompt = true;
     # オブジェクトは深くマージされ、書かなかったプラグインは CLI 側の値が残るので、使わないものは false を書く
     enabledPlugins = {
       "commit-commands@claude-plugins-official" = true;
