@@ -29,6 +29,7 @@ let
       "ruby-lsp@claude-plugins-official" = true;
       "gopls-lsp@claude-plugins-official" = true;
       "lua-lsp@claude-plugins-official" = true;
+      "aws-core@claude-plugins-official" = true;
       # 組み込みの /code-review スキルと役割が重なる
       "code-review@claude-plugins-official" = false;
       "frontend-design@claude-plugins-official" = false;
