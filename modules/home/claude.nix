@@ -25,7 +25,6 @@ let
     skipAutoPermissionPrompt = true;
     # オブジェクトは深くマージされ、書かなかったプラグインは CLI 側の値が残るので、使わないものは false を書く
     enabledPlugins = {
-      "commit-commands@claude-plugins-official" = true;
       "skill-creator@claude-plugins-official" = true;
       "slack@claude-plugins-official" = true;
       "typescript-lsp@claude-plugins-official" = true;
@@ -37,6 +36,8 @@ let
       "frontend-design@claude-plugins-official" = false;
       "serena@claude-plugins-official" = false;
       "lua-lsp@claude-plugins-official" = false;
+      # commit-push-pr, clean_gone がブランチ運用や PR 作成のルールと合わず、commit は無くても困らない
+      "commit-commands@claude-plugins-official" = false;
     };
     permissions.deny = [
       # 取り消せない、または影響の大きい GitHub の操作をさせない
