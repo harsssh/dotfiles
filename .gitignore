@@ -10,3 +10,6 @@ config/claude/settings.json
 
 # Claude Code がスキルを自動同期する際のキャッシュのため管理対象外
 config/claude/skills/synced/
+
+# Claude Code が同期で削除したスキルを退避する場所のため管理対象外
+config/claude/skills/.trash/
