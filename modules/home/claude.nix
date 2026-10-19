@@ -69,6 +69,15 @@ in
   };
   home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
 
+  # imozuru skill のスクリプトが使う。macOS の /usr/bin/python3 は 3.9 で、スクリプトが求める 3.10 に届かない
+  home.packages = [
+    pkgs.python3
+    pkgs.poppler-utils
+    # OCR は英語だけを使うので、全言語のデータを入れない
+    (pkgs.tesseract.override { enableLanguages = [ "eng" ]; })
+    pkgs.yt-dlp
+  ];
+
   home.activation.mergeClaudeSettings = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     settings="${config.home.homeDirectory}/.claude/settings.json"
     if [ -e "$settings" ]; then src="$settings"; else src=/dev/null; fi
