@@ -23,8 +23,14 @@ let
     autoMemoryEnabled = true;
     permissions.defaultMode = "auto";
     skipAutoPermissionPrompt = true;
+    extraKnownMarketplaces.openai-codex.source = {
+      source = "github";
+      repo = "openai/codex-plugin-cc";
+    };
     # オブジェクトは深くマージされ、書かなかったプラグインは CLI 側の値が残るので、使わないものは false を書く
     enabledPlugins = {
+      # 変更のレビューを Codex に依頼する。codex CLI は Nix の外で入れている
+      "codex@openai-codex" = true;
       "skill-creator@claude-plugins-official" = true;
       "slack@claude-plugins-official" = true;
       "typescript-lsp@claude-plugins-official" = true;
