@@ -33,6 +33,7 @@ let
       "codex@openai-codex" = true;
       "skill-creator@claude-plugins-official" = true;
       "slack@claude-plugins-official" = true;
+      "google-workspace@claude-plugins-official" = true;
       "typescript-lsp@claude-plugins-official" = true;
       "ruby-lsp@claude-plugins-official" = true;
       "gopls-lsp@claude-plugins-official" = true;
