@@ -64,21 +64,23 @@ let
   managedSettingsFile = (pkgs.formats.json { }).generate "claude-managed-settings.json" managedSettings;
 in
 {
-  home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
-  home.file.".claude/statusline.sh" = {
-    source = ../../config/claude/statusline.sh;
-    executable = true;
-  };
-  home.file.".claude/hooks/notify.sh" = {
-    source = ../../config/claude/hooks/notify.sh;
-    executable = true;
-  };
   # skills/ をディレクトリごとリンクすると ~/.claude/skills 自体がシンボリックリンクになり、
   # ローカル限定スキルを追加できない。スキル単位でリンクすることで実ディレクトリにする。
-  home.file = lib.mkMerge (
+  # 同一モジュール内で home.file."key" と home.file = の混在は衝突するため、一括で定義する。
+  home.file = {
+    ".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/CLAUDE.md";
+    ".claude/statusline.sh" = {
+      source = ../../config/claude/statusline.sh;
+      executable = true;
+    };
+    ".claude/hooks/notify.sh" = {
+      source = ../../config/claude/hooks/notify.sh;
+      executable = true;
+    };
+  } // builtins.listToAttrs (
     map (name: {
-      ".claude/skills/${name}".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills/${name}";
+      name = ".claude/skills/${name}";
+      value.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills/${name}";
     }) (
       builtins.attrNames (
         lib.filterAttrs (_: type: type == "directory") (builtins.readDir ../../config/claude/skills)
