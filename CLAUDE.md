@@ -2,7 +2,7 @@
 
 このプロジェクトで設定の変更などを依頼した場合は、git 管理下のファイルを編集すること。
 配置された設定ファイルを直接編集しない。
-リポジトリ内にあっても `.gitignore` で除外されたファイルは編集先ではない。編集先がわからないときは、`modules/` から配置先のパスを検索して、どのモジュールが配置しているかを確かめる。
+リポジトリ内にあっても `.gitignore` で除外されたファイルは編集先ではない。編集先は「設定の編集先」を参照。
 
 ## コミット
 
@@ -20,6 +20,33 @@
 
 `darwinConfigurations.ci-darwin` と `homeConfigurations."runner@ci-linux"` は CI 用の最小構成で、実機の構成は含まない。
 
+## 設定の編集先
+
+一覧にないものは、`modules/` を配置先のパスやツール名で検索して、どのモジュールが配置しているかを確かめる。
+
+### ツールの設定
+
+配置の方法によって、編集先と反映のタイミングが違う。反映は `dotfiles-private` の `make sync` で行う。
+
+- Nix の option から生成する: モジュールの `programs.<name>` などを編集する。`make sync` で反映される
+    - git, lazygit, zsh, starship, fzf, direnv, eza, zoxide, ssh, ghostty, editorconfig, 1Password の SSH agent, neovim
+- `config/` のファイルを Nix store にコピーする: `config/` のファイルを編集する。`make sync` するまで反映されない
+    - `.tmux.conf` (`programs.tmux.extraConfig` に読み込む), `.tigrc`, `.myclirc`, `.ideavimrc`
+    - Claude Code の `statusline.sh`, `hooks/notify.sh`
+- `config/` へのシンボリックリンクを張る: `config/` のファイルを編集する。`make sync` しなくてもすぐ反映される
+    - Claude Code の `CLAUDE.md` とスキル。Codex の `AGENTS.md` とスキルも同じファイルを指す
+- CLI が書き込むファイルに activation でマージする: モジュール内の Nix の値を編集する
+    - `~/.claude/settings.json`
+
+### パッケージとシステム
+
+- CLI, フォント, 言語処理系: `modules/home/default.nix` の `home.packages`
+- GUI アプリ, Mac App Store のアプリ: `modules/darwin/homebrew.nix`。`cleanup = "zap"` なので、ここにないものは `make sync` でアンインストールされる。`brew install` で入れない
+- macOS のシステム設定: `modules/darwin/system.nix`
+- Nix の設定 (`nix.custom.conf`): `modules/nix-custom-conf.nix`。darwin と Linux で共有している
+
+リポジトリ直下の `.claude/` は、このリポジトリで作業するときの Claude Code の設定で、`~/.claude/` には配置されない。
+
 ## Claude Code の設定管理
 
 `modules/home/claude.nix` で管理している。
@@ -32,6 +59,8 @@
 ## neovim の設定管理
 
 設定は `modules/home/neovim/` 以下にある。nixvim で管理している。nixvim のモジュール自体は `flake.nix` の `homeModules.default` で import している。
+
+`~/.config/nvim/` に Lua ファイルを置かない。Lua で書く必要がある設定も、nixvim の `extraConfigLua` などに書く。
 
 ### plugins/ の構成と配置方針
 
