@@ -2,6 +2,7 @@
 
 このプロジェクトで設定の変更などを依頼した場合は、git 管理下のファイルを編集すること。
 配置された設定ファイルを直接編集しない。
+リポジトリ内にあっても `.gitignore` で除外されたファイルは編集先ではない。編集先がわからないときは、`modules/` から配置先のパスを検索して、どのモジュールが配置しているかを確かめる。
 
 ## コミット
 
@@ -18,6 +19,15 @@
 `flake.nix` は `homeModules.default` と `darwinModules.default` を公開する。`dotfiles-private` はこれらを `nix-darwin.lib.darwinSystem` / `home-manager.lib.homeManagerConfiguration` の `modules` に含め、ホストモジュールと組み合わせて構成を定義する。
 
 `darwinConfigurations.ci-darwin` と `homeConfigurations."runner@ci-linux"` は CI 用の最小構成で、実機の構成は含まない。
+
+## Claude Code の設定管理
+
+`modules/home/claude.nix` で管理している。
+
+- `settings.json` の値 (プラグインの有効化、permissions、hooks など) は `managedSettings` に書く。`~/.claude/settings.json` は CLI が書き込む実ファイルで、activation で `managedSettings` がマージされる
+- `CLAUDE.md`、スキル、hook のスクリプトは `config/claude/` 以下を編集する
+- プラグイン名は推測で書かず、`~/.claude/plugins/marketplaces/<marketplace>/.claude-plugin/marketplace.json` に存在することを確かめる
+- claude.ai のコネクタや、claude.ai のアカウントで配布されるスキル (`anthropic-skills:*`) は claude.ai 側の設定で、Nix では管理しない
 
 ## neovim の設定管理
 
