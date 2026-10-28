@@ -73,7 +73,18 @@ in
     source = ../../config/claude/hooks/notify.sh;
     executable = true;
   };
-  home.file.".claude/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills";
+  # skills/ をディレクトリごとリンクすると ~/.claude/skills 自体がシンボリックリンクになり、
+  # ローカル限定スキルを追加できない。スキル単位でリンクすることで実ディレクトリにする。
+  home.file = lib.mkMerge (
+    map (name: {
+      ".claude/skills/${name}".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/config/claude/skills/${name}";
+    }) (
+      builtins.attrNames (
+        lib.filterAttrs (_: type: type == "directory") (builtins.readDir ../../config/claude/skills)
+      )
+    )
+  );
 
   # imozuru skill のスクリプトが使う。macOS の /usr/bin/python3 は 3.9 で、スクリプトが求める 3.10 に届かない
   home.packages = [
