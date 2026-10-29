@@ -31,9 +31,10 @@ in
           # snacks 既定の nvim-remote プリセットは --remote-tab で毎回 vim tabpage を
           # 開くが、tabline は mini.tabline (バッファベース) のため管理できない。
           # --remote でカレントウィンドウにバッファとして開き mini.tabline に載せる。
+          # editAtLine は差分の行を画面中央に表示するため zz を送る。
           config.os = {
             edit = ''[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})'';
-            editAtLine = ''[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")'';
+            editAtLine = ''[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>zz")'';
           };
         };
         picker = {
