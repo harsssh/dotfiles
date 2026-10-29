@@ -59,6 +59,21 @@ let
       "mcp__github__request_copilot_review"
       "mcp__github__assign_copilot_to_issue"
       "mcp__github__create_pull_request_with_copilot"
+      # HCP Terraform の状態を変える操作をさせない。get_sentinel_mock は名前に反して plan export を作る
+      "mcp__terraform__create_run"
+      "mcp__terraform__create_workspace"
+      "mcp__terraform__create_no_code_workspace"
+      "mcp__terraform__update_workspace"
+      "mcp__terraform__create_workspace_tags"
+      "mcp__terraform__create_workspace_variable"
+      "mcp__terraform__update_workspace_variable"
+      "mcp__terraform__create_variable_set"
+      "mcp__terraform__create_variable_in_variable_set"
+      "mcp__terraform__delete_variable_in_variable_set"
+      "mcp__terraform__attach_variable_set_to_workspaces"
+      "mcp__terraform__detach_variable_set_from_workspaces"
+      "mcp__terraform__attach_policy_set_to_workspaces"
+      "mcp__terraform__get_sentinel_mock"
     ];
   };
   managedSettingsFile = (pkgs.formats.json { }).generate "claude-managed-settings.json" managedSettings;
