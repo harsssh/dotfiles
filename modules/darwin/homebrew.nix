@@ -22,6 +22,7 @@
       "raycast"
       "slack"
       "tailscale-app"
+      "zen"
     ];
     masApps = {
       RunCat = 1429033973;
