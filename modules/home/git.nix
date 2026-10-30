@@ -1,10 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 let
   hasSigningKey = config.programs.git.signing.key != null;
 in
 {
-  home.packages = [ pkgs.tig ];
-
   programs.lazygit = {
     enable = true;
     settings = {
@@ -65,7 +63,4 @@ in
     };
     signing.signByDefault = hasSigningKey;
   };
-
-  # tig
-  home.file.".tigrc".source = ../../config/.tigrc;
 }

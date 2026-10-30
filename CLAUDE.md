@@ -31,7 +31,7 @@
 - Nix の option から生成する: モジュールの `programs.<name>` などを編集する。`make sync` で反映される
     - git, lazygit, zsh, starship, fzf, direnv, eza, zoxide, ssh, ghostty, editorconfig, 1Password の SSH agent, neovim
 - `config/` のファイルを Nix store にコピーする: `config/` のファイルを編集する。`make sync` するまで反映されない
-    - `.tmux.conf` (`programs.tmux.extraConfig` に読み込む), `.tigrc`, `.myclirc`, `.ideavimrc`
+    - `.tmux.conf` (`programs.tmux.extraConfig` に読み込む), `.myclirc`, `.ideavimrc`
     - Claude Code の `statusline.sh`, `hooks/notify.sh`
 - `config/` へのシンボリックリンクを張る: `config/` のファイルを編集する。`make sync` しなくてもすぐ反映される
     - Claude Code の `CLAUDE.md` とスキル。Codex の `AGENTS.md` とスキルも同じファイルを指す
