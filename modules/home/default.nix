@@ -61,6 +61,7 @@
     go
     nodejs
     ruby
+    nixd
     nixfmt
     pnpm
   ];
