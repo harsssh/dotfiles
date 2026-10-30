@@ -8,7 +8,6 @@
       extraFlags = [ "--quiet" ];
     };
     brews = [
-      "ni"
       "render"
     ];
     casks = [

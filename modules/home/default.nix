@@ -43,6 +43,7 @@
     jq
     k9s
     mycli
+    ni
     tenv
     tflint
     peco
