@@ -51,6 +51,13 @@ nix run 'home-manager/master' -- switch --flake .
 
 複数ホストで共有しつつ有効/無効を切り替えたい設定は、`dotfiles.<name>.enable` オプションを持つモジュールにする (例: `modules/home/1password.nix`)。
 
+## Nix で管理しないもの
+
+更新が頻繁な CLI は、Nix で管理せず各ツールの方法で入れる。nixpkgs のバージョンは公式のリリースより遅れるため、Nix で入れると最新版を使えない。
+
+- Claude Code: 公式インストーラで入れ、自動更新に任せる
+- Codex: `bun install -g @openai/codex` で入れる
+
 ## `config/` ディレクトリ
 
 Nix で設定を書くメリットがないものは、`config/` に設定ファイルを配置して配布するだけにしている。
