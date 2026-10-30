@@ -3,6 +3,7 @@
   homebrew = {
     enable = true;
     onActivation = {
+      autoUpdate = true;
       cleanup = "zap";
       extraFlags = [ "--quiet" ];
     };
@@ -21,7 +22,6 @@
       "raycast"
       "slack"
       "tailscale-app"
-      "visual-studio-code"
     ];
     masApps = {
       RunCat = 1429033973;
