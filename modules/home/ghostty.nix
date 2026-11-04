@@ -28,6 +28,9 @@
       window-padding-balance = true;
       window-save-state = "always";
       mouse-hide-while-typing = true;
+      # tmux の mouse on 中はクリックが tmux に送られ、cmd + click でリンクを開けない
+      # 一時的にマウスイベントの送信を止めて、Ghostty にリンクを処理させる
+      keybind = [ "cmd+shift+m=toggle_mouse_reporting" ];
       # tmux や nvim から OSC 52 で読むたびに確認ダイアログが出るのを避ける
       clipboard-read = "allow";
       # Nix でバージョンを固定しているため、Ghostty 自身の更新は使わない
