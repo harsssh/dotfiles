@@ -32,10 +32,4 @@
       EnableTiledWindowMargins = false;
     };
   };
-
-  # Spotlight を使わないので、インデックス作成による CPU 負荷を止める。
-  # この行を消しても再開しないので、戻すときは sudo mdutil -a -i on を手で実行する
-  system.activationScripts.postActivation.text = ''
-    /usr/bin/mdutil -a -i off >/dev/null
-  '';
 }
