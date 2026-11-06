@@ -13,6 +13,9 @@ in
         { externalDiffCommand = "difft --color=always"; }
       ];
       git.overrideGpg = true;
+      # 既定の nvim プリセットは +{{line}} で行へ移動するだけなので、差分の行を画面中央に表示するため zz を実行する。
+      # nvim 内の Snacks.lazygit は snacks.nix の設定で開く
+      os.editAtLine = ''nvim +{{line}} "+normal! zz" -- {{filename}}'';
     };
   };
 
