@@ -9,16 +9,27 @@ let
       type = "command";
       command = "~/.claude/statusline.sh";
     };
-    hooks.Stop = [
-      {
-        hooks = [
+    # ユーザーが戻る必要があるとき (完了、エラーでの停止、確認待ち) に通知する。通知の内容は notify.sh がイベントごとに決める
+    hooks =
+      let
+        notify = [
           {
             type = "command";
             command = "~/.claude/hooks/notify.sh";
           }
         ];
-      }
-    ];
+      in
+      {
+        Stop = [ { hooks = notify; } ];
+        StopFailure = [ { hooks = notify; } ];
+        # idle_prompt は Stop の通知と重なるので含めない
+        Notification = [
+          {
+            matcher = "permission_prompt|elicitation_dialog|elicitation_url_dialog";
+            hooks = notify;
+          }
+        ];
+      };
     autoCompactEnabled = false;
     autoMemoryEnabled = true;
     permissions.defaultMode = "auto";
