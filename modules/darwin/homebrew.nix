@@ -8,6 +8,7 @@
       extraFlags = [ "--quiet" ];
     };
     brews = [
+      "newrelic-cli"
       "render"
     ];
     casks = [
