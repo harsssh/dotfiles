@@ -46,6 +46,7 @@
     pp = "pnpm";
 
     pc = "process-compose";
+    dp = "devenv processes";
 
     ff = "fzf";
     ffb = ''git branch --format="%(refname:short)" | fzf'';
